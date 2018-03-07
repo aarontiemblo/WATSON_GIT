@@ -61,7 +61,7 @@ var textContentBodyChat = '<div class="segments load">'
 var textContentBodyChat2 = '</div>'
 	+ '</form>'
 	+ '<div id="oculto2" class="segments load" style="display:none;">'
-	+ '<div class="from-watson top"><div class="message-inner"><p>Por favor, escribe abajo el NOMBRE DE LA VÃ�A, NÃšMERO Y LOCALIDAD dÃ³nde quieres que comprobemos la cobertura.</p></div></div>'
+	+ '<div class="from-watson top"><div class="message-inner"><p>Por favor, escribe abajo el NOMBRE DE LA V&Iacute;A, N&Uacute;MERO Y LOCALIDAD d&oacute;nde quieres que comprobemos la cobertura.</p></div></div>'
 	+ '</div>'
 	+ '<div id="oculto3" class="segments load" style="display:none;"> </div>'
 	+ '<div id="watsoncliente" style="display:none;"><div class="segments load"><div class="from-user top"><div class="message-inner" id="textodireccion"></div></div></div></div>';
