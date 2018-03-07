@@ -30,7 +30,7 @@ var textContentBodyChat = '<div class="segments load">'
 	+ '</div>'
 	+ '<p class="mensajeInfo">Tienes dos opciones:'
 	+ '<ol class="mensajeInfo">'
-	+ '<li>Pulsando el botón "Capturar Mi Ubicación", tu navegador activará el servicio de ubicación para conocer tu dirección actual. Para que funcione correctamente debes permitir su activación.'
+	+ '<li>Pulsando el botÃ³n "Capturar Mi Ubicación", tu navegador activarÃ¡ el servicio de ubicación para conocer tu dirección actual. Para que funcione correctamente debes permitir su activación.'
 	+ '<li>Puedes escribir manualmente la dirección que deseas consultar pulsando en "Escribir Dirección".</li>'
 	+ '</ol>'
 	+ '<div class="botonesubicacionWatson">'
@@ -40,7 +40,7 @@ var textContentBodyChat = '<div class="segments load">'
 	+ '<form name="f1" id="oculto" class="formulario1Watson" style="display:none;">'
 	+ '<div class="formulario2Watson">'
 	+ '<h2>Mi ubicaci\u00f3n</h2>'
-	+ '<div class="labelBox"><p>Tipo de vía</p><p>Nombre de vía</p></div>'
+	+ '<div class="labelBox"><p>Tipo de vÃ­a</p><p>Nombre de vÃ­a</p></div>'
 	+ '<div class="formu1Watson">'
 	+ '<input type="text" id="tipoV" placeholder="Tipo de v\u00eda">'
 	+ '<input type="text" id="listacalles" list="calle" placeholder="Nombre de la v\u00eda">'
@@ -61,7 +61,7 @@ var textContentBodyChat = '<div class="segments load">'
 var textContentBodyChat2 = '</div>'
 	+ '</form>'
 	+ '<div id="oculto2" class="segments load" style="display:none;">'
-	+ '<div class="from-watson top"><div class="message-inner"><p>Por favor, escribe abajo el NOMBRE DE LA VÍA, NÚMERO Y LOCALIDAD dónde quieres que comprobemos la cobertura.</p></div></div>'
+	+ '<div class="from-watson top"><div class="message-inner"><p>Por favor, escribe abajo el NOMBRE DE LA VÃ�A, NÃšMERO Y LOCALIDAD dÃ³nde quieres que comprobemos la cobertura.</p></div></div>'
 	+ '</div>'
 	+ '<div id="oculto3" class="segments load" style="display:none;"> </div>'
 	+ '<div id="watsoncliente" style="display:none;"><div class="segments load"><div class="from-user top"><div class="message-inner" id="textodireccion"></div></div></div></div>';
@@ -122,7 +122,7 @@ $(document)
 		initial_Conversation.sendRequestInitial(input,
 			contextInitial);
 	});
-// Inicializaci�n de googlemaps para el autocomplete
+// Inicializaciï¿½n de googlemaps para el autocomplete
 function init() {
 	var textUser;
 	var options = {
@@ -777,7 +777,7 @@ var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicaci
 	}
 	;
 
-	// Envio de la direcci�n a watson. En consultaFibra almacenamos los datos
+	// Envio de la direcciï¿½n a watson. En consultaFibra almacenamos los datos
 	// que necesita el microservicio para validar la direccion.
 	function sendLocation(text, context, consultaFibra) {
 		// Build request payload
@@ -962,7 +962,7 @@ var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicaci
 				if (redireccionATienda){
 					var data = {};
 					data.output = {};
-					data.output.text = ["¡Ya tenemos todo lo necesario! Te estamos redirigiendo a la tienda para continuar"];
+					data.output.text = ["Â¡Ya tenemos todo lo necesario! Te estamos redirigiendo a la tienda para continuar"];
 					var type = 'watson';
 					watson_ConversationPanel.displayMessage(data, type);
 					watson_ConversationPanel.showLoading();
@@ -1074,7 +1074,7 @@ var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicaci
 				// $( "#textInputchat" ).focus();
 				$('#resetWatson').removeClass('enlaceInhabilitado');
 				watson_Watson.setResponsePayload(http.responseText);
-				// -Inicio- Redirección cuando se introduce el número fijo
+				// -Inicio- RedirecciÃ³n cuando se introduce el nÃºmero fijo
 				var context;
 				var latestResponse = watson_Watson.getResponsePayload();
 				var redireccionATienda; // Boolean
@@ -1091,7 +1091,7 @@ var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicaci
 				if (redireccionATienda){
 					var data = {};
 					data.output = {};
-					data.output.text = ["¡Ya tenemos todo lo necesario! Te estamos redirigiendo a la tienda para continuar"];
+					data.output.text = ["Â¡Ya tenemos todo lo necesario! Te estamos redirigiendo a la tienda para continuar"];
 					var type = 'watson';
 					watson_ConversationPanel.displayMessage(data, type);
 					watson_ConversationPanel.showLoading();
@@ -1244,9 +1244,9 @@ watson_Common = (function () {
 
 	// Reset Watson
 	function resetWatson() {
-		//-Inicio- Número no informado o no encontrado (Reseteo de variable)
+		//-Inicio- NÃºmero no informado o no encontrado (Reseteo de variable)
 		vuelta = false;
-		//-Fin- Número no informado o no encontrado (Reseteo de variable)
+		//-Fin- NÃºmero no informado o no encontrado (Reseteo de variable)
 		var input = "EVENT_SALUDO_INICIAL_RESET";
 		contextInitial = {
 			"output": "EVENT_SALUDO_INICIAL",
@@ -1285,7 +1285,7 @@ watson_Common = (function () {
 			watson_RightNow.terminarChatReset();
 		}
 
-		// Inicializaci�n
+		// Inicializaciï¿½n
 		var canal = $('#watsonContainer').attr('data-canal');
 		var urlHTML = $('#watsonContainer').attr('data-url');
 		var context = {
@@ -1632,7 +1632,7 @@ watson_ConversationPanel = (function () {
 			context = latestResponse.context;
 			context.noesmidireccion = true;
 		}
-		// -Inicio- Redirección cuando se introduce el número fijo
+		// -Inicio- RedirecciÃ³n cuando se introduce el nÃºmero fijo
 		var enlaceaTienda; // Enlace al que redirigir
 		if (context && context != "undefined" && context != ''){
 				enlaceaTienda = context.enlaceaTienda;		
@@ -1644,7 +1644,7 @@ watson_ConversationPanel = (function () {
 			$('#textInputchat').addClass("enlaceInhabilitado");
 			var data = {};
 			data.output = {};
-			data.output.text = ["¡Ya tenemos todo lo necesario! te estamos redirigiendo a la tienda para continuar con el proceso de contrataci&oacute;n"];
+			data.output.text = ["Â¡Ya tenemos todo lo necesario! te estamos redirigiendo a la tienda para continuar con el proceso de contrataci&oacute;n"];
 			var type = 'watson';
 			watson_ConversationPanel.displayMessage(data, type);
 			watson_ConversationPanel.showLoading();
@@ -1789,7 +1789,7 @@ watson_ConversationPanel = (function () {
 				}
 
 				// en caso de que watson nos devuelva el dato de contexto de fin
-				// de conversaci�n
+				// de conversaciï¿½n
 				if ((contextFin != null) && (contextFin)) {
 					document.getElementById('escribeaqui').style.display = 'none';
 				}
@@ -1909,7 +1909,7 @@ watson_ConversationPanel = (function () {
 				contadorFilas++;
 			}
 		}
-		// Automarcado de una única opción
+		// Automarcado de una Ãºnica opciÃ³n
 		if (splitPipes.length == 1) {
 			setTimeout(function () {
 				$('#trDirec_0').click();
@@ -2227,7 +2227,7 @@ watson_ConversationPanel = (function () {
 								var elemRecupDots = elemDireccionRecuperar[v]
 									.split(":");
 								var elementoRecuperar = elemRecupDots[0];
-								// El campo est� en la lista de los que queremos
+								// El campo estï¿½ en la lista de los que queremos
 								// recuperar
 								if (elementoRecuperar == splitDots[0]
 									&& splitDots[1] != '') {
@@ -2536,7 +2536,7 @@ watson_ConversationPanel = (function () {
 			currentText = currentText.toString();
 		}
 
-		// No se da esta opci�n en Canal Online, es para Faqs en el caso de que
+		// No se da esta opciï¿½n en Canal Online, es para Faqs en el caso de que
 		// llegue un enlace en la conversacion
 		if ((currentText != null && currentText.indexOf(patronEnlaceInicio) > -1)
 			&& !(currentText.indexOf(patronEnlaceOferta) > -1)) {
@@ -2663,7 +2663,7 @@ watson_ConversationPanel = (function () {
 		return messageArray;
 	}
 
-	// No se usa en el canal online solo en las faqs para a�adir utm a las url
+	// No se usa en el canal online solo en las faqs para aï¿½adir utm a las url
 	function fixUrl(text) {
 		var index = text.indexOf("http");
 		var url = text.substr(0, text.indexOf(">")).trim();
@@ -2716,7 +2716,7 @@ watson_ConversationPanel = (function () {
 			document.getElementById('countChar').style.fontSize = "small";
 			$('#countChar').html('</br>'+textUser.length+'/140');
 			});
-		//-Inicio- Comprobar campos vacíos
+		//-Inicio- Comprobar campos vacÃ­os
 		var faltaCampoTexto = "No he podido capturar tu ubicaci&oacute;n completa. Por favor, completa los datos que faltan y que aparecen resaltados";
 		$(document).ready(function () {
 			if (inputBox.val().length == 0) {
@@ -2896,7 +2896,7 @@ watson_Location = (function () {
 		showTextBox: showTextBox
 	};
 
-	// Guardamos la dirección del cliente
+	// Guardamos la direcciÃ³n del cliente
 	function submitFormDir() {
 
 		// Enviamos datos a initial_Conversation
@@ -3232,11 +3232,11 @@ watson_Location = (function () {
 			'\u00ce', 'I').replace('\u00d4', 'O').replace('\u00db', 'U');
 		str = str.replace('\u00e2', 'a').replace('\u00ea', 'e').replace(
 			'\u00ee', 'i').replace('\u00f4', 'o').replace('\u00fb', 'u');
-		// �/
+		// ï¿½/
 		str = str.replace('\u00f1', 'n').replace('\u00d1', 'N');
-		// �//
+		// ï¿½//
 		str = str.replace('\u00e7', 'c').replace('\u00c7', 'C');
-		// di�resis //
+		// diï¿½resis //
 		str = str.replace('\u00c4', 'A').replace('\u00cb', 'E').replace(
 			'\u00cf', 'I').replace('\u00d6', 'O').replace('\u00dc', 'U');
 		str = str.replace('\u00e4', 'a').replace('\u00eb', 'e').replace(
@@ -3359,10 +3359,10 @@ watson_Location = (function () {
 		watson_ConversationPanel.scrollToChatBottom();
 	}
 
-	// Mostrar ubicaci�n actual
+	// Mostrar ubicaciï¿½n actual
 	function currentLocation() {
-		// Comprobar campos vacíos
-		var faltaCampoTexto = "No he podido capturar tu ubicación completa. Por favor, completa los datos que faltan y que aparecen resaltados";
+		// Comprobar campos vacÃ­os
+		var faltaCampoTexto = "No he podido capturar tu ubicaciÃ³n completa. Por favor, completa los datos que faltan y que aparecen resaltados";
 		$('#tipoV').on('keydown keyup', function (event) {	
 			watson_ConversationPanel.inputKeyDown(event, $(this));
 		});
@@ -3444,7 +3444,7 @@ watson_Location = (function () {
 											numeroW = results[0].address_components[i].long_name;
 										}
 									}
-									// -Inicio- Introducción de mensajes de
+									// -Inicio- IntroducciÃ³n de mensajes de
 									// aviso que falta algunos de los campos
 										if (!provincia || provincia == '' || provincia === "undefined"){
 											listaprovincias = provincia;
@@ -3530,28 +3530,28 @@ watson_Location = (function () {
 						case objPositionError.PERMISSION_DENIED:
 							// content.innerHTML = "<p
 							// style=\"color:red\"><strong>Latitud:</strong>No
-							// se ha permitido el acceso a la posici�n del
+							// se ha permitido el acceso a la posiciï¿½n del
 							// usuario.</p>";
 							// Bloqueo en el navegador del permiso de buscar la
-							// ubicación
+							// ubicaciÃ³n
 							var data = {};
 							data.output = {};
-							data.output.text = ["Lo siento, no ha sido posible capturar tu ubicación de forma automática pues no tienes habilitada esta funcionalidad en tu navegador. Puedes habilitarla e intentarlo de nuevo o escribir la dirección pulsando en 'Escribir Dirección'"];
+							data.output.text = ["Lo siento, no ha sido posible capturar tu ubicaciÃ³n de forma automÃ¡tica pues no tienes habilitada esta funcionalidad en tu navegador. Puedes habilitarla e intentarlo de nuevo o escribir la direcciÃ³n pulsando en 'Escribir DirecciÃ³n'"];
 							var type = 'watson';
 							watson_ConversationPanel.displayMessage(data, type);
 							document.body.style.cursor = 'default';
 							permissionDenied = true;
-							// console.log("No se ha permitido la ubicación");
+							// console.log("No se ha permitido la ubicaciÃ³n");
 							break;
 						case objPositionError.POSITION_UNAVAILABLE:
 							// content.innerHTML = "<p
 							// style=\"color:red\"><strong>Latitud:</strong>No
-							// se ha podido acceder a la informaci�n de su
-							// posici�n.</p>";
-							// No se ha podido encontrar la ubicación
+							// se ha podido acceder a la informaciï¿½n de su
+							// posiciï¿½n.</p>";
+							// No se ha podido encontrar la ubicaciÃ³n
 							var data = {};
 							data.output = {};
-							data.output.text = ["Lo siento, no ha sido posible capturar tu ubicación de forma automática pues no tienes habilitada esta funcionalidad en tu navegador. Puedes habilitarla e intentarlo de nuevo o escribir la dirección pulsando en 'Escribir Dirección'"];
+							data.output.text = ["Lo siento, no ha sido posible capturar tu ubicaciÃ³n de forma automÃ¡tica pues no tienes habilitada esta funcionalidad en tu navegador. Puedes habilitarla e intentarlo de nuevo o escribir la direcciÃ³n pulsando en 'Escribir DirecciÃ³n'"];
 							var type = 'watson';
 							watson_ConversationPanel.displayMessage(data, type);
 							document.body.style.cursor = 'default';
@@ -3563,10 +3563,10 @@ watson_Location = (function () {
 							// servicio ha tardado demasiado tiempo en
 							// responder.</p>";
 							// Se excede el tiempo en permitir o no (navegador)
-							// el acceso a la busqueda automática
+							// el acceso a la busqueda automÃ¡tica
 							var data = {};
 							data.output = {};
-							data.output.text = ["Lo siento, no ha sido posible capturar tu ubicación de forma automática pues no tienes habilitada esta funcionalidad en tu navegador. Puedes habilitarla e intentarlo de nuevo o escribir la dirección pulsando en 'Escribir Dirección'"];
+							data.output.text = ["Lo siento, no ha sido posible capturar tu ubicaciÃ³n de forma automÃ¡tica pues no tienes habilitada esta funcionalidad en tu navegador. Puedes habilitarla e intentarlo de nuevo o escribir la direcciÃ³n pulsando en 'Escribir DirecciÃ³n'"];
 							var type = 'watson';
 							watson_ConversationPanel.displayMessage(data, type);
 							document.body.style.cursor = 'default';
@@ -3588,7 +3588,7 @@ watson_Location = (function () {
 			firstTextInput++;
 
 		} else {
-			content.innerHTML = "Su navegador no soporta la API de geolocalizaci�n.";
+			content.innerHTML = "Su navegador no soporta la API de geolocalizaciï¿½n.";
 			context.output = "Su navegador no soporta la API de geolocalizacion";
 			initial_Conversation.sendRequestInitial(opcion, context);
 			document.body.style.cursor = 'default';
@@ -3641,7 +3641,7 @@ watson_Location = (function () {
 		$('#resetWatson').removeClass('enlaceInhabilitado');
 		document.getElementById('escribeaqui').style.display = 'block';
 
-		/* Animación para atraer el foco de atención en la primera interacción */
+		/* AnimaciÃ³n para atraer el foco de atenciÃ³n en la primera interacciÃ³n */
 		if (firstTextInput === 0) {
 			$('#escribeaqui').addClass('animationPulse');
 			firstTextInput++;
@@ -3675,7 +3675,7 @@ watson_Location = (function () {
 		var addressInput = document.getElementById('textInputchat').value;
 
 		var geocoder = new google.maps.Geocoder();
-		// En caso de que falte solo el numero a la direcci�n
+		// En caso de que falte solo el numero a la direcciï¿½n
 		if (captureNumber) {
 			consultaFibra.numero = addressInput;
 			$('#textInputchat').removeAttr('onkeypress');
@@ -3730,13 +3730,13 @@ watson_Location = (function () {
 							}
 							if (results[0].address_components[i].types == 'street_number') {
 								numeroW = results[0].address_components[i].long_name;
-							//-Inicio- Número no informado o no encontrado
+							//-Inicio- NÃºmero no informado o no encontrado
 							}else if (vuelta && numeroW == ''){
 										if (consultaFibra.numero > 0 && consultaFibra.numero < 999999){
 											numeroW = consultaFibra.numero;	
 										}
 								}
-							//-Fin- Número no informado o no encontrado
+							//-Fin- NÃºmero no informado o no encontrado
 						}
 						// si falta solo el numero de la calle
 						if (provincia != '' && localidad != ''
@@ -3944,7 +3944,7 @@ watson_Location = (function () {
 
 }());
 
-// Envio de la opci�n marcada haciendo click
+// Envio de la opciï¿½n marcada haciendo click
 watson_EnvioEnlace = function (span, texto) {
 	// Retrieve the context from the previous server response
 	if (!$(span).hasClass("enlaceInhabilitado")) {
@@ -4280,36 +4280,28 @@ function envioFormulario(){
 		};
 	var urlDelio = "https://ws.walmeric.com/provision/wsclient/client_addlead.html?idTag=29842f94d414949bf95fb2e6109142cfef1fb2a78114c2c536a36bf5a65b953a2224d083b82556f420edd64168d5fd904d9e4fa7221a95c03a6f0110864d9e6a9f1bcc982f49e8e7b5377e50143aa1bbe341aaec655f7666e755114f87c6e9f3b42792780ae793bf157e928ce3e0fcd5&name="+clientConfig.map.param1+"&phone="+clientConfig.map.param2;
 	console.log(urlDelio);
-	var toDelio = {
-			result:"",
-			code: "",
-			leadId:"",
-			message:""
-	}
-
-	// Built http request
-	var http = new XMLHttpRequest();
-	http.open('GET', urlDelio, false);
-	http.setRequestHeader('Content-type', 'application/json');
-//	http.setRequestHeader('Access-Control-Allow-Origin', 'https://ws.walmeric.com*');
-//	http.setRequestHeader('Origin', '*');
-	http.onreadystatechange = function () {
-		if (http.readyState === 4 && http.status === 200 && http.responseText) {
-			lead = true;
+	var toDelio;
+	$.ajax({
+        url: urlDelio,//esto con un archivo php
+        type: 'GET',//tipo de petición
+        dataType: 'jsonp',//tipo de datos
+        jsonp: toDelio,//nombre de la variable get para reconocer la petición
+        error: function(xhr, status, error) {
+        	lead = false;
 			mensajeFinal();
-			console.log("Success: "+http.responseText);
-		}else{
-			lead = false;
+			console.log("Error en la petición a DELIO");
+        },
+        success: function(jsonp) { 
+        	lead = true;
 			mensajeFinal();
-			console.log("Error: "+http)
-		}
-	};
-	http.send(null);
+			console.log("La petición ha sido satisfactoria");
+        }
+   });
 }
 	function mensajeFinal(){
 		if (lead){
 			$('#watson__body__chat').html('<div class="llamadmeTextoFinal">Su solicitud ha sido recibida.</br>'
-					+'En breve uno de nuestros agente se pondrá en contacto con usted.</br>'
+					+'En breve uno de nuestros agente se pondr&aacute; en contacto con usted.</br>'
 					+'Gracias.</div>');
 		}else{
 			$('#watson__body__chat').html('<div class="llamadmeTextoFinal">Su solicitud no se ha podido tramitar correctamente.</br>'
