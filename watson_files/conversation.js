@@ -1611,6 +1611,9 @@ watson_ConversationPanel = (function () {
 			context = latestResponse.context;
 			context.noesmidireccion = true;
 		}
+		if (codPromo.includes("PROMO_CODE")){
+			context.enlaceaTienda = context.enlaceaTienda+"&"+codPromo;
+		}
 		var text = $(".meInteresaBtn:last").data('msg');
 		text = '<!datosFormFeedback>' + text;
 		watson_Watson.sendRequest(text, context);
