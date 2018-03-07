@@ -1644,7 +1644,7 @@ watson_ConversationPanel = (function () {
 			$('#textInputchat').addClass("enlaceInhabilitado");
 			var data = {};
 			data.output = {};
-			data.output.text = ["Â¡Ya tenemos todo lo necesario! te estamos redirigiendo a la tienda para continuar con el proceso de contrataci&oacute;n"];
+			data.output.text = ["¡Ya tenemos todo lo necesario! te estamos redirigiendo a la tienda para continuar con el proceso de contrataci&oacute;n"];
 			var type = 'watson';
 			watson_ConversationPanel.displayMessage(data, type);
 			watson_ConversationPanel.showLoading();
