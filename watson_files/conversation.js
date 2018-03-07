@@ -30,7 +30,7 @@ var textContentBodyChat = '<div class="segments load">'
 	+ '</div>'
 	+ '<p class="mensajeInfo">Tienes dos opciones:'
 	+ '<ol class="mensajeInfo">'
-	+ '<li>Pulsando el botÃ³n "Capturar Mi Ubicación", tu navegador activarÃ¡ el servicio de ubicación para conocer tu dirección actual. Para que funcione correctamente debes permitir su activación.'
+	+ '<li>Pulsando el bot&oacute;n "Capturar Mi Ubicación", tu navegador activar&aacute; el servicio de ubicación para conocer tu dirección actual. Para que funcione correctamente debes permitir su activación.'
 	+ '<li>Puedes escribir manualmente la dirección que deseas consultar pulsando en "Escribir Dirección".</li>'
 	+ '</ol>'
 	+ '<div class="botonesubicacionWatson">'
@@ -40,7 +40,7 @@ var textContentBodyChat = '<div class="segments load">'
 	+ '<form name="f1" id="oculto" class="formulario1Watson" style="display:none;">'
 	+ '<div class="formulario2Watson">'
 	+ '<h2>Mi ubicaci\u00f3n</h2>'
-	+ '<div class="labelBox"><p>Tipo de vÃ­a</p><p>Nombre de vÃ­a</p></div>'
+	+ '<div class="labelBox"><p>Tipo de v&iacute;a</p><p>Nombre de v&iacute;a</p></div>'
 	+ '<div class="formu1Watson">'
 	+ '<input type="text" id="tipoV" placeholder="Tipo de v\u00eda">'
 	+ '<input type="text" id="listacalles" list="calle" placeholder="Nombre de la v\u00eda">'
@@ -3859,7 +3859,7 @@ watson_Location = (function () {
 						var dataU = {};
 						data.output = {};
 						dataU.input = {};
-						data.output.text = ["No he entendido la direcci\u00f3n que indicas. Por favor, vuelve a indicarme el NOMBRE DE LA V\u00cdA, N\u00daMERO Y LOCALIDAD donde quieres que comprobemos la cobertura"];
+						data.output.text = ["No he entendido la direcci\u00f3n que indicas. Por favor, vuelve a indicarme el NOMBRE DE LA V&Iacute;A, N&Uacute;MERO Y LOCALIDAD donde quieres que comprobemos la cobertura"];
 						dataU.input.text = [addressInput];
 						var type = 'watson';
 						var typeU = 'user';
@@ -4282,7 +4282,7 @@ function envioFormulario(){
 	console.log(urlDelio);
 	var toDelio;
 	$.ajax({
-        url: urlDelio,//esto con un archivo php
+        url: urlDelio,//esto o con un archivo php
         type: 'GET',//tipo de petición
         dataType: 'jsonp',//tipo de datos
         jsonp: toDelio,//nombre de la variable get para reconocer la petición
