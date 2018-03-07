@@ -962,7 +962,7 @@ var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicaci
 				if (redireccionATienda){
 					var data = {};
 					data.output = {};
-					data.output.text = ["Ã‚Â¡Ya tenemos todo lo necesario! Te estamos redirigiendo a la tienda para continuar"];
+					data.output.text = ["¡Ya tenemos todo lo necesario! Te estamos redirigiendo a la tienda para continuar"];
 					var type = 'watson';
 					watson_ConversationPanel.displayMessage(data, type);
 					watson_ConversationPanel.showLoading();
@@ -1091,7 +1091,7 @@ var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicaci
 				if (redireccionATienda){
 					var data = {};
 					data.output = {};
-					data.output.text = ["Ã‚Â¡Ya tenemos todo lo necesario! Te estamos redirigiendo a la tienda para continuar"];
+					data.output.text = ["¡Ya tenemos todo lo necesario! Te estamos redirigiendo a la tienda para continuar"];
 					var type = 'watson';
 					watson_ConversationPanel.displayMessage(data, type);
 					watson_ConversationPanel.showLoading();
@@ -1644,7 +1644,7 @@ watson_ConversationPanel = (function () {
 			$('#textInputchat').addClass("enlaceInhabilitado");
 			var data = {};
 			data.output = {};
-			data.output.text = ["Â¡Ya tenemos todo lo necesario! te estamos redirigiendo a la tienda para continuar con el proceso de contrataci&oacute;n"];
+			data.output.text = ["¡Ya tenemos todo lo necesario! te estamos redirigiendo a la tienda para continuar con el proceso de contrataci&oacute;n"];
 			var type = 'watson';
 			watson_ConversationPanel.displayMessage(data, type);
 			watson_ConversationPanel.showLoading();
