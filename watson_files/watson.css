@@ -3371,3 +3371,23 @@ td {
 label.checkNumFijo{
 	color: #000;
 }
+
+#watson__body__chat .from-watson p.info-tlf{
+	color: #000;
+    padding: 0px 17px !important;
+    margin: 0px;
+}
+
+#watson__body__chat .from-watson p.info-tlf img{
+	width: 16px;
+    height: 16px;
+    top: 3px;
+    margin-right: 5px;
+    position: relative;
+}
+
+#watson__body__chat .from-watson p.info-tlf a{
+	border: 0;
+    color: #ff7a00;
+    padding: 0;
+}
