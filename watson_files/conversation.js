@@ -962,7 +962,7 @@ var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicaci
 				if (redireccionATienda){
 					var data = {};
 					data.output = {};
-					data.output.text = ["�Ya tenemos todo lo necesario! Te estamos redirigiendo a la tienda para continuar"];
+					data.output.text = ["¡Ya tenemos todo lo necesario! Te estamos redirigiendo a la tienda para continuar"];
 					var type = 'watson';
 					watson_ConversationPanel.displayMessage(data, type);
 					watson_ConversationPanel.showLoading();
@@ -1091,7 +1091,7 @@ var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicaci
 				if (redireccionATienda){
 					var data = {};
 					data.output = {};
-					data.output.text = ["�Ya tenemos todo lo necesario! Te estamos redirigiendo a la tienda para continuar"];
+					data.output.text = ["¡Ya tenemos todo lo necesario! Te estamos redirigiendo a la tienda para continuar"];
 					var type = 'watson';
 					watson_ConversationPanel.displayMessage(data, type);
 					watson_ConversationPanel.showLoading();
@@ -1611,9 +1611,17 @@ watson_ConversationPanel = (function () {
 			context = latestResponse.context;
 			context.noesmidireccion = true;
 		}
-		if (codPromo.includes("PROMO_CODE")){
+		if (includes(codPromo,"PROMO_CODE")){
 			context.enlaceaTienda = context.enlaceaTienda+"&"+codPromo;
 		}
+		function includes(codPromo, value) {
+			var returnValue = false;
+			var pos = codPromo.indexOf(value);
+			if (pos >= 0) {
+				returnValue = true;
+			}
+			return returnValue;
+		}		
 		var text = $(".meInteresaBtn:last").data('msg');
 		text = '<!datosFormFeedback>' + text;
 		watson_Watson.sendRequest(text, context);
@@ -1640,14 +1648,22 @@ watson_ConversationPanel = (function () {
 		if (context && context != "undefined" && context != ''){
 				enlaceaTienda = context.enlaceaTienda;		
 		}
-		if (codPromo.includes("PROMO_CODE")){
+		if (includes(codPromo,"PROMO_CODE")){
 			enlaceaTienda = enlaceaTienda+"&"+codPromo;
+		}
+		function includes(codPromo, value) {
+			var returnValue = false;
+			var pos = codPromo.indexOf(value);
+			if (pos >= 0) {
+				returnValue = true;
+			}
+			return returnValue;
 		}
 			$('#watson__input__btn').addClass("enlaceInhabilitado");
 			$('#textInputchat').addClass("enlaceInhabilitado");
 			var data = {};
 			data.output = {};
-			data.output.text = ["�Ya tenemos todo lo necesario! te estamos redirigiendo a la tienda para continuar con el proceso de contrataci&oacute;n"];
+			data.output.text = ["¡Ya tenemos todo lo necesario! te estamos redirigiendo a la tienda para continuar con el proceso de contrataci&oacute;n"];
 			var type = 'watson';
 			watson_ConversationPanel.displayMessage(data, type);
 			watson_ConversationPanel.showLoading();
