@@ -4252,8 +4252,8 @@ $(function () {
 		});
 
 		// Feedback form
-//		$("#watson__body__chat").on("click", '#feedbackSmartFormSi',
-//			watson_Common.submitForm);
+		$("#watson__body__chat").on("click", '#feedbackSmartFormSi',
+				envioFormulario);
 		$("#watson__body__chat").on("click", '#feedbackSmartFormNo',
 			watson_Common.noSubmitForm);
 		$("#watson__body__chat").on("click", '#clickHere',
