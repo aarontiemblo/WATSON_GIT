@@ -905,11 +905,12 @@ var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicaci
 					"canal": canal,
 					"conversation_id": contextold.conversation_id
 				};	
-			}else{
-				var context = {
-					"canal": canal,
-				};
 			}
+//				else{
+//				var context = {
+//					"canal": canal
+//				};
+//			}
 
 			if(initialID){
 				context.initialID = initialID;
@@ -973,7 +974,6 @@ var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicaci
 				}
 			}
 		};
-
 		var params = JSON.stringify(payloadToWatson);
 
 		if (Object.getOwnPropertyNames(payloadToWatson).length !== 0) {
@@ -1292,9 +1292,9 @@ watson_Common = (function () {
 			"canal": canal,
 			// "logado":"false",
 			// "IdFAQ_Original": urlHTML,
-			"nombre": "",
-			"email": "",
-			"telefono": ""
+//			"nombre": "",
+//			"email": "",
+//			"telefono": ""
 		};
 
 		watson_Watson.setStatus('to-init');
@@ -3326,12 +3326,12 @@ watson_Location = (function () {
 				var canal = $('#watsonContainer').attr('data-canal');
 				var urlHTML = $('#watsonContainer').attr('data-url');
 				var context = {
-					"canal": canal,
+					"canal": canal
 					// "logado":"false",
 					// "IdFAQ_Original": urlHTML,
-					"nombre": "",
-					"email": "",
-					"telefono": ""
+//					"nombre": "",
+//					"email": "",
+//					"telefono": ""
 				};
 				consultaFibra = {
 					"tipoVia": tipoV,
