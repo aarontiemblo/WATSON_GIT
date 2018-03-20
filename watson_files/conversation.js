@@ -905,6 +905,11 @@ var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicaci
 					"canal": canal,
 					"conversation_id": contextold.conversation_id
 				};	
+			}else if (initialID){
+//				var context = {
+//						"initialID": initialID
+//					};
+				context.initialID = initialID;
 			}
 //				else{
 //				var context = {
@@ -912,9 +917,9 @@ var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicaci
 //				};
 //			}
 
-			if(initialID){
-				context.initialID = initialID;
-			}
+//			if(initialID){
+//				context.initialID = initialID;
+//			}
 			payloadToWatson.context = context;
 			conversationId = '';
 			resetOther = false;
