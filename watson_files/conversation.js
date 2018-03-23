@@ -905,6 +905,11 @@ var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicaci
 					"canal": canal,
 					"conversation_id": contextold.conversation_id
 				};	
+			}else if (initialID){
+//				var context = {
+//						"initialID": initialID
+//					};
+				context.initialID = initialID;
 			}
 //				else{
 //				var context = {
@@ -912,9 +917,9 @@ var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicaci
 //				};
 //			}
 
-			if(initialID){
-				context.initialID = initialID;
-			}
+//			if(initialID){
+//				context.initialID = initialID;
+//			}
 			payloadToWatson.context = context;
 			conversationId = '';
 			resetOther = false;
@@ -1079,6 +1084,11 @@ var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicaci
 				var latestResponse = watson_Watson.getResponsePayload();
 				var redireccionATienda; // Boolean
 				var enlaceaTienda; // Enlace al que redirigir
+				//-INICIO- Quitamos el textInput y el boton enviar cuando se nos cargue el formulario C2C
+				if (latestResponse.context.text[1].includes("feedbackSmartFormSi")){
+					document.getElementById('escribeaqui').style.display = 'none';
+					}
+				//-FIN- Quitamos el textInput y el boton enviar cuando se nos cargue el formulario C2C
 				if (latestResponse) {
 					console.log('latestResponse', latestResponse);
 					context = latestResponse.context;
