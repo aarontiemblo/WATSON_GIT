@@ -25,6 +25,16 @@ var vuelta = false;
 var codPromo;
 var lead = false;
 
+var ContentBodyChatSiNo ='<div class="segments load">' 
+	+ '<div class="from-watson top"><div class="message-inner"><p>Hola, soy tu <strong>asistente virtual</strong>.</br>¿Te ayudo a consultar la cobertura de Fibra?</p></div></div>' 
+	+ '<div class="botonesubicacionWatson">'
+	+ '<button type="button" id="SiContent" class="miubicacionWatson" onclick="activarBodyChat()">SI</button>'
+	+ '<button type="button" id="NoContent" class="otraubicacionWatson" onclick="desactivarBodyChat()">NO</button>'
+	+ '</div>'
+	+ '</div>';
+
+var ContentBodyChatNo = '<div class="segments load"><div class="from-watson top"><div class="message-inner"><p>Gracias por usar este asistente.</p></div></div></div>';
+
 var textContentBodyChat = '<div class="segments load">'
 	+ '<div class="from-watson top"><div class="message-inner"><p>Hola, soy tu <strong>asistente virtual</strong>.</br>¿En qué dirección quieres consultar la cobertura de Fibra?</p></div></div>'
 	+ '</div>'
@@ -94,7 +104,15 @@ $(document)
 			+ '</button>'
 			+ '</div>'
 			+ '<div id="watson__body__chat">'
+			+ '<div id="mostrarContentBodyChatSiNo"  style="display:block;">'
+			+ ContentBodyChatSiNo
+			+ '</div>'
+			+ '<div id="noMostrarTextContentBodyChat"  style="display:none;">'
+			+ ContentBodyChatNo
+			+ '</div>'
+			+ '<div id="mostrarTextContentBodyChat"  style="display:none;">'
 			+ textContentBodyChat
+			+ '</div>'
 			+ '<button type="button" id="watson__confirm__btn" class="confirmarWatson" onclick="watson_Location.showTextBox(), watson_Location.submitFormDir()">Confirmar</button>'
 			+ textContentBodyChat2
 			+ '</div>'
@@ -107,6 +125,7 @@ $(document)
 			+ '<div id="modal-overlay-Watson-img"><strong class="closeModalWatson">\u00d7</strong></div>'
 			+ '<div class="modal-overlay-Watson" style="display: block;"></div>'
 			+ '</div>');
+
 		//Recogemos el Cod_promo
 		var Url = window.location.href;
 		var Url2 = Url.split("?", 1);
@@ -123,6 +142,16 @@ $(document)
 			contextInitial);
 	});
 // Inicializaciï¿½n de googlemaps para el autocomplete
+//INICIO- Funciones para la primera pregunta SI - NO
+function activarBodyChat(){
+	document.getElementById('mostrarContentBodyChatSiNo').style.display = 'none';
+	document.getElementById('mostrarTextContentBodyChat').style.display = 'block';
+}
+function desactivarBodyChat(){
+	document.getElementById('mostrarContentBodyChatSiNo').style.display = 'none';
+	document.getElementById('noMostrarTextContentBodyChat').style.display = 'block';	
+}
+//FIN- Funciones para la primera pregunta SI - NO
 function init() {
 	var textUser;
 	var options = {
