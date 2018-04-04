@@ -118,7 +118,7 @@ $(document)
 			+ '</div>'
 			+ '</div>'
 			+ '<label for="textInputchat" id="escribeaqui" style="display:none;" class="inputOutline">'
-			+ '<textarea rows="1" data-min-rows="1" id="textInputchat" class="watson__input__field autoExpand" value="" placeholder="Escribe aqu\u00ed..."></textarea>'
+			+ '<textarea rows="1" data-min-rows="1" id="textInputchat" class="watson__input__field autoExpand" maxlength="140" value="" placeholder="Escribe aqu\u00ed..."></textarea>'
 			+ '<button id="watson__input__btn">Enviar<label id="countChar"></label></button>'
 			+ '</label>'
 			+ '</div>'
