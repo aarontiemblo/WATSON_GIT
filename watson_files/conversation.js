@@ -3419,6 +3419,12 @@ watson_Location = (function () {
 
 	// Mostrar ubicaciï¿½n actual
 	function currentLocation() {
+		//Deshabilitar botones
+		$(".miubicacionWatson").addClass("enlaceInhabilitado");
+		document.getElementById("miubicacionWatson").disabled = true;
+		$(".otraubicacionWatson").addClass("enlaceInhabilitado");
+		document.getElementById("otraubicacionWatson").disabled = true;
+		
 		// Comprobar campos vacÃ­os
 		var faltaCampoTexto = "No he podido capturar tu ubicaciÃ³n completa. Por favor, completa los datos que faltan y que aparecen resaltados";
 		$('#tipoV').on('keydown keyup', function (event) {	
