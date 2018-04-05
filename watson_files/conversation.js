@@ -1114,9 +1114,9 @@ var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicaci
 				var redireccionATienda; // Boolean
 				var enlaceaTienda; // Enlace al que redirigir
 				//-INICIO- Quitamos el textInput y el boton enviar cuando se nos cargue el formulario C2C
-				if (latestResponse.context.text[1].includes("feedbackSmartFormSi")){
-					document.getElementById('escribeaqui').style.display = 'none';
-					}
+				if (latestResponse.context.text[1] && latestResponse.context.text[1].includes("feedbackSmartFormSi")){
+						document.getElementById('escribeaqui').style.display = 'none';
+				}
 				//-FIN- Quitamos el textInput y el boton enviar cuando se nos cargue el formulario C2C
 				if (latestResponse) {
 					console.log('latestResponse', latestResponse);
