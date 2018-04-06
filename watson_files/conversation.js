@@ -75,7 +75,6 @@ var textContentBodyChat2 = '</div>'
 	+ '</div>'
 	+ '<div id="oculto3" class="segments load" style="display:none;"> </div>'
 	+ '<div id="watsoncliente" style="display:none;"><div class="segments load"><div class="from-user top"><div class="message-inner" id="textodireccion"></div></div></div></div>';
-
 // -----------------------------------------------------------------------------
 // Inicio del Chat
 // -----------------------------------------------------------------------------
@@ -98,7 +97,7 @@ $(document)
 			// oH_itemDropdownicon" id="flecha_abajoWatson"></i></a>'
 			+ 'Te ayudamos a comprobar tu cobertura'
 			+ '</div>'
-			+ '<button type="button" id="resetWatson">'
+			+ '<button type="button" id="resetWatson" style="display: none;">'
 			+ '<span class="resetWatson__icon">&#8635;</span>'
 			+ 'Reiniciar chat'
 			+ '</button>'
