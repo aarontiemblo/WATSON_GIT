@@ -1125,7 +1125,7 @@ var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicaci
 						enlaceaTienda = context.enlaceaTienda;		
 					}
 				}
-				console.log('vamos a la tienda');
+//				console.log('vamos a la tienda');
 				if (redireccionATienda){
 					var data = {};
 					data.output = {};
