@@ -3,7 +3,6 @@ html.watson-active {
     font-size: 10px!important;
     overflow: hidden;
 }
-
 @font-face {
     font-family: oH-ico;
     src: url(../../font/oH-ico.eot)
@@ -29,7 +28,7 @@ label#escribeaqui {
     font-family: sans-serif;
     font-weight: normal;
 }
-
+#pantalla { min-height: 533px;}
 .formulario2Watson input::-webkit-input-placeholder {
     padding: 1.5rem 1rem;
     font-weight: bold;
@@ -2346,7 +2345,7 @@ td {
     width: 100%;
     float: left;
     background-color: #fff;
-    /*  Reducción visualización ofertas 
+    /*  Reducciï¿½n visualizaciï¿½n ofertas 
     padding: 10px 17px !important;*/
     padding: 0px 17px !important;
     font-weight: bold;
@@ -2354,7 +2353,7 @@ td {
 
 #watson__body__chat #ACDCrespuestaCobertura .col_3b {
     background-position: 6px 22px !important;
-    /*  Reducción visualización ofertas display: none;*/
+    /*  Reducciï¿½n visualizaciï¿½n ofertas display: none;*/
 }
 
 #watson__body__chat .tarifa.first .col_1 {
@@ -2382,7 +2381,7 @@ td {
     clear: both;
     float: none;
     font-family: OrangeSansFamily, helveticaFamily, Arial;
-    /*  Reducción visualización ofertas 
+    /*  Reducciï¿½n visualizaciï¿½n ofertas 
     margin-top: 5%;*/
     margin-top: 1rem;
     padding: .5rem 0;
@@ -2443,7 +2442,7 @@ td {
 }
 
 
-/*  Reducción visualización ofertas */
+/*  Reducciï¿½n visualizaciï¿½n ofertas */
 
 #ACDCrespuestaCobertura .tarifa .col_2,
 #ACDCrespuestaCobertura .tarifa .col_3,
@@ -2497,14 +2496,14 @@ td {
 
 #watson__body__chat .col_1 span,
 #watson__body__chat .col_4 span {
-    /*  Reducción visualización ofertas 
+    /*  Reducciï¿½n visualizaciï¿½n ofertas 
     display: block;*/
 }
 
 #watson__body__chat .tarifa .col_4 .btn {
     text-align: center;
     font-size: 15px;
-    /*  Reducción visualización ofertas 
+    /*  Reducciï¿½n visualizaciï¿½n ofertas 
 		width: 100% !important;
 		margin: 0 !important;*/
     width: 100%;
@@ -2525,7 +2524,7 @@ td {
 #watson__body__chat .colbox.col_2>.lista.botones>li.first,
 .colbox.col_3>.lista.botones>li.first {
     list-style-type: none!important;
-    /*  Reducción visualización ofertas 
+    /*  Reducciï¿½n visualizaciï¿½n ofertas 
     margin-bottom:10px!important;*/
     margin-bottom: 5px!important;
     color: #ff7900 !important;
@@ -2610,7 +2609,7 @@ td {
 }
 
 
-/*  Reducción visualización ofertas */
+/*  Reducciï¿½n visualizaciï¿½n ofertas */
 
 #ACDCrespuestaCobertura .tarifa .title {
     font-size: 22px!important;
@@ -3111,7 +3110,7 @@ td {
 #watson__body__chat .col_1 span.title.f14 {
     font-size: 2.6em;
     line-height: 1.1em;
-    /*  Reducción visualización ofertas */
+    /*  Reducciï¿½n visualizaciï¿½n ofertas */
     display: block;
 }
 
@@ -3137,7 +3136,7 @@ td {
 }
 
 #watson__body__chat .col_1>p {
-    /*  Reducción visualización ofertas 
+    /*  Reducciï¿½n visualizaciï¿½n ofertas 
   min-height: 135px; */
     min-height: auto!important;
 }

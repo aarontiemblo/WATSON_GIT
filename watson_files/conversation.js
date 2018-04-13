@@ -4317,20 +4317,20 @@ $(function () {
 function setHeightWatson(){
 	ancho = 0;
 	ancho = $(window).width() - $('#cabeceraWatson').width();
-	var screenHeight =  $('body').height();
+	var screenHeight =  $(window).height();
 	var screenWidth =  $(window).width();
 	var heightHeader = $('.oH-container').height();
 	var heightFooter = $('#oF').height();
 	if ( screenWidth > 768) {
-		$('#watsonPopUp').css({'height': screenHeight - heightHeader - heightFooter - 2 + 'px', top: heightHeader + 'px'});
+		$('#watsonPopUp').css({'height': screenHeight - (heightHeader + heightFooter) - 2 + 'px', top: heightHeader + 'px'});
 	}	
-//	console.log("Alto: " + (screenHeight - heightHeader - heightFooter));
-//	$('#pantalla').css({'minheight':'533px'});
-//	$('#pantalla').css({'height':screenHeight - heightHeader - heightFooter+'px'});
+	//console.log("Alto: " + screenHeight + " Header: " + heightHeader + " Footer:" + heightFooter);
+	$('#pantalla').css({'height':screenHeight - (heightHeader + heightFooter)+'px'});
 }
 
 $(document).ready(function () {
 	setHeightWatson();
+	$('#pantalla').css({'min-height':'auto'});
 });
 
 $(window).resize(function() {
