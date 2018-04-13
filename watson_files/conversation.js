@@ -24,6 +24,7 @@ var otrasOpciones = false;
 var vuelta = false;
 var codPromo;
 var lead = false;
+var ancho;
 
 //var ContentBodyChatSiNo ='<div class="segments load">' 
 //	+ '<div class="from-watson top"><div class="message-inner"><p>Hola, soy tu <strong>asistente virtual</strong>.</br>¿Te ayudo a consultar la cobertura de Fibra?</p></div></div>' 
@@ -34,6 +35,9 @@ var lead = false;
 //	+ '</div>';
 //
 //var ContentBodyChatNo = '<div class="segments load"><div class="from-watson top"><div class="message-inner"><p>Gracias por usar este asistente.</p></div></div></div>';
+
+//Continuar con popUp Flotante
+var popUpFlotante = '<div class="watsonPopUpInicial">Prueba Ventana</div>';
 
 var textContentBodyChat = '<div class="segments load">'
 	+ '<div class="from-watson top"><div class="message-inner"><p>Hola, soy tu <strong>asistente virtual</strong>.</br>¿En qué dirección quieres consultar la cobertura de Fibra?</p></div></div>'
@@ -4311,6 +4315,8 @@ $(function () {
 });
 
 function setHeightWatson(){
+	ancho = 0;
+	ancho = $(window).width() - $('#cabeceraWatson').width();
 	var screenHeight =  $('body').height();
 	var screenWidth =  $(window).width();
 	var heightHeader = $('.oH-container').height();
@@ -4318,15 +4324,18 @@ function setHeightWatson(){
 	if ( screenWidth > 768) {
 		$('#watsonPopUp').css({'height': screenHeight - heightHeader - heightFooter - 2 + 'px', top: heightHeader + 'px'});
 	}	
+//	console.log("Alto: " + (screenHeight - heightHeader - heightFooter));
+//	$('#pantalla').css({'minheight':'533px'});
+//	$('#pantalla').css({'height':screenHeight - heightHeader - heightFooter+'px'});
 }
 
-/* $(document).ready(function () {
+$(document).ready(function () {
 	setHeightWatson();
 });
 
 $(window).resize(function() {
   	setHeightWatson();
-}); */
+}); 
 // }(sya.$);
 
 function envioFormulario(){

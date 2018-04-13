@@ -523,7 +523,7 @@ button#resetWatsonIcon {
     position: fixed;
     width: 100%;
     height: 100%;
-    z-index: 10000000000000;
+/*     z-index: 10000000000000; */
     -webkit-animation: blind-in 1s;
     animation: blind-in 1s;
     transform-origin: bottom;
@@ -3390,4 +3390,13 @@ label.checkNumFijo{
 	border: 0;
     color: #ff7a00;
     padding: 0;
+}
+
+#watsonPopUpInicial{
+	padding-top: 400px;
+}
+
+#pruebaFooter {
+    width: 100%;
+    height: 10%;
 }
