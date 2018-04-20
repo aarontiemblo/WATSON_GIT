@@ -4426,50 +4426,6 @@ function envioFormulario(){
 		}
 	}
 // -FIN- C2C
-//function funcionPregunta(respuesta){
-//		var data = {};
-//		data.output = {};
-//		data.output.text = ["Para poder confirmar con exactitud tu cobertura, necesito que me confirmes tu vivienda. " +
-//		"¿Quieres confirmar tu vivienda o prefieres que haga una consulta aproximada? " + "</br><button class='siNoPreguntaVivienda' type='button' onclick='funcionSi(respuesta)' >Si</button> "
-//		 +"<button class='siNoPreguntaVivienda' type='button' onclick='funcionNo()'>No</button> "];
-//		var type = 'watson';
-//		watson_ConversationPanel.displayMessage(data, type);
-//		document.body.style.cursor = 'default';
-//}
-//function funcionSi(respuesta) {
-//	latestResponse = respuesta;
-//	dobleGrid++;
-//	var direcccionesAlternativas = latestResponse.context.direcccionesAlternativas;
-//	var cadenaDireccionRecuperar = "Planta:Planta|Mano1:Tipo de puerta|Mano2:Puerta|IdFinca:Portal|BisDuplicado:Bis|Escalera:Escalera|Bloque:Bloque";
-//
-//	$(".segments:last")
-//		.after(
-//		"<div class='segments load confirmFlat'><h3>Por favor, selecciona exactamente tu vivienda para poder comprobar la cobertura:</h3>"
-//		+"<span class='myDirectionWatson'><p>"
-//		+ consultaFibra.tipoVia + " "
-//		+ consultaFibra.nombreVia + " "
-//		+ consultaFibra.numero + ", "
-//		+ consultaFibra.localidad + "("
-//		+ consultaFibra.provincia + ") "
-//		+ consultaFibra.cp + "</p></span>"
-//		+ generarTablaDireccionesError4(direcccionesAlternativas, cadenaDireccionRecuperar).innerHTML
-//		+ "</div>"
-//		);
-//
-//	$("#confirmLocation4").addClass("botonInhabilitado");
-//	watson_ConversationPanel.scrollToChatBottom('.confirmFlat');
-//}
-//
-//function funcionNo(){
-//	locationRefuse4();
-//}
-
-
-
-
-
-
-
 
 
 
