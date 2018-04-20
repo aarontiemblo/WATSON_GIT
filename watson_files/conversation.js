@@ -1788,7 +1788,6 @@ watson_ConversationPanel = (function () {
 //	
 //						$("#confirmLocation4").addClass("botonInhabilitado");
 //						watson_ConversationPanel.scrollToChatBottom('.confirmFlat');
-//					function funcionPregunta(){
 						var data = {};
 						data.output = {};
 						data.output.text = ["Para poder confirmar con exactitud tu cobertura, necesito que me confirmes tu vivienda. " +
@@ -1799,9 +1798,13 @@ watson_ConversationPanel = (function () {
 						var type = 'watson';
 						watson_ConversationPanel.displayMessage(data, type);
 						document.body.style.cursor = 'default';
-//					}
 					$('#botonSi').on('click',function(){
-//						latestResponse = respuesta;
+//						document.getElementById("botonSi").disabled = true;
+//						document.getElementById("botonNo").disabled = true;
+						$('#botonSi').attr('disabled', 'disabled');
+						$('#botonNo').attr('disabled', 'disabled');
+						$("#botonSi").addClass("respuestaboton enlaceInhabilitado");
+						$("#botonNo").addClass("respuestaboton enlaceInhabilitado");
 						dobleGrid++;
 						var direcccionesAlternativas = latestResponse.context.direcccionesAlternativas;
 						var cadenaDireccionRecuperar = "Planta:Planta|Mano1:Tipo de puerta|Mano2:Puerta|IdFinca:Portal|BisDuplicado:Bis|Escalera:Escalera|Bloque:Bloque";
@@ -1825,6 +1828,12 @@ watson_ConversationPanel = (function () {
 					});
 
 					$('#botonNo').on('click',function(){
+//						document.getElementById("botonSi").disabled = true;
+//						document.getElementById("botonNo").disabled = true;
+						$('#botonSi').attr('disabled', 'disabled');
+						$('#botonNo').attr('disabled', 'disabled');
+						$("#botonSi").addClass("respuestaboton enlaceInhabilitado");
+						$("#botonNo").addClass("respuestaboton enlaceInhabilitado");
 						locationRefuse4();
 					});
 				}
