@@ -1781,13 +1781,34 @@ watson_ConversationPanel = (function () {
 				contextForm = latestResponse.context.ErrorCode;
 				// en caso de que watson nos devuelva un ErrorCode 4
 				if (contextForm == '4') {	
-						//-INICIO- Incluimos pregunta errorCode 4
+//					respuesta = latestResponse;
+//					funcionPregunta(respuesta);
+//						dobleGrid++;
+//						var direcccionesAlternativas = latestResponse.context.direcccionesAlternativas;
+//						var cadenaDireccionRecuperar = "Planta:Planta|Mano1:Tipo de puerta|Mano2:Puerta|IdFinca:Portal|BisDuplicado:Bis|Escalera:Escalera|Bloque:Bloque";
+//	
+//						$(".segments:last")
+//							.after(
+//							"<div class='segments load confirmFlat'><h3>Por favor, selecciona exactamente tu vivienda para poder comprobar la cobertura:</h3>"
+//							+"<span class='myDirectionWatson'><p>"
+//							+ consultaFibra.tipoVia + " "
+//							+ consultaFibra.nombreVia + " "
+//							+ consultaFibra.numero + ", "
+//							+ consultaFibra.localidad + "("
+//							+ consultaFibra.provincia + ") "
+//							+ consultaFibra.cp + "</p></span>"
+//							+ generarTablaDireccionesError4(direcccionesAlternativas, cadenaDireccionRecuperar).innerHTML
+//							+ "</div>"
+//							);
+//	
+//						$("#confirmLocation4").addClass("botonInhabilitado");
+//						watson_ConversationPanel.scrollToChatBottom('.confirmFlat');
 						var data = {};
 						data.output = {};
 						data.output.text = ["Para poder confirmar con exactitud tu cobertura, necesito que me confirmes tu vivienda. " +
 						"¿Quieres confirmar tu vivienda o prefieres que haga una consulta aproximada? " +
-						"</br><center><button style='margin-top:8px;width:35%;color:black;background-color:transparent;border-color:black;' type='button' id='botonSi' onclick='funcionSi()' >Si</button> " +
-						"<button style='color:black;background-color:transparent;border-color:black;' type='button' id='botonNo' onclick='funcionNo()'>Consulta Aproximada</button></center></p>"+ 
+						"</br><center><button style='margin-top:8px;height:30px;width:49%;color:black;background-color:transparent;border-color:black;' type='button' id='botonSi' onclick='funcionSi()' >Si</button> " +
+						"<button style='margin-top:8px;height:30px;width:49%;color:black;background-color:transparent;border-color:black;' type='button' id='botonNo' onclick='funcionNo()'>No</button></center></p>"+ 
 						"</div>"];
 						var type = 'watson';
 						watson_ConversationPanel.displayMessage(data, type);
@@ -1830,7 +1851,6 @@ watson_ConversationPanel = (function () {
 						$("#botonNo").addClass("respuestaboton enlaceInhabilitado");
 						locationRefuse4();
 					});
-					//-FIN- Incluimos pregunta errorCode 4
 				}
 				// en caso de que watson nos devuelva un ErrorCode 6
 				if (contextForm == '6') {
