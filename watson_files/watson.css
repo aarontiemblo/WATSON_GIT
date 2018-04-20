@@ -1,8 +1,9 @@
 html.watson-active {
     /* Bootstrap root font for relative units*/
-    font-size: 10px!important;
+    font-size: 10px !important;
     overflow: hidden;
 }
+
 @font-face {
     font-family: oH-ico;
     src: url(../../font/oH-ico.eot)
@@ -28,7 +29,11 @@ label#escribeaqui {
     font-family: sans-serif;
     font-weight: normal;
 }
-#pantalla { min-height: 533px;}
+
+#pantalla {
+    min-height: 533px;
+}
+
 .formulario2Watson input::-webkit-input-placeholder {
     padding: 1.5rem 1rem;
     font-weight: bold;
@@ -135,10 +140,12 @@ label#escribeaqui {
     background: #ffffff !important;
     cursor: not-allowed !important;
 }
+
 #watsonContainer ol {
     list-style-type: decimal;
     padding-left: 30px;
 }
+
 #watsonContainer ol li {
     line-height: 1.3;
 }
@@ -146,7 +153,6 @@ label#escribeaqui {
 #watson__body__chat p {
     margin: 4% 0% 4% 0%;
 }
-
 
 /* Style Watson buttons */
 
@@ -205,14 +211,12 @@ label#escribeaqui {
     color: #fff;
 }
 
-
 /* Watson buttons in lists */
 
 #watson__body__chat .from-watson .message-inner ul .respuestaboton {
     display: block;
     width: auto;
 }
-
 
 /* Watson buttons in lists OTHER STYLE*/
 
@@ -260,7 +264,6 @@ label#escribeaqui {
     border-color: #fff;
 }
 
-
 /* Style Watson links */
 
 #watson__body__chat .from-watson a {
@@ -295,7 +298,6 @@ label#escribeaqui {
     cursor: pointer;
 }
 
-
 /*#watson__body__chat  .from-watson a:hover { 
   background: #000;
   border-color: #000;
@@ -322,12 +324,11 @@ label#escribeaqui {
     cursor: pointer;
 }
 
-
 /* Watson Overlay */
 
 .modal-overlay-Watson {
     position: fixed;
-    display: none!important;
+    display: none !important;
     /* prueba fondo 
     background: rgba(100, 100, 100, .6);*/
     top: 0;
@@ -337,7 +338,6 @@ label#escribeaqui {
     z-index: 9999999;
     cursor: default;
 }
-
 
 #watson__body__chat {
     position: absolute;
@@ -365,14 +365,14 @@ label#escribeaqui {
 }
 
 .myDirectionWatson p {
-    margin: 1rem 0!important;
+    margin: 1rem 0 !important;
 }
 
 #watson__body__chat h2 {
     display: inline-block;
     line-height: normal;
-    margin-top: 10px!important;
-    font-size: 15px!important;
+    margin-top: 10px !important;
+    font-size: 15px !important;
     font-weight: bold;
     text-align: left;
     color: #000;
@@ -387,9 +387,9 @@ label#escribeaqui {
     border-top: 2px solid #ddd;
     display: inline-block;
     line-height: normal;
-    margin-top: 10px!important;
+    margin-top: 10px !important;
     margin-bottom: 5px;
-    font-size: 15px!important;
+    font-size: 15px !important;
     font-weight: bold;
     text-align: left;
     color: #000;
@@ -402,7 +402,7 @@ label#escribeaqui {
     border-top: 2px solid #ddd;
     display: inline-block;
     line-height: normal;
-    margin-top: 10px!important;
+    margin-top: 10px !important;
     margin-bottom: 5px;
     font-size: 1.5rem;
     font-weight: bold;
@@ -463,7 +463,6 @@ label#escribeaqui {
     color: #fff;
 }
 
-
 /* Open Watson button [WIP]: Waiting group design directives */
 
 #popupabrirWatson {
@@ -522,7 +521,7 @@ button#resetWatsonIcon {
     position: fixed;
     width: 100%;
     height: 100%;
-/*     z-index: 10000000000000; */
+    /*     z-index: 10000000000000; */
     -webkit-animation: blind-in 1s;
     animation: blind-in 1s;
     transform-origin: bottom;
@@ -577,7 +576,6 @@ button#resetWatsonIcon {
     background-color: #fff;
 }
 
-
 /* Mas info modal*/
 
 #watsonContainer .respuesta-desple {
@@ -607,7 +605,6 @@ button#resetWatsonIcon {
     font-weight: bold;
     font-size: 1.6rem;
 }
-
 
 /* Close Watson button */
 
@@ -680,7 +677,6 @@ button#resetWatsonIcon {
     top: 2px;
 }
 
-
 /* Reset button */
 
 #resetWatson {
@@ -725,7 +721,6 @@ button#resetWatsonIcon {
     background: #ff6600;
 }
 
-
 /* Location Buttons*/
 
 .botonesubicacionWatson {
@@ -745,7 +740,7 @@ button#resetWatsonIcon {
 }
 
 .llamadmeTexto {
-    margin: 1rem 0 1rem 0!important;
+    margin: 1rem 0 1rem 0 !important;
     font-size: 1.2rem;
     color: #313030;
     font-weight: bold;
@@ -756,9 +751,8 @@ button#resetWatsonIcon {
     margin-bottom: 1rem;
 }
 
-
 .llamadmeTextoFinal {
-    margin: 1rem 0 1rem 0!important;
+    margin: 1rem 0 1rem 0 !important;
     font-size: 1.4rem;
     color: #313030;
     font-weight: bold;
@@ -771,7 +765,7 @@ button#resetWatsonIcon {
 }
 
 .mensajeInfo {
-    margin: 1rem 0 1rem 0!important;
+    margin: 1rem 0 1rem 0 !important;
     font-size: 1.2rem;
     color: #999;
     font-weight: bold;
@@ -996,7 +990,7 @@ button#resetWatsonIcon {
 .labelBox p {
     display: inline-block;
     width: 50%;
-    margin: 0!important;
+    margin: 0 !important;
     text-align: center;
     color: #999;
 }
@@ -1024,7 +1018,7 @@ button#resetWatsonIcon {
 }
 
 .pac-container {
-    top: auto!important;
+    top: auto !important;
     width: 80% !important;
     z-index: 8000000000000000000000000000;
     bottom: 50px;
@@ -1095,9 +1089,9 @@ button#resetWatsonIcon {
 
 .confirmarWatson2 {
     position: center;
-/*     left: 23%; */
-/*     left: 50%; */
-/*     transform: translate(-50%, 0); */
+    /*     left: 23%; */
+    /*     left: 50%; */
+    /*     transform: translate(-50%, 0); */
     background-color: #ff7a00;
     margin-top: 10px;
     width: 160px;
@@ -1123,7 +1117,6 @@ button#resetWatsonIcon {
     margin-bottom: 20px;
 }
 
-
 #oculto2 {
     padding-top: 10px;
     /*
@@ -1144,7 +1137,6 @@ button#resetWatsonIcon {
     color: #000 !important;
     border-radius: 0;
 }
-
 
 /* Send button */
 
@@ -1194,7 +1186,6 @@ button#resetWatsonIcon {
     background: #eee;
     bottom: 0px;
 }
-
 
 /* Destacar input la primera vez */
 
@@ -1256,7 +1247,6 @@ button#resetWatsonIcon {
         box-shadow: none;
     }
 }
-
 
 /* Feedback Form */
 
@@ -1476,7 +1466,6 @@ button#resetWatsonIcon {
     color: #000000 !important;
 }
 
-
 /*#watson__body__chat  .from-user .message-inner p:before {
 	content: "Tu: ";
     font-weight: bold;
@@ -1508,7 +1497,6 @@ button#resetWatsonIcon {
     background: #989898;
 }
 
-
 /*#watson__body__chat .from-watson .message-inner p:before {
 	content: "Orange: ";
     font-weight: bold;
@@ -1531,7 +1519,7 @@ button#resetWatsonIcon {
 #watson__body__chat .from-agent img {
     display: block;
     margin: 0 auto;
-    height: auto!important;
+    height: auto !important;
 }
 
 #watson__body__chat .from-agent .btn.btn-default {
@@ -1581,7 +1569,7 @@ button#resetWatsonIcon {
 }
 
 #watson__body__chat .from-watson li span:hover {
-    color: #ff7a00!important;
+    color: #ff7a00 !important;
 }
 
 #watson__body__chat .from-watson a.btn {
@@ -1654,12 +1642,9 @@ button#resetWatsonIcon {
     margin-bottom: 15px;
 }
 
-
 /* ----------------------------------*/
 
-
 /* RN form image */
-
 
 /* ----------------------------------*/
 
@@ -1729,12 +1714,9 @@ button#resetWatsonIcon {
     margin: 0.7500rem;
 }
 
-
 /* ----------------------------------*/
 
-
 /* Collapsed content and zoom images */
-
 
 /* ----------------------------------*/
 
@@ -1827,12 +1809,9 @@ button#resetWatsonIcon {
     right: 1.5rem;
 }
 
-
 /* ----------------------------------*/
 
-
 /* bg and color response             */
-
 
 /* ----------------------------------*/
 
@@ -2033,9 +2012,7 @@ td {
     cursor: not-allowed;
 }
 
-
 /*************************************ORANGE OFERTAS**************************************/
-
 
 /*@import '/bibliotecatelco/php/canguro/static/css/customer/cobertura-respuestas.css'*/
 
@@ -2052,7 +2029,7 @@ td {
 #watson__body__chat #ACDCrespuestaCobertura .btn,
 #watson__body__chat #ACDCrespuestaCobertura .col_3,
 #watson__body__chat #ACDCrespuestaCobertura .col_3b {
-    display: none!important;
+    display: none !important;
 }
 
 #watson__body__chat #ACDCrespuestaCobertura div[data-mostrar="btn-contentweb"] .btn {
@@ -2065,7 +2042,6 @@ td {
 #watson__body__chat #ACDCrespuestaCobertura .col_2 {
     width: 100%;
 }
-
 
 /*#watson__body__chat #ACDCrespuestaCobertura .btn a:hover{
 		color: #fff !important;
@@ -2132,7 +2108,6 @@ td {
     display: block;
 }
 
-
 /*proyecto cambios 1527*/
 
 #watson__body__chat ul.lista.botones li .tacha {
@@ -2188,7 +2163,7 @@ td {
 
 #watson__body__chat .btn.btn-disabled {
     opacity: .3;
-    cursor: not-allowed!important
+    cursor: not-allowed !important
 }
 
 #watson__body__chat .btn.btn-disabled:hover,
@@ -2238,19 +2213,19 @@ td {
 
 #watson__body__chat .respuesta-desple .box_internet15 .accordion,
 .respuesta-desple .box_empresas15 .accordion {
-    display: none!important
+    display: none !important
 }
 
 #watson__body__chat .box_internet15,
 .box_empresas15,
 .box_internet15 .lista.guion,
 .box_empresas15 .lista.guion {
-    padding-left: 0!important
+    padding-left: 0 !important
 }
 
 #watson__body__chat .box_internet15,
 .box_empresas15 {
-    padding-right: 0!important
+    padding-right: 0 !important
 }
 
 #watson__body__chat .font-size-10 {
@@ -2441,7 +2416,6 @@ td {
     width: 100%;
 }
 
-
 /*  Reducci�n visualizaci�n ofertas */
 
 #ACDCrespuestaCobertura .tarifa .col_2,
@@ -2507,7 +2481,7 @@ td {
 		width: 100% !important;
 		margin: 0 !important;*/
     width: 100%;
-    margin: 0 auto .5rem!important;
+    margin: 0 auto .5rem !important;
     max-width: 300px;
 }
 
@@ -2523,10 +2497,10 @@ td {
 
 #watson__body__chat .colbox.col_2>.lista.botones>li.first,
 .colbox.col_3>.lista.botones>li.first {
-    list-style-type: none!important;
+    list-style-type: none !important;
     /*  Reducci�n visualizaci�n ofertas 
     margin-bottom:10px!important;*/
-    margin-bottom: 5px!important;
+    margin-bottom: 5px !important;
     color: #ff7900 !important;
 }
 
@@ -2608,19 +2582,18 @@ td {
     font-size: 40px;
 }
 
-
 /*  Reducci�n visualizaci�n ofertas */
 
 #ACDCrespuestaCobertura .tarifa .title {
-    font-size: 22px!important;
+    font-size: 22px !important;
 }
 
 #ACDCrespuestaCobertura .tarifa .negro {
-    font-size: 18px!important;
+    font-size: 18px !important;
 }
 
 #ACDCrespuestaCobertura .tarifa .simetricos {
-    font-size: 14px!important;
+    font-size: 14px !important;
 }
 
 #watson__body__chat .col_1 {
@@ -3045,9 +3018,7 @@ td {
     bottom: 1%;
 }
 
-
 /*Más info respuesta cobertura*/
-
 
 /*Background general*/
 
@@ -3057,13 +3028,11 @@ td {
     font-family: 'helveticaFamily', 'HelveticaNeue', Arial;
 }
 
-
 /*Cuotas*/
 
 #watson__body__chat .home .mod100 .ico.cuotas h4 {
     background-position: 0 -85px;
 }
-
 
 /*Tranquilidad Orange*/
 
@@ -3071,13 +3040,11 @@ td {
     background-position: 0 -195px;
 }
 
-
 /*Llamadas*/
 
 #watson__body__chat .home .mod100 .ico.llamadas h4 {
     background-position: 0 -30px;
 }
-
 
 /*Invita y ahorra*/
 
@@ -3085,13 +3052,11 @@ td {
     background-position: 0 -140px;
 }
 
-
 /*Internet*/
 
 #watson__body__chat .home .mod100 .ico.internet h4 {
     background-position: 0 25px;
 }
-
 
 /*television*/
 
@@ -3103,7 +3068,6 @@ td {
     font-size: 15px !important;
     font-family: 'helveticaFamily', 'HelveticaNeue', Arial;
 }
-
 
 /*Estilos temporales para Nuevas tarifas de compartición*/
 
@@ -3138,22 +3102,18 @@ td {
 #watson__body__chat .col_1>p {
     /*  Reducci�n visualizaci�n ofertas 
   min-height: 135px; */
-    min-height: auto!important;
+    min-height: auto !important;
 }
 
 #watson__body__chat .tarifa .title {
     margin-bottom: 5px
 }
 
-
 /************ END /bibliotecatelco/php/canguro/php/ws/html.php?h=https://love.orange.es/bibliotecatelco/php/canguro/static/css/customer/cobertura-respuestas.css ********************/
-
 
 /*************************************ORANGE OFERTAS FIN**************************************/
 
-
 /*********************************************************************************************/
-
 
 /*                              MEDIA QUERIES
 /*********************************************************************************************/
@@ -3300,7 +3260,8 @@ td {
         /* prueba fondo 
         margin-top: 20px; */
         height: calc(100% - 116px);
-        top: auto; bottom: 0;
+        top: auto;
+        bottom: 0;
         border-top: 1px solid #5f5f5f;
     }
     .watsonPopUpContainer {
@@ -3339,7 +3300,7 @@ td {
     }
 }
 
-.botoneraOferta{
+.botoneraOferta {
     display: flex;
     margin-top: 5px;
 }
@@ -3367,35 +3328,64 @@ td {
     background-color: #000;
 }
 
-label.checkNumFijo{
-	color: #000;
+label.checkNumFijo {
+    color: #000;
 }
 
-#watson__body__chat .from-watson p.info-tlf{
-	color: #000;
+#watson__body__chat .from-watson p.info-tlf {
+    color: #000;
     padding: 0px 17px !important;
     margin: 0px;
 }
 
-#watson__body__chat .from-watson p.info-tlf img{
-	width: 16px;
+#watson__body__chat .from-watson p.info-tlf img {
+    width: 16px;
     height: 16px;
     top: 3px;
     margin-right: 5px;
     position: relative;
 }
 
-#watson__body__chat .from-watson p.info-tlf a{
-	border: 0;
+#watson__body__chat .from-watson p.info-tlf a {
+    border: 0;
     color: #ff7a00;
     padding: 0;
 }
 
-#watsonPopUpInicial{
-	padding-top: 400px;
+#watsonPopUpInicial {
+    padding-top: 400px;
 }
 
 #pruebaFooter {
     width: 100%;
     height: 10%;
+}
+
+.respuestaboton {
+    display: inline-block;
+    margin: .4rem;
+    padding: .7rem 1.6rem;
+    border: 2px solid #000;
+    color: #000;
+    background-color: #fff;
+    border-radius: 0;
+    font-weight: bold;
+    text-align: center;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+}
+
+.respuestaboton:hover {
+    background: #000;
+    border-color: #000;
+    color: #fff;
+}
+
+.respuestaboton:active {
+    background: #ff6600;
+    border-color: #ff6600;
+    color: #fff;
 }

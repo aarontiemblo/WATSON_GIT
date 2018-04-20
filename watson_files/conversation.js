@@ -39,111 +39,114 @@ var ancho;
 //Continuar con popUp Flotante
 var popUpFlotante = '<div class="watsonPopUpInicial">Prueba Ventana</div>';
 
-var textContentBodyChat = '<div class="segments load">'
-	+ '<div class="from-watson top"><div class="message-inner"><p>Hola, soy tu <strong>asistente virtual</strong>.</br>¿En qué dirección quieres consultar la cobertura de Fibra?</p></div></div>'
-	+ '</div>'
-	+ '<p class="mensajeInfo">Tienes dos opciones:'
-	+ '<ol class="mensajeInfo">'
-	+ '<li>Pulsando el bot&oacute;n "Capturar Mi Ubicación", tu navegador activar&aacute; el servicio de ubicación para conocer tu dirección actual. Para que funcione correctamente debes permitir su activación.'
-	+ '<li>Puedes escribir manualmente la dirección que deseas consultar pulsando en "Escribir Dirección".</li>'
-	+ '</ol>'
-	+ '<div class="botonesubicacionWatson">'
-	+ '<button type="button" id="miubicacionWatson" class="miubicacionWatson" onclick="watson_Location.currentLocation()">Capturar Mi Ubicaci\u00f3n</button>'
-	+ '<button type="button" id="otraubicacionWatson" class="otraubicacionWatson" onclick="watson_Location.locationForm()">Escribir Direcci\u00f3n</button>'
-	+ '</div>'
-	+ '<form name="f1" id="oculto" class="formulario1Watson" style="display:none;">'
-	+ '<div class="formulario2Watson">'
-	+ '<h2>Mi ubicaci\u00f3n</h2>'
-	+ '<div class="labelBox"><p>Tipo de v&iacute;a</p><p>Nombre de v&iacute;a</p></div>'
-	+ '<div class="formu1Watson">'
-	+ '<input type="text" id="tipoV" placeholder="Tipo de v\u00eda">'
-	+ '<input type="text" id="listacalles" list="calle" placeholder="Nombre de la v\u00eda">'
-	+ '</div>'
-	+ '<div class="labelBox"><p>N\u00famero</p><p>Localidad</p></div>'
-	+ '<div class="formu2Watson">'
-	+ '<input type="text" id="numero" name="numero" placeholder="N\u00famero">'
-	+ '<input type="text" id="listalocalidades" list="localidad" placeholder="Localidad">'
-	+ '</div>'
-	+ '<div class="labelBox"><p>C\u00f3digo Postal</p><p>Provincia</p></div>'
-	+ '<div class="formu3Watson">'
-	+ '<input type="text" id="cpWatson" placeholder="CP">'
-	+ '<input type="text" id="listaprovincias" list="provincias" placeholder="Provincia">'
-	+ '</div>'
-	+ '<p class="mensajeInfo">Puedes modificar la informaci\u00f3n mostrada pulsando sobre la caja que quieras modificar.<br>Pulsa el bot\u00f3n "Confirmar" para iniciar la consulta de cobertura.</p>'
-	+ '<div id="faltaCampo" class="mensajeInfo"></div>';
-	
-var textContentBodyChat2 = '</div>'
-	+ '</form>'
-	+ '<div id="oculto2" class="segments load" style="display:none;">'
-	+ '<div class="from-watson top"><div class="message-inner"><p>Por favor, escribe abajo el NOMBRE DE LA V&Iacute;A, N&Uacute;MERO Y LOCALIDAD d&oacute;nde quieres que comprobemos la cobertura.</p></div></div>'
-	+ '</div>'
-	+ '<div id="oculto3" class="segments load" style="display:none;"> </div>'
-	+ '<div id="watsoncliente" style="display:none;"><div class="segments load"><div class="from-user top"><div class="message-inner" id="textodireccion"></div></div></div></div>';
+var textContentBodyChat = '<div class="segments load">' +
+	'<div class="from-watson top"><div class="message-inner"><p>Hola, soy tu <strong>asistente virtual</strong>.</br>¿En qué dirección quieres consultar la cobertura de Fibra?</p></div></div>' +
+	'</div>' +
+	'<p class="mensajeInfo">Tienes dos opciones:' +
+	'<ol class="mensajeInfo">' +
+	'<li>Pulsando el bot&oacute;n "Capturar Mi Ubicación", tu navegador activar&aacute; el servicio de ubicación para conocer tu dirección actual. Para que funcione correctamente debes permitir su activación.' +
+	'<li>Puedes escribir manualmente la dirección que deseas consultar pulsando en "Escribir Dirección".</li>' +
+	'</ol>' +
+	'<div class="botonesubicacionWatson">' +
+	'<button type="button" id="miubicacionWatson" class="miubicacionWatson" onclick="watson_Location.currentLocation()">Capturar Mi Ubicaci\u00f3n</button>' +
+	'<button type="button" id="otraubicacionWatson" class="otraubicacionWatson" onclick="watson_Location.locationForm()">Escribir Direcci\u00f3n</button>' +
+	'</div>' +
+	'<form name="f1" id="oculto" class="formulario1Watson" style="display:none;">' +
+	'<div class="formulario2Watson">' +
+	'<h2>Mi ubicaci\u00f3n</h2>' +
+	'<div class="labelBox"><p>Tipo de v&iacute;a</p><p>Nombre de v&iacute;a</p></div>' +
+	'<div class="formu1Watson">' +
+	'<input type="text" id="tipoV" placeholder="Tipo de v\u00eda">' +
+	'<input type="text" id="listacalles" list="calle" placeholder="Nombre de la v\u00eda">' +
+	'</div>' +
+	'<div class="labelBox"><p>N\u00famero</p><p>Localidad</p></div>' +
+	'<div class="formu2Watson">' +
+	'<input type="text" id="numero" name="numero" placeholder="N\u00famero">' +
+	'<input type="text" id="listalocalidades" list="localidad" placeholder="Localidad">' +
+	'</div>' +
+	'<div class="labelBox"><p>C\u00f3digo Postal</p><p>Provincia</p></div>' +
+	'<div class="formu3Watson">' +
+	'<input type="text" id="cpWatson" placeholder="CP">' +
+	'<input type="text" id="listaprovincias" list="provincias" placeholder="Provincia">' +
+	'</div>' +
+	'<p class="mensajeInfo">Puedes modificar la informaci\u00f3n mostrada pulsando sobre la caja que quieras modificar.<br>Pulsa el bot\u00f3n "Confirmar" para iniciar la consulta de cobertura.</p>' +
+	'<div id="faltaCampo" class="mensajeInfo"></div>';
+
+var textContentBodyChat2 = '</div>' +
+	'</form>' +
+	'<div id="oculto2" class="segments load" style="display:none;">' +
+	'<div class="from-watson top"><div class="message-inner"><p>Por favor, escribe abajo el NOMBRE DE LA V&Iacute;A, N&Uacute;MERO Y LOCALIDAD d&oacute;nde quieres que comprobemos la cobertura.</p></div></div>' +
+	'</div>' +
+	'<div id="oculto3" class="segments load" style="display:none;"> </div>' +
+	'<div id="watsoncliente" style="display:none;"><div class="segments load"><div class="from-user top"><div class="message-inner" id="textodireccion"></div></div></div></div>';
 // -----------------------------------------------------------------------------
 // Inicio del Chat
 // -----------------------------------------------------------------------------
 $(document)
 	.ready(
-	function () {
-		$('html').toggleClass('watson-active');
-		$('body')
-			.append(
-			'<div id="watsonContainer" data-canal="web" data-url="URL_VAR">'
-			+ '<div id="watsonButton" class="IconoWatson watsonHidden">'
-			+ '<a id="popupabrirWatson" href="#watsonPopUp">Te ayudamos a comprobar tu cobertura<i class="oH-icon oH-icon-arrow-down oH_itemDropdownicon" id="flecha_arribaWatson"></i></a>'
-			+ '</div>'
-			+ '<div class="modal-wrapperWatson" id="watsonPopUp">'
-			+ '<div class="watsonPopUpContainer">'
-			+ '<div id="cabeceraWatson">'
-			+ '<div class="cabeceraWatson__title">'
-			// + '<a id="popupcerrarWatson" href="#watsonPopUp">Te ayudamos a
-			// comprobar tu cobertura<i class="oH-icon oH-icon-arrow-down
-			// oH_itemDropdownicon" id="flecha_abajoWatson"></i></a>'
-			+ 'Te ayudamos a comprobar tu cobertura'
-			+ '</div>'
-			+ '<button type="button" id="resetWatson" style="display: none;">'
-			+ '<span class="resetWatson__icon">&#8635;</span>'
-			+ 'Reiniciar chat'
-			+ '</button>'
-			+ '</div>'
-			+ '<div id="watson__body__chat">'
-//			+ '<div id="mostrarContentBodyChatSiNo"  style="display:block;">'
-//			+ ContentBodyChatSiNo
-//			+ '</div>'
-//			+ '<div id="noMostrarTextContentBodyChat"  style="display:none;">'
-//			+ ContentBodyChatNo
-//			+ '</div>'
-//			+ '<div id="mostrarTextContentBodyChat"  style="display:none;">'
-			+ textContentBodyChat
-//			+ '</div>'
-			+ '<button type="button" id="watson__confirm__btn" class="confirmarWatson" onclick="watson_Location.showTextBox(), watson_Location.submitFormDir()">Confirmar</button>'
-			+ textContentBodyChat2
-			+ '</div>'
-			+ '</div>'
-			+ '<label for="textInputchat" id="escribeaqui" style="display:none;" class="inputOutline">'
-			+ '<textarea rows="1" data-min-rows="1" id="textInputchat" class="watson__input__field autoExpand" maxlength="140" value="" placeholder="Escribe aqu\u00ed..."></textarea>'
-			+ '<button id="watson__input__btn">Enviar<label id="countChar"></label></button>'
-			+ '</label>'
-			+ '</div>'
-			+ '<div id="modal-overlay-Watson-img"><strong class="closeModalWatson">\u00d7</strong></div>'
-			+ '<div class="modal-overlay-Watson" style="display: block;"></div>'
-			+ '</div>');
+		function () {
+			$('html').toggleClass('watson-active');
+			$('body')
+				.append(
+					'<div id="watsonContainer" data-canal="web" data-url="URL_VAR">' +
+					'<div id="watsonButton" class="IconoWatson watsonHidden">' +
+					'<a id="popupabrirWatson" href="#watsonPopUp">Te ayudamos a comprobar tu cobertura<i class="oH-icon oH-icon-arrow-down oH_itemDropdownicon" id="flecha_arribaWatson"></i></a>' +
+					'</div>' +
+					'<div class="modal-wrapperWatson" id="watsonPopUp">' +
+					'<div class="watsonPopUpContainer">' +
+					'<div id="cabeceraWatson">' +
+					'<div class="cabeceraWatson__title">'
+					// + '<a id="popupcerrarWatson" href="#watsonPopUp">Te ayudamos a
+					// comprobar tu cobertura<i class="oH-icon oH-icon-arrow-down
+					// oH_itemDropdownicon" id="flecha_abajoWatson"></i></a>'
+					+
+					'Te ayudamos a comprobar tu cobertura' +
+					'</div>' +
+					'<button type="button" id="resetWatson" style="display: none;">' +
+					'<span class="resetWatson__icon">&#8635;</span>' +
+					'Reiniciar chat' +
+					'</button>' +
+					'</div>' +
+					'<div id="watson__body__chat">'
+					//			+ '<div id="mostrarContentBodyChatSiNo"  style="display:block;">'
+					//			+ ContentBodyChatSiNo
+					//			+ '</div>'
+					//			+ '<div id="noMostrarTextContentBodyChat"  style="display:none;">'
+					//			+ ContentBodyChatNo
+					//			+ '</div>'
+					//			+ '<div id="mostrarTextContentBodyChat"  style="display:none;">'
+					+
+					textContentBodyChat
+					//			+ '</div>'
+					+
+					'<button type="button" id="watson__confirm__btn" class="confirmarWatson" onclick="watson_Location.showTextBox(), watson_Location.submitFormDir()">Confirmar</button>' +
+					textContentBodyChat2 +
+					'</div>' +
+					'</div>' +
+					'<label for="textInputchat" id="escribeaqui" style="display:none;" class="inputOutline">' +
+					'<textarea rows="1" data-min-rows="1" id="textInputchat" class="watson__input__field autoExpand" maxlength="140" value="" placeholder="Escribe aqu\u00ed..."></textarea>' +
+					'<button id="watson__input__btn">Enviar<label id="countChar"></label></button>' +
+					'</label>' +
+					'</div>' +
+					'<div id="modal-overlay-Watson-img"><strong class="closeModalWatson">\u00d7</strong></div>' +
+					'<div class="modal-overlay-Watson" style="display: block;"></div>' +
+					'</div>');
 
-		//Recogemos el Cod_promo
-		var Url = window.location.href;
-		var Url2 = Url.split("?", 1);
-		var Url3 = Url.split("?", 2);
-		Url3 = Url3.toString();
-		codPromo = Url3.replace(Url2+",","");
-		// Envio de datos a initial_Conversation
-		var input = "EVENT_SALUDO_INICIAL";
-		contextInitial = {
-			"output": "EVENT_SALUDO_INICIAL"
-		};
+			//Recogemos el Cod_promo
+			var Url = window.location.href;
+			var Url2 = Url.split("?", 1);
+			var Url3 = Url.split("?", 2);
+			Url3 = Url3.toString();
+			codPromo = Url3.replace(Url2 + ",", "");
+			// Envio de datos a initial_Conversation
+			var input = "EVENT_SALUDO_INICIAL";
+			contextInitial = {
+				"output": "EVENT_SALUDO_INICIAL"
+			};
 
-		initial_Conversation.sendRequestInitial(input,
-			contextInitial);
-	});
+			initial_Conversation.sendRequestInitial(input,
+				contextInitial);
+		});
 // Inicializaciï¿½n de googlemaps para el autocomplete
 ////INICIO- Funciones para la primera pregunta SI - NO
 //function activarBodyChat(){
@@ -265,15 +268,14 @@ watson_RightNow = (function () {
 		if (debug) {
 			console.log(msg);
 		}
-	}
-	;
+	};
 
 	function check(data) {
 		logmsg('check - data = ');
 		logmsg(data);
 
-		if (data.output && data.output.text && data.output.text.length > 0
-			&& data.output.text[0].toUpperCase().match(/&&AGENTE&&/)) {
+		if (data.output && data.output.text && data.output.text.length > 0 &&
+			data.output.text[0].toUpperCase().match(/&&AGENTE&&/)) {
 			logmsg('check - change to agent?');
 
 			if (data.output.text[0].toUpperCase().match(/TRUE/)) {
@@ -292,24 +294,21 @@ watson_RightNow = (function () {
 
 			}
 		}
-	}
-	;
+	};
 
 	function getContext() {
 		logmsg('getContext - context = ');
 		logmsg(context);
 
 		return context;
-	}
-	;
+	};
 
 	function setContext(c) {
 		logmsg('setContext - c = ');
 		logmsg(c);
 
 		context = c;
-	}
-	;
+	};
 
 	function peticionDeChat() {
 		logmsg('peticionDeChat');
@@ -323,8 +322,7 @@ watson_RightNow = (function () {
 			httpPost(peticionDeChatEndpoint, data, peticionDeChatOK,
 				peticionDeChatKO);
 		}
-	}
-	;
+	};
 
 	function peticionDeChatOK(reqdata, resdata) {
 		logmsg('peticionDeChatOK - reqdata = ');
@@ -379,16 +377,14 @@ watson_RightNow = (function () {
 		} else {
 			lecturaMensaje();
 		}
-	}
-	;
+	};
 
 	function peticionDeChatKO(reqdata, resdata) {
 		logmsg('peticionDeChatKO - reqdata = ');
 		logmsg(reqdata);
 		logmsg('peticionDeChatKO - resdata = ');
 		logmsg(resdata);
-	}
-	;
+	};
 
 	function lecturaMensaje() {
 		logmsg('lecturaMensaje');
@@ -397,8 +393,7 @@ watson_RightNow = (function () {
 
 		httpPost(lecturaMensajeEndpoint, data, lecturaMensajeOK,
 			lecturaMensajeKO);
-	}
-	;
+	};
 
 	function lecturaMensajeOK(reqdata, resdata) {
 		if (!String.prototype.startsWith) {
@@ -425,8 +420,8 @@ watson_RightNow = (function () {
 				} else {
 					if (resdata.mensajes && resdata.mensajes.length > 0) {
 						for (var i = 0; i < resdata.mensajes.length; i++) {
-							logmsg('lecturaMensajeOK - i = ' + i
-								+ ' - mensaje = ');
+							logmsg('lecturaMensajeOK - i = ' + i +
+								' - mensaje = ');
 							logmsg(resdata.mensajes[i]);
 
 							if (resdata.mensajes[i].position) {
@@ -442,11 +437,11 @@ watson_RightNow = (function () {
 
 								displayMsg(
 									'agent',
-									'Estas en la posici&oacute;n '
-									+ resdata.mensajes[i].position
-									+ '. El tiempo estimado de espera es de '
-									+ resdata.mensajes[i].expectedWaitTimeSeconds
-									+ ' s.<div id="rnwaiting"></div>No quiero esperar. Quiero volver a mi consulta.<br><br><button type="button" class="btn btn-default" onclick="watson_RightNow.terminarChat()">Volver</button>');
+									'Estas en la posici&oacute;n ' +
+									resdata.mensajes[i].position +
+									'. El tiempo estimado de espera es de ' +
+									resdata.mensajes[i].expectedWaitTimeSeconds +
+									' s.<div id="rnwaiting"></div>No quiero esperar. Quiero volver a mi consulta.<br><br><button type="button" class="btn btn-default" onclick="watson_RightNow.terminarChat()">Volver</button>');
 								lecturaMensaje();
 							} else if (resdata.mensajes[i].greeting) {
 								if (status == 'user-wait') {
@@ -465,8 +460,8 @@ watson_RightNow = (function () {
 							} else if (resdata.mensajes[i].body) {
 								displayMsg('agent', resdata.mensajes[i].body);
 								lecturaMensaje();
-							} else if (resdata.mensajes[i].reason
-								&& resdata.mensajes[i].reason == "AGENT_CONCLUDED") {
+							} else if (resdata.mensajes[i].reason &&
+								resdata.mensajes[i].reason == "AGENT_CONCLUDED") {
 								displayMsg('agent',
 									'El agente ha finalizado la conversaci&oacute;n');
 								terminarChat();
@@ -478,16 +473,14 @@ watson_RightNow = (function () {
 				}
 			}
 		}
-	}
-	;
+	};
 
 	function lecturaMensajeKO(reqdata, resdata) {
 		logmsg('lecturaMensajeKO - reqdata = ');
 		logmsg(reqdata);
 		logmsg('lecturaMensajeKO - resdata = ');
 		logmsg(resdata);
-	}
-	;
+	};
 
 	function envioMensaje(mensaje) {
 		logmsg('envioMensaje');
@@ -498,8 +491,7 @@ watson_RightNow = (function () {
 		displayMsg('user', mensaje);
 
 		httpPost(envioMensajeEndpoint, data, envioMensajeOK, envioMensajeKO);
-	}
-	;
+	};
 
 	function envioMensajeOK(reqdata, resdata) {
 		logmsg('lecturaMensajeOK - reqdata = ');
@@ -510,16 +502,14 @@ watson_RightNow = (function () {
 		if (resdata.error) {
 			displayMsg('user', resdata.error);
 		}
-	}
-	;
+	};
 
 	function envioMensajeKO(reqdata, resdata) {
 		logmsg('envioMensajeKO - reqdata = ');
 		logmsg(reqdata);
 		logmsg('envioMensajeKO - resdata = ');
 		logmsg(resdata);
-	}
-	;
+	};
 
 	function terminarChat() {
 		logmsg('terminarChat');
@@ -527,8 +517,7 @@ watson_RightNow = (function () {
 		var data = getContext().rightnow;
 
 		httpPost(terminarChatEndpoint, data, terminarChatOK, terminarChatKO);
-	}
-	;
+	};
 
 	function terminarChatReset() {
 		logmsg('terminarChat');
@@ -537,8 +526,7 @@ watson_RightNow = (function () {
 
 		httpPost(terminarChatEndpoint, data, terminarChatOKReset,
 			terminarChatKO);
-	}
-	;
+	};
 
 	function terminarChatOK(reqdata, resdata) {
 		logmsg('terminarChatOK - reqdata = ');
@@ -563,8 +551,7 @@ watson_RightNow = (function () {
 
 			setContext({});
 		}
-	}
-	;
+	};
 
 	function terminarChatOKReset(reqdata, resdata) {
 		logmsg('terminarChatOK - reqdata = ');
@@ -587,16 +574,14 @@ watson_RightNow = (function () {
 
 			setContext({});
 		}
-	}
-	;
+	};
 
 	function terminarChatKO(reqdata, resdata) {
 		logmsg('terminarChatKO - reqdata = ');
 		logmsg(reqdata);
 		logmsg('terminarChatKO - resdata = ');
 		logmsg(resdata);
-	}
-	;
+	};
 
 	function httpPost(url, data, onSuccess, onFailure) {
 		logmsg('httpPost - url = ' + url);
@@ -620,8 +605,7 @@ watson_RightNow = (function () {
 		};
 
 		xmlhttp.send(JSON.stringify(data));
-	}
-	;
+	};
 
 	function displayMsg(type, msg) {
 		logmsg('displayMsg - type = ' + type);
@@ -634,8 +618,8 @@ watson_RightNow = (function () {
 
 			for (var i = 0; i < array.length; i++) {
 				if (array[i].match(/(http(s?))\:\/\//)) {
-					msg = msg.replace(array[i], '<a href="' + array[i]
-						+ '">Pulse aqu&iacute;</a>');
+					msg = msg.replace(array[i], '<a href="' + array[i] +
+						'">Pulse aqu&iacute;</a>');
 				}
 			}
 		}
@@ -651,8 +635,7 @@ watson_RightNow = (function () {
 		}
 
 		watson_ConversationPanel.displayMessage(data, type);
-	}
-	;
+	};
 }());
 
 // -----------------------------------------------------------------------------
@@ -661,10 +644,10 @@ watson_RightNow = (function () {
 
 initial_Conversation = (function () {
 	// {$ env-pre $}
-var comunicacionInicialEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/conversacion-inicial';
+	var comunicacionInicialEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/conversacion-inicial';
 	// {$ end-env-pre $}
 	// {$ env-prod $}
-// var comunicacionInicialEndpoint = 'https://chatconwatson.eu-de.mybluemix.net/conversacion-inicial';
+	// var comunicacionInicialEndpoint = 'https://chatconwatson.eu-de.mybluemix.net/conversacion-inicial';
 	// {$ end-env-prod $}
 	var requestPayload = new Object();
 	var responsePayload = new Object();
@@ -719,8 +702,8 @@ var comunicacionInicialEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/con
 		http.open('POST', comunicacionInicialEndpoint, true);
 		http.setRequestHeader('Content-type', 'application/json');
 		http.onreadystatechange = function () {
-			if (http.readyState === 4 && http.status === 200
-				&& http.responseText) {
+			if (http.readyState === 4 && http.status === 200 &&
+				http.responseText) {
 				initial_Conversation.setResponsePayload(http.responseText);
 				document.getElementById('countChar').style.fontSize = "small";
 				$('#countChar').html('</br>0/140');
@@ -748,12 +731,12 @@ var comunicacionInicialEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/con
 watson_Watson = (function () {
 
 	// {$ env-pre $}
-var messageEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicacionConWatson';
-var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicacionConWatson';
+	var messageEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicacionConWatson';
+	var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicacionConWatson';
 	// {$ end-env-pre $}
 	// {$ env-prod $}
-// var messageEndpoint = 'https://chatconwatson.eu-de.mybluemix.net/comunicacionConWatson';
-// var comunicacionEndpoint = 'https://chatconwatson.eu-de.mybluemix.net/comunicacionConWatson';
+	// var messageEndpoint = 'https://chatconwatson.eu-de.mybluemix.net/comunicacionConWatson';
+	// var comunicacionEndpoint = 'https://chatconwatson.eu-de.mybluemix.net/comunicacionConWatson';
 	// {$ end-env-prod $}
 	var status = 'default';
 	var conversationId = '';
@@ -801,13 +784,11 @@ var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicaci
 	function getStatus() {
 		// console.log('getStatus - status = ' + status);
 		return status;
-	}
-	;
+	};
 
 	function setStatus(s) {
 		status = s;
-	}
-	;
+	};
 
 	// Envio de la direcciï¿½n a watson. En consultaFibra almacenamos los datos
 	// que necesita el microservicio para validar la direccion.
@@ -833,8 +814,8 @@ var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicaci
 		http.open('POST', messageEndpoint, true);
 		http.setRequestHeader('Content-type', 'application/json');
 		http.onreadystatechange = function () {
-			if (http.readyState === 4 && http.status === 200
-				&& http.responseText) {
+			if (http.readyState === 4 && http.status === 200 &&
+				http.responseText) {
 				document.getElementById("resetWatson").disabled = false;
 				document.getElementById("textInputchat").disabled = false;
 				setTimeout(function () {
@@ -861,8 +842,7 @@ var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicaci
 			initial_Conversation.sendRequestInitial(input, contextInitial);
 			conversationStart = true;
 		}
-	}
-	;
+	};
 
 	// Send a message request to the server
 	function sendRequest(text, context) {
@@ -892,12 +872,12 @@ var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicaci
 			payloadToWatson.noPintar = {
 				noPintar: "true"
 			};
-		} else if (text.startsWith('EVENT_ENVIAR_FORMULARIO')
-			|| text.startsWith('EVENT_NO_GRACIAS_FORMULARIO')
-			|| text.startsWith('EVENT_CONFIRMAR_VIVIENDA_GRID')
-			|| text.startsWith('EVENT_NO_ES_MI_VIVIENDA_GRID')
-			|| text.startsWith('EVENT_CONFIRMAR_DIRECCION_GRID')
-			|| text.startsWith('EVENT_NO_ES_MI_DIRECCION_GRID')) {
+		} else if (text.startsWith('EVENT_ENVIAR_FORMULARIO') ||
+			text.startsWith('EVENT_NO_GRACIAS_FORMULARIO') ||
+			text.startsWith('EVENT_CONFIRMAR_VIVIENDA_GRID') ||
+			text.startsWith('EVENT_NO_ES_MI_VIVIENDA_GRID') ||
+			text.startsWith('EVENT_CONFIRMAR_DIRECCION_GRID') ||
+			text.startsWith('EVENT_NO_ES_MI_DIRECCION_GRID')) {
 			payloadToWatson.noPintar = {
 				noPintar: "true"
 			};
@@ -920,8 +900,8 @@ var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicaci
 		var latestResponse = watson_Watson.getResponsePayload();
 		contextold = latestResponse.context;
 
-		if ((context != null) && (contextold != null)
-			&& (context != contextold) && !(c && c.rightnow)) {
+		if ((context != null) && (contextold != null) &&
+			(context != contextold) && !(c && c.rightnow)) {
 			conversationId = context.conversation_id;
 			return conversationId;
 		} else {
@@ -932,26 +912,26 @@ var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicaci
 		if (conversationId == '1' || resetOther) {
 			var canal = $('#watsonContainer').attr('data-canal');
 			var urlHTML = $('#watsonContainer').attr('data-url');
-			if (conversationId != ''){
+			if (conversationId != '') {
 				var context = {
 					"canal": canal,
 					"conversation_id": contextold.conversation_id
-				};	
-			}else if (initialID){
-//				var context = {
-//						"initialID": initialID
-//					};
+				};
+			} else if (initialID) {
+				//				var context = {
+				//						"initialID": initialID
+				//					};
 				context.initialID = initialID;
 			}
-//				else{
-//				var context = {
-//					"canal": canal
-//				};
-//			}
+			//				else{
+			//				var context = {
+			//					"canal": canal
+			//				};
+			//			}
 
-//			if(initialID){
-//				context.initialID = initialID;
-//			}
+			//			if(initialID){
+			//				context.initialID = initialID;
+			//			}
 			payloadToWatson.context = context;
 			conversationId = '';
 			resetOther = false;
@@ -974,8 +954,8 @@ var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicaci
 				}, 5);
 				// $( "#textInputchat" ).focus();
 				$('#resetWatson').removeClass('enlaceInhabilitado');
-				if ((http.status === 200 && http.responseText
-					&& null != http.responseText && http.responseText != '')) {
+				if ((http.status === 200 && http.responseText &&
+						null != http.responseText && http.responseText != '')) {
 					watson_RightNow.check(JSON.parse(http.responseText));
 					if (!watson_RightNow.getContext().user) {
 						watson_Watson.setResponsePayload(http.responseText);
@@ -983,7 +963,7 @@ var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicaci
 				} else {
 					watson_ConversationPanel.captureErrorWatson();
 				}
-				
+
 				var latestResponse = watson_Watson.getResponsePayload();
 				var redireccionATienda; // Boolean
 				var enlaceaTienda; // Enlace al que redirigir
@@ -991,13 +971,13 @@ var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicaci
 					console.log('latestResponse', latestResponse);
 					context = latestResponse.context;
 
-					if (context && context != "undefined" && context != ''){
-						redireccionATienda=context.redirigirATienda;
-						enlaceaTienda = context.enlaceaTienda;		
+					if (context && context != "undefined" && context != '') {
+						redireccionATienda = context.redirigirATienda;
+						enlaceaTienda = context.enlaceaTienda;
 					}
 				}
-				
-				if (redireccionATienda){
+
+				if (redireccionATienda) {
 					var data = {};
 					data.output = {};
 					data.output.text = ["¡Ya tenemos todo lo necesario! Te estamos redirigiendo a la tienda para continuar"];
@@ -1005,9 +985,10 @@ var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicaci
 					watson_ConversationPanel.displayMessage(data, type);
 					watson_ConversationPanel.showLoading();
 					setTimeout(delay, 3000);
+
 					function delay() {
 						window.open(enlaceaTienda, '_self');
-						}
+					}
 				}
 			}
 		};
@@ -1070,8 +1051,8 @@ var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicaci
 		var latestResponse = watson_Watson.getResponsePayload();
 		contextold = latestResponse.context;
 
-		if ((context != null) && (contextold != null)
-			&& (context != contextold)) {
+		if ((context != null) && (contextold != null) &&
+			(context != contextold)) {
 			conversationId = context.conversation_id;
 			return conversationId;
 		} else {
@@ -1086,7 +1067,7 @@ var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicaci
 				"canal": canal,
 			};
 			console.log(initialID);
-			if(initialID){
+			if (initialID) {
 				context.initialID = initialID;
 			}
 			payloadToWatson.context = context;
@@ -1117,20 +1098,20 @@ var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicaci
 				var redireccionATienda; // Boolean
 				var enlaceaTienda; // Enlace al que redirigir
 				//-INICIO- Quitamos el textInput y el boton enviar cuando se nos cargue el formulario C2C
-				if (latestResponse.context.text[1] && latestResponse.context.text[1].includes("feedbackSmartFormSi")){
-						document.getElementById('escribeaqui').style.display = 'none';
+				if (latestResponse.context.text[1] && latestResponse.context.text[1].includes("feedbackSmartFormSi")) {
+					document.getElementById('escribeaqui').style.display = 'none';
 				}
 				//-FIN- Quitamos el textInput y el boton enviar cuando se nos cargue el formulario C2C
 				if (latestResponse) {
 					console.log('latestResponse', latestResponse);
 					context = latestResponse.context;
-					if (context && context != "undefined" && context != ''){
-						redireccionATienda=context.redirigirATienda;
-						enlaceaTienda = context.enlaceaTienda;		
+					if (context && context != "undefined" && context != '') {
+						redireccionATienda = context.redirigirATienda;
+						enlaceaTienda = context.enlaceaTienda;
 					}
 				}
-//				console.log('vamos a la tienda');
-				if (redireccionATienda){
+				//				console.log('vamos a la tienda');
+				if (redireccionATienda) {
 					var data = {};
 					data.output = {};
 					data.output.text = ["¡Ya tenemos todo lo necesario! Te estamos redirigiendo a la tienda para continuar"];
@@ -1138,9 +1119,10 @@ var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicaci
 					watson_ConversationPanel.displayMessage(data, type);
 					watson_ConversationPanel.showLoading();
 					setTimeout(delay, 3000);
+
 					function delay() {
 						window.open(enlaceaTienda, '_self');
-						}
+					}
 				}
 				// -Fin-
 			}
@@ -1312,9 +1294,9 @@ watson_Common = (function () {
 		document.getElementById('textInputchat').value = "";
 
 		// Insertar contentHTML
-		$('#watson__body__chat').html(textContentBodyChat
-			+ '<button type="button" id="watson__confirm__btn" class="confirmarWatson" onclick="watson_Location.submitFormDirReset()">Confirmar</button>'
-			+ textContentBodyChat2);
+		$('#watson__body__chat').html(textContentBodyChat +
+			'<button type="button" id="watson__confirm__btn" class="confirmarWatson" onclick="watson_Location.submitFormDirReset()">Confirmar</button>' +
+			textContentBodyChat2);
 
 		// Cierre
 		var c = watson_RightNow.getContext();
@@ -1334,9 +1316,9 @@ watson_Common = (function () {
 			"canal": canal,
 			// "logado":"false",
 			// "IdFAQ_Original": urlHTML,
-//			"nombre": "",
-//			"email": "",
-//			"telefono": ""
+			//			"nombre": "",
+			//			"email": "",
+			//			"telefono": ""
 		};
 
 		watson_Watson.setStatus('to-init');
@@ -1485,7 +1467,7 @@ watson_Common = (function () {
 			$("div")
 				.find('#feedbackSmartFormResult')
 				.html(
-				'<span class="errorValidityForm">Debes introducir tu nombre y tel&eacute;fono en formato correcto.</span>');
+					'<span class="errorValidityForm">Debes introducir tu nombre y tel&eacute;fono en formato correcto.</span>');
 			watson_ConversationPanel.scrollToChatBottom();
 		}
 		return false;
@@ -1519,65 +1501,65 @@ watson_Common = (function () {
 		contextForm = latestResponse.context.TarifaLinea_movil;
 		if (latestResponse) {
 			if (!contextForm) {
-				document.cookie = "ws_normalizacion_tipovia" + "="
-					+ consultaFibra.tipoVia + ";domain=.orange.es;path=/";
-				document.cookie = "ws_normalizacion_calle" + "="
-					+ consultaFibra.nombreVia + ";domain=.orange.es;path=/";
-				document.cookie = "ws_normalizacion_numero" + "="
-					+ consultaFibra.numero + ";domain=.orange.es;path=/";
-				document.cookie = "ws_normalizacion_provincia" + "="
-					+ consultaFibra.provincia + ";domain=.orange.es;path=/";
-				document.cookie = "ws_normalizacion_localidad" + "="
-					+ consultaFibra.localidad + ";domain=.orange.es;path=/";
-				document.cookie = "ws_normalizacion_cp" + "="
-					+ consultaFibra.cp + "; domain=.orange.es;path=/";
-				document.cookie = "ws_normalizacion_bloque" + "="
-					+ latestResponse.context.bloque
-					+ ";domain=.orange.es;path=/";
-				document.cookie = "ws_normalizacion_id_finca" + "="
-					+ latestResponse.context.portal
-					+ ";domain=.orange.es;path=/";
-				document.cookie = "ws_normalizacion_escalera" + "="
-					+ latestResponse.context.escalera
-					+ ";domain=.orange.es;path=/";
-				document.cookie = "ws_normalizacion_escalera_trad" + "="
-					+ latestResponse.context.escalera
-					+ ";domain=.orange.es;path=/";
-				document.cookie = "ws_normalizacion_planta" + "="
-					+ latestResponse.context.planta
-					+ ";domain=.orange.es;path=/";
-				document.cookie = "ws_normalizacion_portal" + "="
-					+ latestResponse.context.portal
-					+ ";domain=.orange.es;path=/";
-				document.cookie = "ws_normalizacion_id_escalera" + "="
-					+ latestResponse.context.escalera
-					+ ";domain=.orange.es;path=/";
-				document.cookie = "ws_normalizacion_num_finca" + "="
-					+ consultaFibra.numero + ";domain=.orange.es;path=/";
-				document.cookie = "ws_normalizacion_mano1" + "="
-					+ latestResponse.context.tipoPuerta
-					+ ";domain=.orange.es;path=/";
-				document.cookie = "ws_normalizacion_mano2" + "="
-					+ latestResponse.context.puerta
-					+ ";domain=.orange.es;path=/";
+				document.cookie = "ws_normalizacion_tipovia" + "=" +
+					consultaFibra.tipoVia + ";domain=.orange.es;path=/";
+				document.cookie = "ws_normalizacion_calle" + "=" +
+					consultaFibra.nombreVia + ";domain=.orange.es;path=/";
+				document.cookie = "ws_normalizacion_numero" + "=" +
+					consultaFibra.numero + ";domain=.orange.es;path=/";
+				document.cookie = "ws_normalizacion_provincia" + "=" +
+					consultaFibra.provincia + ";domain=.orange.es;path=/";
+				document.cookie = "ws_normalizacion_localidad" + "=" +
+					consultaFibra.localidad + ";domain=.orange.es;path=/";
+				document.cookie = "ws_normalizacion_cp" + "=" +
+					consultaFibra.cp + "; domain=.orange.es;path=/";
+				document.cookie = "ws_normalizacion_bloque" + "=" +
+					latestResponse.context.bloque +
+					";domain=.orange.es;path=/";
+				document.cookie = "ws_normalizacion_id_finca" + "=" +
+					latestResponse.context.portal +
+					";domain=.orange.es;path=/";
+				document.cookie = "ws_normalizacion_escalera" + "=" +
+					latestResponse.context.escalera +
+					";domain=.orange.es;path=/";
+				document.cookie = "ws_normalizacion_escalera_trad" + "=" +
+					latestResponse.context.escalera +
+					";domain=.orange.es;path=/";
+				document.cookie = "ws_normalizacion_planta" + "=" +
+					latestResponse.context.planta +
+					";domain=.orange.es;path=/";
+				document.cookie = "ws_normalizacion_portal" + "=" +
+					latestResponse.context.portal +
+					";domain=.orange.es;path=/";
+				document.cookie = "ws_normalizacion_id_escalera" + "=" +
+					latestResponse.context.escalera +
+					";domain=.orange.es;path=/";
+				document.cookie = "ws_normalizacion_num_finca" + "=" +
+					consultaFibra.numero + ";domain=.orange.es;path=/";
+				document.cookie = "ws_normalizacion_mano1" + "=" +
+					latestResponse.context.tipoPuerta +
+					";domain=.orange.es;path=/";
+				document.cookie = "ws_normalizacion_mano2" + "=" +
+					latestResponse.context.puerta +
+					";domain=.orange.es;path=/";
 				if (latestResponse.context.telefonoFijo != '') {
-					document.cookie = "telefono" + "="
-						+ latestResponse.context.telefonoFijo
-						+ ";domain=.orange.es;path=/";
-					document.cookie = "c_number" + "="
-						+ latestResponse.context.telefonoFijo
-						+ ";domain=.orange.es;path=/";
+					document.cookie = "telefono" + "=" +
+						latestResponse.context.telefonoFijo +
+						";domain=.orange.es;path=/";
+					document.cookie = "c_number" + "=" +
+						latestResponse.context.telefonoFijo +
+						";domain=.orange.es;path=/";
 				} else {
-					document.cookie = "telefono" + "=" + "910000000"
-						+ ";domain=.orange.es;path=/";
-					document.cookie = "c_number" + "=" + "910000000"
-						+ ";domain=.orange.es;path=/";
+					document.cookie = "telefono" + "=" + "910000000" +
+						";domain=.orange.es;path=/";
+					document.cookie = "c_number" + "=" + "910000000" +
+						";domain=.orange.es;path=/";
 				}
 			}
 		}
 		var context;
-		var textoFormFeed = "<!datosFormFeedback>"
-			+ "boton de enlace a tienda pulsado - fin de chat";
+		var textoFormFeed = "<!datosFormFeedback>" +
+			"boton de enlace a tienda pulsado - fin de chat";
 		var latestResponse = watson_Watson.getResponsePayload();
 
 		if (latestResponse) {
@@ -1640,44 +1622,45 @@ watson_ConversationPanel = (function () {
 	function init() {
 		chatUpdateSetup();
 	}
-	
-	function mantenerFijoCheck(){
-		
-		var check = $('.checkNumFijo:last input')[0];
-		if(check.checked){
-			
-		var context;
-		var latestResponse = watson_Watson.getResponsePayload();
 
-		if (latestResponse) {
-			context = latestResponse.context;
-			context.noesmidireccion = true;
-		}
-		if (includes(codPromo,"PROMO_CODE")){
-			context.enlaceaTienda = context.enlaceaTienda+"&"+codPromo;
-		}
-		function includes(codPromo, value) {
-			var returnValue = false;
-			var pos = codPromo.indexOf(value);
-			if (pos >= 0) {
-				returnValue = true;
+	function mantenerFijoCheck() {
+
+		var check = $('.checkNumFijo:last input')[0];
+		if (check.checked) {
+
+			var context;
+			var latestResponse = watson_Watson.getResponsePayload();
+
+			if (latestResponse) {
+				context = latestResponse.context;
+				context.noesmidireccion = true;
 			}
-			return returnValue;
-		}		
-		var text = $(".meInteresaBtn:last").data('msg');
-		text = '<!datosFormFeedback>' + text;
-		watson_Watson.sendRequest(text, context);
-		document.getElementById('escribeaqui').style.display = 'block';
-		document.getElementById('textInputchat').disabled = true;
-		$('.meInteresaBtn:last')[0].disabled = true;
-		$('.verMasOpcionesBtn:last')[0].disabled = true;	
+			if (includes(codPromo, "PROMO_CODE")) {
+				context.enlaceaTienda = context.enlaceaTienda + "&" + codPromo;
+			}
+
+			function includes(codPromo, value) {
+				var returnValue = false;
+				var pos = codPromo.indexOf(value);
+				if (pos >= 0) {
+					returnValue = true;
+				}
+				return returnValue;
+			}
+			var text = $(".meInteresaBtn:last").data('msg');
+			text = '<!datosFormFeedback>' + text;
+			watson_Watson.sendRequest(text, context);
+			document.getElementById('escribeaqui').style.display = 'block';
+			document.getElementById('textInputchat').disabled = true;
+			$('.meInteresaBtn:last')[0].disabled = true;
+			$('.verMasOpcionesBtn:last')[0].disabled = true;
 		}
 	}
 
 	// INCIO -Nueva funcion para los botones "Me interesa" y "Ver otras
 	// opciones"
 	function meInteresaOferta() {
-		
+
 		var context;
 		var latestResponse = watson_Watson.getResponsePayload();
 
@@ -1687,12 +1670,13 @@ watson_ConversationPanel = (function () {
 		}
 		// -Inicio- RedirecciÃ³n cuando se introduce el nÃºmero fijo
 		var enlaceaTienda; // Enlace al que redirigir
-		if (context && context != "undefined" && context != ''){
-				enlaceaTienda = context.enlaceaTienda;		
+		if (context && context != "undefined" && context != '') {
+			enlaceaTienda = context.enlaceaTienda;
 		}
-		if (includes(codPromo,"PROMO_CODE")){
-			enlaceaTienda = enlaceaTienda+"&"+codPromo;
+		if (includes(codPromo, "PROMO_CODE")) {
+			enlaceaTienda = enlaceaTienda + "&" + codPromo;
 		}
+
 		function includes(codPromo, value) {
 			var returnValue = false;
 			var pos = codPromo.indexOf(value);
@@ -1701,18 +1685,19 @@ watson_ConversationPanel = (function () {
 			}
 			return returnValue;
 		}
-			$('#watson__input__btn').addClass("enlaceInhabilitado");
-			$('#textInputchat').addClass("enlaceInhabilitado");
-			var data = {};
-			data.output = {};
-			data.output.text = ["¡Ya tenemos todo lo necesario! te estamos redirigiendo a la tienda para continuar con el proceso de contrataci&oacute;n"];
-			var type = 'watson';
-			watson_ConversationPanel.displayMessage(data, type);
-			watson_ConversationPanel.showLoading();
-			setTimeout(delay, 3000);
-			function delay() {
-				window.open(enlaceaTienda, '_self');
-				}
+		$('#watson__input__btn').addClass("enlaceInhabilitado");
+		$('#textInputchat').addClass("enlaceInhabilitado");
+		var data = {};
+		data.output = {};
+		data.output.text = ["¡Ya tenemos todo lo necesario! te estamos redirigiendo a la tienda para continuar con el proceso de contrataci&oacute;n"];
+		var type = 'watson';
+		watson_ConversationPanel.displayMessage(data, type);
+		watson_ConversationPanel.showLoading();
+		setTimeout(delay, 3000);
+
+		function delay() {
+			window.open(enlaceaTienda, '_self');
+		}
 	}
 
 	function verOtrasOpciones() {
@@ -1753,8 +1738,8 @@ watson_ConversationPanel = (function () {
 
 		watson_Watson.setRequestPayload = function (newPayloadStr) {
 			currentRequestPayloadSetter.call(watson_Watson, newPayloadStr);
-			if (null == JSON.parse(newPayloadStr).noPintar
-				|| undefined == JSON.parse(newPayloadStr).noPintar) {
+			if (null == JSON.parse(newPayloadStr).noPintar ||
+				undefined == JSON.parse(newPayloadStr).noPintar) {
 				displayMessage(JSON.parse(newPayloadStr),
 					settings.authorTypes.user);
 			}
@@ -1784,16 +1769,16 @@ watson_ConversationPanel = (function () {
 
 					$(".segments:last")
 						.after(
-						"<div class='segments load confirmFlat'><h3>Por favor, selecciona exactamente tu vivienda para poder comprobar la cobertura:</h3>"
-						+"<span class='myDirectionWatson'><p>"
-						+ consultaFibra.tipoVia + " "
-						+ consultaFibra.nombreVia + " "
-						+ consultaFibra.numero + ", "
-						+ consultaFibra.localidad + "("
-						+ consultaFibra.provincia + ") "
-						+ consultaFibra.cp + "</p></span>"
-						+ generarTablaDireccionesError4(direcccionesAlternativas, cadenaDireccionRecuperar).innerHTML
-						+ "</div>"
+							"<div class='segments load confirmFlat'><h3>Por favor, selecciona exactamente tu vivienda para poder comprobar la cobertura:</h3>" +
+							"<span class='myDirectionWatson'><p>" +
+							consultaFibra.tipoVia + " " +
+							consultaFibra.nombreVia + " " +
+							consultaFibra.numero + ", " +
+							consultaFibra.localidad + "(" +
+							consultaFibra.provincia + ") " +
+							consultaFibra.cp + "</p></span>" +
+							generarTablaDireccionesError4(direcccionesAlternativas, cadenaDireccionRecuperar).innerHTML +
+							"</div>"
 						);
 
 					$("#confirmLocation4").addClass("botonInhabilitado");
@@ -1807,16 +1792,16 @@ watson_ConversationPanel = (function () {
 					var cadenaElementosEscondidos = "CodigoArvato";
 					$(".segments:last")
 						.after(
-						"<div class='segments load confirmDirection'><h3>Por favor, selecciona exactamente tu direcci\u00f3n:</h3>"
-						+ "<span class='myDirectionWatson'><p>"
-						+ consultaFibra.tipoVia + " "
-						+ consultaFibra.nombreVia + " "
-						+ consultaFibra.numero + ", "
-						+ consultaFibra.localidad + "("
-						+ consultaFibra.provincia + ") "
-						+ consultaFibra.cp + "</p></span>"
-						+ generarTablaDireccionesError6(direcccionesAlternativas, cadenaDireccionRecuperar, cadenaElementosEscondidos).innerHTML
-						+ "</div>"
+							"<div class='segments load confirmDirection'><h3>Por favor, selecciona exactamente tu direcci\u00f3n:</h3>" +
+							"<span class='myDirectionWatson'><p>" +
+							consultaFibra.tipoVia + " " +
+							consultaFibra.nombreVia + " " +
+							consultaFibra.numero + ", " +
+							consultaFibra.localidad + "(" +
+							consultaFibra.provincia + ") " +
+							consultaFibra.cp + "</p></span>" +
+							generarTablaDireccionesError6(direcccionesAlternativas, cadenaDireccionRecuperar, cadenaElementosEscondidos).innerHTML +
+							"</div>"
 						);
 					$("#confirmLocation6").addClass("botonInhabilitado");
 					watson_ConversationPanel.scrollToChatBottom();
@@ -1825,7 +1810,7 @@ watson_ConversationPanel = (function () {
 				if (contextForm == '5') {
 					$(".segments:last")
 						.after(
-						"<div class='from-watson top'><div class='message-inner'><p>No se han encontrado viviendas en la direcci\u00f3n indicada.<br> Por favor pulsa aqu\u00ed <button type=\"button\" id=\"resetWatsonIcon\"><span>\u21bb</span></button> para comprobar la cobertura en otra direcci\u00f3n o llama al 900 263 176 para que te ayudemos.<br> Muchas gracias.</p></div></div>"
+							"<div class='from-watson top'><div class='message-inner'><p>No se han encontrado viviendas en la direcci\u00f3n indicada.<br> Por favor pulsa aqu\u00ed <button type=\"button\" id=\"resetWatsonIcon\"><span>\u21bb</span></button> para comprobar la cobertura en otra direcci\u00f3n o llama al 900 263 176 para que te ayudemos.<br> Muchas gracias.</p></div></div>"
 						);
 					watson_ConversationPanel.scrollToChatBottom();
 					document.getElementById('escribeaqui').style.display = 'none';
@@ -1843,9 +1828,9 @@ watson_ConversationPanel = (function () {
 					document.getElementById("escribeaqui").disabled = true;
 					document.getElementById("resetWatson").disabled = false;
 				}
-				if ((contextForm != null) && (contextForm != '4')
-					&& (contextForm != '6') && (contextForm != '5')
-					&& (contextForm != '0') && (contextForm != '21')) {
+				if ((contextForm != null) && (contextForm != '4') &&
+					(contextForm != '6') && (contextForm != '5') &&
+					(contextForm != '0') && (contextForm != '21')) {
 					watson_ConversationPanel.captureErrorWatson();
 				}
 
@@ -1900,8 +1885,8 @@ watson_ConversationPanel = (function () {
 				cadenaDireccionRecuperar);
 			$(trCabecera).addClass('cabeceraForm');
 			$(itemCabecera).addClass(listaItemsCabecera[n]);
-			itemCabecera.style.width = anchoPorCelda
-				- (tamanioScroll / contadorCabecera) + '%';
+			itemCabecera.style.width = anchoPorCelda -
+				(tamanioScroll / contadorCabecera) + '%';
 			trCabecera.appendChild(itemCabecera);
 		}
 
@@ -1935,11 +1920,11 @@ watson_ConversationPanel = (function () {
 									var valor = splitDots[1];
 									$(td).addClass(clave);
 									td.style.width = anchoPorCelda + '%';
-									td.id = "tdDirec_" + contadorFilas + "_"
-										+ contadorColumnas;
+									td.id = "tdDirec_" + contadorFilas + "_" +
+										contadorColumnas;
 									tr
 										.setAttribute('onclick',
-										"watson_ConversationPanel.captureRow4(this)");
+											"watson_ConversationPanel.captureRow4(this)");
 									tr.appendChild(td);
 									contadorColumnas++;
 									break;
@@ -1949,8 +1934,8 @@ watson_ConversationPanel = (function () {
 						if (!encontrado) {
 							var td = document.createElement("td");
 							td.style.width = anchoPorCelda + '%';
-							td.id = "tdDirec_" + contadorFilas + "_"
-								+ contadorColumnas;
+							td.id = "tdDirec_" + contadorFilas + "_" +
+								contadorColumnas;
 							tr.appendChild(td);
 							contadorColumnas++;
 						}
@@ -1958,8 +1943,8 @@ watson_ConversationPanel = (function () {
 					while (contadorColumnas < contadorCabecera) {
 						var td = document.createElement("td");
 						td.style.width = anchoPorCelda + '%';
-						td.id = "tdDirec_" + contadorFilas + "_"
-							+ contadorColumnas;
+						td.id = "tdDirec_" + contadorFilas + "_" +
+							contadorColumnas;
 						tr.appendChild(td);
 						contadorColumnas++;
 					}
@@ -1982,12 +1967,12 @@ watson_ConversationPanel = (function () {
 		divContenedorTabla.appendChild(divContenedor);
 		$(divContenedorTabla)
 			.html(
-			''
-			+ $(divContenedorTabla).html()
-			+ '<div class="botonesOtherLocation">'
-			+ '<button type="button" id="refuseLocation4" class="refuseLocationWatson" onclick="watson_ConversationPanel.locationRefuse4()">No encuentro mi vivienda</button>'
-			+ '<button type="button" id="confirmLocation4" class="confirmLocationWatson" onclick="watson_ConversationPanel.confirmLocation4()" disabled>Confirmar</button>'
-			+ '</div>');
+				'' +
+				$(divContenedorTabla).html() +
+				'<div class="botonesOtherLocation">' +
+				'<button type="button" id="refuseLocation4" class="refuseLocationWatson" onclick="watson_ConversationPanel.locationRefuse4()">No encuentro mi vivienda</button>' +
+				'<button type="button" id="confirmLocation4" class="confirmLocationWatson" onclick="watson_ConversationPanel.confirmLocation4()" disabled>Confirmar</button>' +
+				'</div>');
 		document.getElementById('escribeaqui').style.display = 'none';
 		return divContenedorTabla;
 	}
@@ -2032,8 +2017,8 @@ watson_ConversationPanel = (function () {
 				$(trCabecera).addClass('cabeceraForm');
 				// $(itemCabecera).addClass('itemCabecera');
 				$(itemCabecera).addClass(listaItemsCabecera[n]);
-				itemCabecera.style.width = anchoPorCelda
-					- (tamanioScroll / numItemsRealesCabecera) + "%"
+				itemCabecera.style.width = anchoPorCelda -
+					(tamanioScroll / numItemsRealesCabecera) + "%"
 				// itemCabecera.style.width =
 				// anchoPorCelda-(tamanioScroll/contadorCabecera)+'%';
 				trCabecera.appendChild(itemCabecera);
@@ -2077,11 +2062,11 @@ watson_ConversationPanel = (function () {
 										var valor = splitDots[1];
 										$(td).addClass(clave);
 										td.style.width = anchoPorCelda + '%';
-										td.id = "tdDirec_" + contadorFilas
-											+ "_" + contadorColumnas;
+										td.id = "tdDirec_" + contadorFilas +
+											"_" + contadorColumnas;
 										tr
 											.setAttribute('onclick',
-											"watson_ConversationPanel.captureRow6(this)");
+												"watson_ConversationPanel.captureRow6(this)");
 										tr.appendChild(td);
 										contadorColumnas++;
 										break;
@@ -2089,8 +2074,8 @@ watson_ConversationPanel = (function () {
 										encontrado = true;
 										var hidden = document
 											.createElement("input");
-										hidden.id = "hidden" + splitDots[0]
-											+ "_" + contadorFilas;
+										hidden.id = "hidden" + splitDots[0] +
+											"_" + contadorFilas;
 										hidden.type = "hidden";
 										hidden.value = splitDots[1];
 										divContenedor.appendChild(hidden);
@@ -2102,8 +2087,8 @@ watson_ConversationPanel = (function () {
 						if (!encontrado) {
 							var td = document.createElement("td");
 							td.style.width = anchoPorCelda + '%';
-							td.id = "tdDirec_" + contadorFilas + "_"
-								+ contadorColumnas;
+							td.id = "tdDirec_" + contadorFilas + "_" +
+								contadorColumnas;
 							tr.appendChild(td);
 							contadorColumnas++;
 						}
@@ -2111,8 +2096,8 @@ watson_ConversationPanel = (function () {
 					while (contadorColumnas < numItemsRealesCabecera) {
 						var td = document.createElement("td");
 						td.style.width = anchoPorCelda + '%';
-						td.id = "tdDirec_" + contadorFilas + "_"
-							+ contadorColumnas;
+						td.id = "tdDirec_" + contadorFilas + "_" +
+							contadorColumnas;
 						tr.appendChild(td);
 						contadorColumnas++;
 					}
@@ -2129,12 +2114,12 @@ watson_ConversationPanel = (function () {
 		divContenedorTabla.appendChild(divContenedor);
 		$(divContenedorTabla)
 			.html(
-			''
-			+ $(divContenedorTabla).html()
-			+ '<div class="botonesOtherLocation6">'
-			+ '<button type="button" id="refuseLocation6" class="refuseLocationWatson" onclick="watson_ConversationPanel.locationRefuse6()">No es mi direcci&oacute;n</button>'
-			+ '<button type="button" id="confirmLocation6" class="confirmLocationWatson" onclick="watson_ConversationPanel.confirmLocation6()" disabled>Confirmar</button>'
-			+ '</div>');
+				'' +
+				$(divContenedorTabla).html() +
+				'<div class="botonesOtherLocation6">' +
+				'<button type="button" id="refuseLocation6" class="refuseLocationWatson" onclick="watson_ConversationPanel.locationRefuse6()">No es mi direcci&oacute;n</button>' +
+				'<button type="button" id="confirmLocation6" class="confirmLocationWatson" onclick="watson_ConversationPanel.confirmLocation6()" disabled>Confirmar</button>' +
+				'</div>');
 		document.getElementById('escribeaqui').style.display = 'none';
 
 		return divContenedorTabla;
@@ -2167,8 +2152,8 @@ watson_ConversationPanel = (function () {
 			var clase = cell.className;
 			currentRow1 = currentRow.id;
 			parts = currentRow1.split("_");
-			if (null != document.getElementById('hiddenCodigoArvato_'
-				+ parts[1])) {
+			if (null != document.getElementById('hiddenCodigoArvato_' +
+					parts[1])) {
 				consultaFibraScope.CodigoArvato = document
 					.getElementById('hiddenCodigoArvato_' + parts[1]).value;
 			}
@@ -2226,8 +2211,8 @@ watson_ConversationPanel = (function () {
 			var clase = cell.className;
 			currentRow1 = currentRow.id;
 			parts = currentRow1.split("_");
-			if (null != document.getElementById('hiddenCodigoArvato_'
-				+ parts[1])) {
+			if (null != document.getElementById('hiddenCodigoArvato_' +
+					parts[1])) {
 				consultaFibraScope.CodigoArvato = document
 					.getElementById('hiddenCodigoArvato_' + parts[1]).value;
 			}
@@ -2290,8 +2275,8 @@ watson_ConversationPanel = (function () {
 								var elementoRecuperar = elemRecupDots[0];
 								// El campo estï¿½ en la lista de los que queremos
 								// recuperar
-								if (elementoRecuperar == splitDots[0]
-									&& splitDots[1] != '') {
+								if (elementoRecuperar == splitDots[0] &&
+									splitDots[1] != '') {
 									// Hay elementos de cabecera ya encontrados
 									if (listaCabecera != "") {
 										var encontrado = false;
@@ -2305,8 +2290,8 @@ watson_ConversationPanel = (function () {
 											}
 										}
 										if (!encontrado) {
-											listaCabecera += elementoRecuperar
-												+ "|";
+											listaCabecera += elementoRecuperar +
+												"|";
 										}
 									}
 									// No hay elementos de cabecera ya
@@ -2469,7 +2454,7 @@ watson_ConversationPanel = (function () {
 	function captureErrorWatson() {
 		$(".segments:last")
 			.append(
-			"<div class='from-watson top'><div class='message-inner'><p>Lo siento, no podemos consultar tu cobertura en estos momentos.<br>Por favor int\u00e9ntalo m\u00e1s tarde o llama al 900 263 176</p></div></div>");
+				"<div class='from-watson top'><div class='message-inner'><p>Lo siento, no podemos consultar tu cobertura en estos momentos.<br>Por favor int\u00e9ntalo m\u00e1s tarde o llama al 900 263 176</p></div></div>");
 		watson_ConversationPanel.scrollToChatBottom();
 		document.getElementById('escribeaqui').style.display = 'none';
 		if (null != document.getElementById('watsonWaiting')) {
@@ -2496,8 +2481,8 @@ watson_ConversationPanel = (function () {
 		var isUser = isUserMessage(typeValue);
 
 		// Get input if user / output if Watson / Agent
-		var textExists = (newPayload.input && newPayload.input.text)
-			|| (newPayload.output && newPayload.output.text);
+		var textExists = (newPayload.input && newPayload.input.text) ||
+			(newPayload.output && newPayload.output.text);
 
 		if (isUser !== null && textExists) {
 			// Create new message DOM element
@@ -2505,8 +2490,8 @@ watson_ConversationPanel = (function () {
 			var chatBoxElement = document
 				.querySelector(settings.selectors.chatBox);
 			var previousLatest = chatBoxElement
-				.querySelectorAll(getSelector(typeValue)
-				+ settings.selectors.latest);
+				.querySelectorAll(getSelector(typeValue) +
+					settings.selectors.latest);
 
 			// Previous "latest" message is no longer the most recent
 			if (previousLatest) {
@@ -2558,8 +2543,8 @@ watson_ConversationPanel = (function () {
 	function isUserMessage(typeValue) {
 		if (typeValue === settings.authorTypes.user) {
 			return true;
-		} else if (typeValue === settings.authorTypes.watson
-			|| typeValue === settings.authorTypes.agent) {
+		} else if (typeValue === settings.authorTypes.watson ||
+			typeValue === settings.authorTypes.agent) {
 			return typeValue;
 		}
 
@@ -2568,8 +2553,8 @@ watson_ConversationPanel = (function () {
 
 	// Constructs new DOM element from a message payload
 	function buildMessageDomElements(newPayload, isUser) {
-		var textArray = (isUser === true) ? newPayload.input.text
-			: newPayload.output.text;
+		var textArray = (isUser === true) ? newPayload.input.text :
+			newPayload.output.text;
 
 		if (Object.prototype.toString.call(textArray) !== '[object Array]') {
 			textArray = [textArray];
@@ -2599,15 +2584,15 @@ watson_ConversationPanel = (function () {
 
 		// No se da esta opciï¿½n en Canal Online, es para Faqs en el caso de que
 		// llegue un enlace en la conversacion
-		if ((currentText != null && currentText.indexOf(patronEnlaceInicio) > -1)
-			&& !(currentText.indexOf(patronEnlaceOferta) > -1)) {
+		if ((currentText != null && currentText.indexOf(patronEnlaceInicio) > -1) &&
+			!(currentText.indexOf(patronEnlaceOferta) > -1)) {
 			var nextSubString = currentText;
 
 			while (nextSubString.indexOf(patronEnlaceInicio) > -1) {
 				var index = nextSubString.indexOf(patronEnlaceInicio);
 				var indexFin = nextSubString.indexOf(patronEnlaceFin);
-				var enlace = nextSubString.substr(index, indexFin - index
-					+ patronEnlaceFin.length);
+				var enlace = nextSubString.substr(index, indexFin - index +
+					patronEnlaceFin.length);
 
 				nextSubString = nextSubString.substr(index,
 					nextSubString.length);
@@ -2629,15 +2614,15 @@ watson_ConversationPanel = (function () {
 
 		// En el caso de que nos llegue un span en la conversacion lo
 		// transformamos a boton
-		if (currentText != null
-			&& currentText.indexOf(patronRespuestaBoton) > -1) {
+		if (currentText != null &&
+			currentText.indexOf(patronRespuestaBoton) > -1) {
 			var nextSubString = currentText;
 
 			while (nextSubString.indexOf(patronRespuestaBoton) > -1) {
 				var index = nextSubString.indexOf(patronRespuestaBoton);
 				var indexFin = nextSubString.indexOf(patronRespuestaBotonFin);
-				var respuestaBoton = nextSubString.substr(index, indexFin
-					- index + patronRespuestaBotonFin.length);
+				var respuestaBoton = nextSubString.substr(index, indexFin -
+					index + patronRespuestaBotonFin.length);
 
 				index = index + patronRespuestaBoton.length;
 
@@ -2704,8 +2689,9 @@ watson_ConversationPanel = (function () {
 						className,
 						'latest',
 						((messageArray.length === 0) ? 'top' : 'sub'),
-						(className == 'from-agent') ? 'from-watson'
-							: 'watsonBox'],
+						(className == 'from-agent') ? 'from-watson' :
+						'watsonBox'
+					],
 					'children': [{
 						'tagName': 'div',
 						'classNames': ['message-inner'],
@@ -2753,9 +2739,9 @@ watson_ConversationPanel = (function () {
 	// No se usa en el canal online solo en las faqs para convertir los span en
 	// botones
 	function fixOpcion(text) {
-		text = "<span class=\"" + 'respuestaboton'
-			+ "\"onclick=\"watson_EnvioEnlace(this, '" + text + "');\">"
-			+ text + "</span>";
+		text = "<span class=\"" + 'respuestaboton' +
+			"\"onclick=\"watson_EnvioEnlace(this, '" + text + "');\">" +
+			text + "</span>";
 
 		return text;
 	}
@@ -2772,61 +2758,61 @@ watson_ConversationPanel = (function () {
 	}
 
 	// Handles the submission of input
-	function inputKeyDown(event, inputBox) {	
-		$(document).ready(function () {		
+	function inputKeyDown(event, inputBox) {
+		$(document).ready(function () {
 			document.getElementById('countChar').style.fontSize = "small";
-			$('#countChar').html('</br>'+textUser.length+'/140');
-			});
+			$('#countChar').html('</br>' + textUser.length + '/140');
+		});
 		//-Inicio- Comprobar campos vacÃ­os
 		var faltaCampoTexto = "No he podido capturar tu ubicaci&oacute;n completa. Por favor, completa los datos que faltan y que aparecen resaltados";
 		$(document).ready(function () {
 			if (inputBox.val().length == 0) {
-				if (document.getElementById("tipoV").value==''){
+				if (document.getElementById("tipoV").value == '') {
 					$('#tipoV').addClass('watsonInputNovalid');
 				}
-				if (document.getElementById("listacalles").value==''){
+				if (document.getElementById("listacalles").value == '') {
 					$('#listacalles').addClass('watsonInputNovalid');
 				}
-				if (document.getElementById("numero").value==''){
+				if (document.getElementById("numero").value == '') {
 					$('#numero').addClass('watsonInputNovalid');
 				}
-				if (document.getElementById("listalocalidades").value==''){
+				if (document.getElementById("listalocalidades").value == '') {
 					$('#listalocalidades').addClass('watsonInputNovalid');
 				}
-				if (document.getElementById("cpWatson").value==''){
+				if (document.getElementById("cpWatson").value == '') {
 					$('#cpWatson').addClass('watsonInputNovalid');
 				}
-				if (document.getElementById("listaprovincias").value==''){
+				if (document.getElementById("listaprovincias").value == '') {
 					$('#listaprovincias').addClass('watsonInputNovalid');
 				}
 				$('#faltaCampo').html(faltaCampoTexto);
 				$(".confirmarWatson").addClass("enlaceInhabilitado");
 				document.getElementById("watson__confirm__btn").style.visibility = "visible";
 				document.getElementById("watson__confirm__btn").disabled = true;
-			  }else{
-			  	if (document.getElementById("tipoV").value!=''){
+			} else {
+				if (document.getElementById("tipoV").value != '') {
 					$('#tipoV').removeClass('watsonInputNovalid');
 				}
-				if (document.getElementById("listacalles").value!=''){
+				if (document.getElementById("listacalles").value != '') {
 					$('#listacalles').removeClass('watsonInputNovalid');
 				}
-				if (document.getElementById("numero").value!=''){
+				if (document.getElementById("numero").value != '') {
 					$('#numero').removeClass('watsonInputNovalid');
 				}
-				if (document.getElementById("listalocalidades").value!=''){
+				if (document.getElementById("listalocalidades").value != '') {
 					$('#listalocalidades').removeClass('watsonInputNovalid');
 				}
-				if (document.getElementById("cpWatson").value!=''){
+				if (document.getElementById("cpWatson").value != '') {
 					$('#cpWatson').removeClass('watsonInputNovalid');
 				}
-				if (document.getElementById("listaprovincias").value!=''){
+				if (document.getElementById("listaprovincias").value != '') {
 					$('#listaprovincias').removeClass('watsonInputNovalid');
 				}
-// $(".confirmarWatson").addClass("confirmarWatson");
-			  document.getElementById("watson__confirm__btn").style.visibility = "hidden";
-			  $('#faltaCampo').html('<button type="button" id="watson__confirm__btn" class="confirmarWatson" onclick="watson_Location.submitFormDirReset()">Confirmar</button>');
-			  }
-		});		
+				// $(".confirmarWatson").addClass("confirmarWatson");
+				document.getElementById("watson__confirm__btn").style.visibility = "hidden";
+				$('#faltaCampo').html('<button type="button" id="watson__confirm__btn" class="confirmarWatson" onclick="watson_Location.submitFormDirReset()">Confirmar</button>');
+			}
+		});
 		// -Fin-
 		// Submit on enter key, dis-allowing blank messages
 		var espacio_blanco = /[a-z,0-9]/i;
@@ -2840,8 +2826,8 @@ watson_ConversationPanel = (function () {
 			$('#watson__input__btn').removeClass('sendButton');
 		}
 
-		if (event.keyCode === 13 && textUser.length > 0
-			&& (espacio_blanco.test(textUser))) {
+		if (event.keyCode === 13 && textUser.length > 0 &&
+			(espacio_blanco.test(textUser))) {
 			google.maps.event.clearInstanceListeners(textInputchat);
 			$(".pac-container").remove();
 			document.getElementById("textInputchat").disabled = true;
@@ -2982,9 +2968,9 @@ watson_Location = (function () {
 		var listacalles = form.elements['listacalles'].value;
 		var numero = form.elements['numero'].value;
 		var textodir = document.getElementById('textodireccion');
-		textodir.innerHTML = "<p>" + tipoV + " " + listacalles + " " + numero
-			+ ", " + listalocalidades + "&nbsp;" + cpWatson + " ("
-			+ listaprovincias + ") "
+		textodir.innerHTML = "<p>" + tipoV + " " + listacalles + " " + numero +
+			", " + listalocalidades + "&nbsp;" + cpWatson + " (" +
+			listaprovincias + ") "
 		"</p>";
 		var scrollingChat = document.querySelector('#watson__body__chat');
 
@@ -3011,8 +2997,8 @@ watson_Location = (function () {
 		var tipoV = form.elements['tipoVia'].value;
 		var listacalles = form.elements['nombreVia'].value;
 		var numero = form.elements['numeroW'].value;
-		var textodir = tipoV + " " + listacalles + " " + numero + " "
-			+ listalocalidades + " " + listaprovincias + " " + cpWatson;
+		var textodir = tipoV + " " + listacalles + " " + numero + " " +
+			listalocalidades + " " + listaprovincias + " " + cpWatson;
 		var context;
 		var latestResponse = watson_Watson.getResponsePayload();
 
@@ -3029,241 +3015,240 @@ watson_Location = (function () {
 			var geocoder = new google.maps.Geocoder();
 
 			geocoder
-				.geocode(
-				{
-					address: textodir
-				},
-				function (results, status) {
+				.geocode({
+						address: textodir
+					},
+					function (results, status) {
 
-					if (status === google.maps.GeocoderStatus.OK) {
-						if (results) {
+						if (status === google.maps.GeocoderStatus.OK) {
+							if (results) {
 
-							var provincia = '';
-							var localidad = '';
-							var cpW = '';
-							var tipoVia = '';
-							var nombreVia = '';
-							var numeroW = '';
+								var provincia = '';
+								var localidad = '';
+								var cpW = '';
+								var tipoVia = '';
+								var nombreVia = '';
+								var numeroW = '';
 
-							for (var i = 0; i < results[0].address_components.length; i++) {
-								if (results[0].address_components[i].types[0] == 'administrative_area_level_2') {
-									provincia = results[0].address_components[i].long_name;
-								}
-								if (results[0].address_components[i].types[0] == 'locality') {
-									localidad = results[0].address_components[i].long_name;
-								}
-								if (results[0].address_components[i].types == 'postal_code') {
-									cpW = results[0].address_components[i].long_name;
-								}
-								if (results[0].address_components[i].types == 'route') {
-									tipoVia = results[0].address_components[i].long_name
-										.split(' ')[0];
-								}
-								if (results[0].address_components[i].types == 'route') {
-									nombreVia = results[0].address_components[i].long_name
-										.split(' ').splice(1)
-										.join(' ');
-								}
-								if (results[0].address_components[i].types == 'street_number') {
-									numeroW = results[0].address_components[i].long_name;
-								}
-							}
-
-							if (provincia == ''
-								|| removeAccents(provincia
-									.toUpperCase()) != removeAccents(listaprovincias
-										.toUpperCase())) {
-								$(
-									'#validateFormResultLocationOther')
-									.html(
-									'<p class="errorValidity">Provincia incorrecta</p>');
-								$('#provincia').addClass(
-									'watsonInputNovalid');
-								watson_ConversationPanel
-									.scrollToChatBottom();
-
-							} else if (localidad == ''
-								|| removeAccents(localidad
-									.toUpperCase()) != removeAccents(listalocalidades
-										.toUpperCase())) {
-								$(
-									'#validateFormResultLocationOther')
-									.html(
-									'<p class="errorValidity">Localidad incorrecta</p>');
-								$('#localidad').addClass(
-									'watsonInputNovalid');
-								watson_ConversationPanel
-									.scrollToChatBottom();
-
-							} else if (cpW == '' || cpW != cpWatson) {
-								$(
-									'#validateFormResultLocationOther')
-									.html(
-									'<p class="errorValidity">C\u00f3digo Postal incorrecto</p>');
-								$('#cpW').addClass(
-									'watsonInputNovalid');
-								watson_ConversationPanel
-									.scrollToChatBottom();
-
-							} else if (tipoVia == ''
-								|| removeAccents(tipoVia
-									.toUpperCase()) != removeAccents(tipoV
-										.toUpperCase())) {
-								$(
-									'#validateFormResultLocationOther')
-									.html(
-									'<p class="errorValidity">Tipo de v\u00eda incorrecta</p>');
-								$('#tipoVia').addClass(
-									'watsonInputNovalid');
-								watson_ConversationPanel
-									.scrollToChatBottom();
-
-							} else if (nombreVia == ''
-								|| removeAccents(nombreVia
-									.toUpperCase()) != removeAccents(listacalles
-										.toUpperCase())) {
-								$(
-									'#validateFormResultLocationOther')
-									.html(
-									'<p class="errorValidity">Nombre de la v\u00eda incorrecta</p>');
-								$('#nombreVia').addClass(
-									'watsonInputNovalid');
-								watson_ConversationPanel
-									.scrollToChatBottom();
-
-							} else if (numeroW == ''
-								|| numeroW != numero) {
-								$(
-									'#validateFormResultLocationOther')
-									.html(
-									'<p class="errorValidity">N\u00famero incorrecto</p>');
-								$('#numeroW').addClass(
-									'watsonInputNovalid');
-								watson_ConversationPanel
-									.scrollToChatBottom();
-							} else {
-								// Reset Textarea
-								watson_ConversationPanel
-									.resetTextArea();
-								document
-									.getElementById('escribeaqui').style.display = 'block';
-								$(
-									'#validateFormResultLocationOther')
-									.html('');
-
-								if (latestResponse) {
-									context = latestResponse.context;
-								}
-
-								if (textodir.length > 0
-									&& (espacio_blanco
-										.test(textodir))) {
-									// Send the user message
-									var s = watson_Watson
-										.getStatus();
-
-									if (s && s == 'default') {
-										var canal = $(
-											'#watsonContainer')
-											.attr('data-canal');
-										var urlHTML = $(
-											'#watsonContainer')
-											.attr('data-url');
-										var context = {
-											"canal": canal,
-											// "logado": "false",
-											// "IdFAQ_Original": urlHTML
-										};
-										watson_Watson
-											.setStatus('to-watson');
+								for (var i = 0; i < results[0].address_components.length; i++) {
+									if (results[0].address_components[i].types[0] == 'administrative_area_level_2') {
+										provincia = results[0].address_components[i].long_name;
 									}
-									var canal = $(
-										'#watsonContainer')
-										.attr('data-canal');
-									var urlHTML = $(
-										'#watsonContainer')
-										.attr('data-url');
-									var context = {
-										"canal": canal,
-										// "logado":"false",
-										// "IdFAQ_Original":
-										// urlHTML,
-										"nombre": "",
-										"email": "",
-										"telefono": ""
-									};
-									consultaFibra = {
-										"tipoVia": tipoVia,
-										"nombreVia": nombreVia,
-										"localidad": localidad,
-										"cp": cpW,
-										"numero": numeroW,
-										"provincia": provincia
-									};
-									consultaFibraScope = consultaFibra;
-									watson_Watson.sendLocation(
-										textodir, context,
-										consultaFibra);
-									document
-										.getElementById("provincia").disabled = true;
-									document
-										.getElementById("localidad").disabled = true;
-									document.getElementById("cpW").disabled = true;
-									document
-										.getElementById("tipoVia").disabled = true;
-									document
-										.getElementById("nombreVia").disabled = true;
-									document
-										.getElementById("numeroW").disabled = true;
-									watson_ConversationPanel.showLoading();
-									document
-										.getElementById("escribeaqui").disabled = true;
-									document
-										.getElementById("resetWatson").disabled = true;
+									if (results[0].address_components[i].types[0] == 'locality') {
+										localidad = results[0].address_components[i].long_name;
+									}
+									if (results[0].address_components[i].types == 'postal_code') {
+										cpW = results[0].address_components[i].long_name;
+									}
+									if (results[0].address_components[i].types == 'route') {
+										tipoVia = results[0].address_components[i].long_name
+											.split(' ')[0];
+									}
+									if (results[0].address_components[i].types == 'route') {
+										nombreVia = results[0].address_components[i].long_name
+											.split(' ').splice(1)
+											.join(' ');
+									}
+									if (results[0].address_components[i].types == 'street_number') {
+										numeroW = results[0].address_components[i].long_name;
+									}
+								}
+
+								if (provincia == '' ||
+									removeAccents(provincia
+										.toUpperCase()) != removeAccents(listaprovincias
+										.toUpperCase())) {
+									$(
+											'#validateFormResultLocationOther')
+										.html(
+											'<p class="errorValidity">Provincia incorrecta</p>');
+									$('#provincia').addClass(
+										'watsonInputNovalid');
 									watson_ConversationPanel
 										.scrollToChatBottom();
 
+								} else if (localidad == '' ||
+									removeAccents(localidad
+										.toUpperCase()) != removeAccents(listalocalidades
+										.toUpperCase())) {
+									$(
+											'#validateFormResultLocationOther')
+										.html(
+											'<p class="errorValidity">Localidad incorrecta</p>');
+									$('#localidad').addClass(
+										'watsonInputNovalid');
+									watson_ConversationPanel
+										.scrollToChatBottom();
+
+								} else if (cpW == '' || cpW != cpWatson) {
+									$(
+											'#validateFormResultLocationOther')
+										.html(
+											'<p class="errorValidity">C\u00f3digo Postal incorrecto</p>');
+									$('#cpW').addClass(
+										'watsonInputNovalid');
+									watson_ConversationPanel
+										.scrollToChatBottom();
+
+								} else if (tipoVia == '' ||
+									removeAccents(tipoVia
+										.toUpperCase()) != removeAccents(tipoV
+										.toUpperCase())) {
+									$(
+											'#validateFormResultLocationOther')
+										.html(
+											'<p class="errorValidity">Tipo de v\u00eda incorrecta</p>');
+									$('#tipoVia').addClass(
+										'watsonInputNovalid');
+									watson_ConversationPanel
+										.scrollToChatBottom();
+
+								} else if (nombreVia == '' ||
+									removeAccents(nombreVia
+										.toUpperCase()) != removeAccents(listacalles
+										.toUpperCase())) {
+									$(
+											'#validateFormResultLocationOther')
+										.html(
+											'<p class="errorValidity">Nombre de la v\u00eda incorrecta</p>');
+									$('#nombreVia').addClass(
+										'watsonInputNovalid');
+									watson_ConversationPanel
+										.scrollToChatBottom();
+
+								} else if (numeroW == '' ||
+									numeroW != numero) {
+									$(
+											'#validateFormResultLocationOther')
+										.html(
+											'<p class="errorValidity">N\u00famero incorrecto</p>');
+									$('#numeroW').addClass(
+										'watsonInputNovalid');
+									watson_ConversationPanel
+										.scrollToChatBottom();
+								} else {
 									// Reset Textarea
 									watson_ConversationPanel
 										.resetTextArea();
+									document
+										.getElementById('escribeaqui').style.display = 'block';
+									$(
+											'#validateFormResultLocationOther')
+										.html('');
+
+									if (latestResponse) {
+										context = latestResponse.context;
+									}
+
+									if (textodir.length > 0 &&
+										(espacio_blanco
+											.test(textodir))) {
+										// Send the user message
+										var s = watson_Watson
+											.getStatus();
+
+										if (s && s == 'default') {
+											var canal = $(
+													'#watsonContainer')
+												.attr('data-canal');
+											var urlHTML = $(
+													'#watsonContainer')
+												.attr('data-url');
+											var context = {
+												"canal": canal,
+												// "logado": "false",
+												// "IdFAQ_Original": urlHTML
+											};
+											watson_Watson
+												.setStatus('to-watson');
+										}
+										var canal = $(
+												'#watsonContainer')
+											.attr('data-canal');
+										var urlHTML = $(
+												'#watsonContainer')
+											.attr('data-url');
+										var context = {
+											"canal": canal,
+											// "logado":"false",
+											// "IdFAQ_Original":
+											// urlHTML,
+											"nombre": "",
+											"email": "",
+											"telefono": ""
+										};
+										consultaFibra = {
+											"tipoVia": tipoVia,
+											"nombreVia": nombreVia,
+											"localidad": localidad,
+											"cp": cpW,
+											"numero": numeroW,
+											"provincia": provincia
+										};
+										consultaFibraScope = consultaFibra;
+										watson_Watson.sendLocation(
+											textodir, context,
+											consultaFibra);
+										document
+											.getElementById("provincia").disabled = true;
+										document
+											.getElementById("localidad").disabled = true;
+										document.getElementById("cpW").disabled = true;
+										document
+											.getElementById("tipoVia").disabled = true;
+										document
+											.getElementById("nombreVia").disabled = true;
+										document
+											.getElementById("numeroW").disabled = true;
+										watson_ConversationPanel.showLoading();
+										document
+											.getElementById("escribeaqui").disabled = true;
+										document
+											.getElementById("resetWatson").disabled = true;
+										watson_ConversationPanel
+											.scrollToChatBottom();
+
+										// Reset Textarea
+										watson_ConversationPanel
+											.resetTextArea();
+									}
+
+									var scrollingChat = document
+										.querySelector('#watson__body__chat');
+
+									var scrollEl = scrollingChat
+										.querySelector('.from-watson' +
+											'.latest');
+									if (scrollEl) {
+										scrollingChat.scrollTop = scrollEl.offsetTop;
+									}
+
+									$(".miubicacionWatson").addClass(
+										"enlaceInhabilitado");
+									document
+										.getElementById("miubicacionWatson").disabled = true;
+
+									$(".otraubicacionWatson").addClass(
+										"enlaceInhabilitado");
+									document
+										.getElementById("otraubicacionWatson").disabled = true;
+
+									$(".confirmarWatson").addClass(
+										"enlaceInhabilitado");
+									document
+										.getElementById("watson__confirm__other").disabled = true;
+
 								}
-
-								var scrollingChat = document
-									.querySelector('#watson__body__chat');
-
-								var scrollEl = scrollingChat
-									.querySelector('.from-watson'
-									+ '.latest');
-								if (scrollEl) {
-									scrollingChat.scrollTop = scrollEl.offsetTop;
-								}
-
-								$(".miubicacionWatson").addClass(
-									"enlaceInhabilitado");
-								document
-									.getElementById("miubicacionWatson").disabled = true;
-
-								$(".otraubicacionWatson").addClass(
-									"enlaceInhabilitado");
-								document
-									.getElementById("otraubicacionWatson").disabled = true;
-
-								$(".confirmarWatson").addClass(
-									"enlaceInhabilitado");
-								document
-									.getElementById("watson__confirm__other").disabled = true;
-
+							} else {
+								content.innerHTML = "<p style=\"color:red\"><strong>No results found</p>";
+								content.style.display = 'block';
 							}
 						} else {
-							content.innerHTML = "<p style=\"color:red\"><strong>No results found</p>";
-							content.style.display = 'block';
+							watson_ConversationPanel
+								.captureErrorWatson();
 						}
-					} else {
-						watson_ConversationPanel
-							.captureErrorWatson();
-					}
 
-				});
+					});
 			// Reset Textarea
 			watson_ConversationPanel.resetTextArea();
 
@@ -3271,7 +3256,7 @@ watson_Location = (function () {
 			$("div")
 				.find('#validateFormResultLocationOther')
 				.html(
-				'<p class="errorValidity">Por favor, completa los datos que faltan.</p>');
+					'<p class="errorValidity">Por favor, completa los datos que faltan.</p>');
 			watson_ConversationPanel.scrollToChatBottom();
 		}
 
@@ -3330,9 +3315,9 @@ watson_Location = (function () {
 		var listacalles = form.elements['listacalles'].value;
 		var numero = form.elements['numero'].value;
 
-		var textodir = tipoV + " " + listacalles + " " + numero
-			+ ", " + listalocalidades + "&nbsp;" + cpWatson + " ("
-			+ listaprovincias + ") ";
+		var textodir = tipoV + " " + listacalles + " " + numero +
+			", " + listalocalidades + "&nbsp;" + cpWatson + " (" +
+			listaprovincias + ") ";
 
 		var context;
 		var latestResponse = watson_Watson.getResponsePayload();
@@ -3371,9 +3356,9 @@ watson_Location = (function () {
 					"canal": canal
 					// "logado":"false",
 					// "IdFAQ_Original": urlHTML,
-//					"nombre": "",
-//					"email": "",
-//					"telefono": ""
+					//					"nombre": "",
+					//					"email": "",
+					//					"telefono": ""
 				};
 				consultaFibra = {
 					"tipoVia": tipoV,
@@ -3393,8 +3378,8 @@ watson_Location = (function () {
 
 			var scrollingChat = document.querySelector('#watson__body__chat');
 
-			var scrollEl = scrollingChat.querySelector('.from-watson'
-				+ '.latest');
+			var scrollEl = scrollingChat.querySelector('.from-watson' +
+				'.latest');
 			if (scrollEl) {
 				scrollingChat.scrollTop = scrollEl.offsetTop;
 			}
@@ -3410,7 +3395,7 @@ watson_Location = (function () {
 		} else {
 			$('#validateFormResultLocation')
 				.html(
-				'<p class="errorValidity">Por favor, completa los datos que faltan.</p>');
+					'<p class="errorValidity">Por favor, completa los datos que faltan.</p>');
 			watson_ConversationPanel.scrollToChatBottom();
 		}
 		watson_ConversationPanel.showLoading();
@@ -3427,28 +3412,28 @@ watson_Location = (function () {
 		document.getElementById("miubicacionWatson").disabled = true;
 		$(".otraubicacionWatson").addClass("enlaceInhabilitado");
 		document.getElementById("otraubicacionWatson").disabled = true;
-		
+
 		// Comprobar campos vacÃ­os
 		var faltaCampoTexto = "No he podido capturar tu ubicaciÃ³n completa. Por favor, completa los datos que faltan y que aparecen resaltados";
-		$('#tipoV').on('keydown keyup', function (event) {	
+		$('#tipoV').on('keydown keyup', function (event) {
 			watson_ConversationPanel.inputKeyDown(event, $(this));
 		});
-		$('#listacalles').on('keydown keyup', function (event) {	
+		$('#listacalles').on('keydown keyup', function (event) {
 			watson_ConversationPanel.inputKeyDown(event, $(this));
 		});
-		$('#numero').on('keydown keyup', function (event) {	
+		$('#numero').on('keydown keyup', function (event) {
 			watson_ConversationPanel.inputKeyDown(event, $(this));
 		});
-		$('#listalocalidades').on('keydown keyup', function (event) {	
+		$('#listalocalidades').on('keydown keyup', function (event) {
 			watson_ConversationPanel.inputKeyDown(event, $(this));
 		});
-		$('#cpWatson').on('keydown keyup', function (event) {	
+		$('#cpWatson').on('keydown keyup', function (event) {
 			watson_ConversationPanel.inputKeyDown(event, $(this));
 		});
-		$('#listaprovincias').on('keydown keyup', function (event) {	
+		$('#listaprovincias').on('keydown keyup', function (event) {
 			watson_ConversationPanel.inputKeyDown(event, $(this));
 		});
-			
+
 		if (permissionDenied) {
 			watson_Common.resetWatson();
 		}
@@ -3468,190 +3453,189 @@ watson_Location = (function () {
 		if (navigator.geolocation) {
 			navigator.geolocation
 				.getCurrentPosition(
-				function (objPosition) {
-					var lon = objPosition.coords.longitude;
-					var lat = objPosition.coords.latitude;
-					var geocoder = new google.maps.Geocoder();
-					var latlng = new google.maps.LatLng(lat, lon);
-					geocoder
-						.geocode(
-						{
-							'latLng': latlng
-						},
-						function (results, status) {
-							if (status === google.maps.GeocoderStatus.OK) {
-								if (results
-									&& (results[0].types == 'street_address'
-										|| results[0].types == 'route'
-										|| results[0].types == 'premise' || results[0].types == 'subpremise')) {
-									var provincia = '';
-									var localidad = '';
-									var cpW = '';
-									var tipoVia = '';
-									var nombreVia = '';
-									var numeroW = '';
+					function (objPosition) {
+						var lon = objPosition.coords.longitude;
+						var lat = objPosition.coords.latitude;
+						var geocoder = new google.maps.Geocoder();
+						var latlng = new google.maps.LatLng(lat, lon);
+						geocoder
+							.geocode({
+									'latLng': latlng
+								},
+								function (results, status) {
+									if (status === google.maps.GeocoderStatus.OK) {
+										if (results &&
+											(results[0].types == 'street_address' ||
+												results[0].types == 'route' ||
+												results[0].types == 'premise' || results[0].types == 'subpremise')) {
+											var provincia = '';
+											var localidad = '';
+											var cpW = '';
+											var tipoVia = '';
+											var nombreVia = '';
+											var numeroW = '';
 
-									for (var i = 0; i < results[0].address_components.length; i++) {			
-										if (results[0].address_components[i].types[0] == 'administrative_area_level_2') {
-											provincia = results[0].address_components[i].long_name;
+											for (var i = 0; i < results[0].address_components.length; i++) {
+												if (results[0].address_components[i].types[0] == 'administrative_area_level_2') {
+													provincia = results[0].address_components[i].long_name;
+												}
+												if (results[0].address_components[i].types[0] == 'locality') {
+													localidad = results[0].address_components[i].long_name;
+												}
+												if (results[0].address_components[i].types == 'postal_code') {
+													cpW = results[0].address_components[i].long_name;
+												}
+												if (results[0].address_components[i].types == 'route') {
+													tipoVia = results[0].address_components[i].long_name.split(' ')[0];
+												}
+												if (results[0].address_components[i].types == 'route') {
+													nombreVia = results[0].address_components[i].long_name.split(' ').splice(1).join(' ');
+												}
+												if (results[0].address_components[i].types == 'street_number') {
+													numeroW = results[0].address_components[i].long_name;
+												}
+											}
+											// -Inicio- IntroducciÃ³n de mensajes de
+											// aviso que falta algunos de los campos
+											if (!provincia || provincia == '' || provincia === "undefined") {
+												listaprovincias = provincia;
+											}
+											if (!localidad || localidad == '' || localidad === "undefined") {
+												listalocalidades = localidad;
+											}
+											if (!cpW || cpW == '' || cpW === "undefined") {
+												cpWatson = cpW;
+											}
+											if (!tipoVia || tipoVia == '' || tipoVia === "undefined") {
+												tipoV = tipoVia;
+											}
+											if (!nombreVia || nombreVia == '' || nombreVia === "undefined") {
+												listacalles = nombreVia;
+											}
+											if (!numeroW || numeroW == '' || numeroW === "undefined") {
+												numero = numeroW;
+											}
+											var validation = watson_Common.checkFormLocation(listaprovincias, listalocalidades, cpWatson, tipoV, listacalles, numero)
+											if (!validation) {
+												if (tipoVia == '') {
+													$('#tipoV').addClass('watsonInputNovalid');
+													$(".confirmarWatson").addClass("enlaceInhabilitado");
+													document.getElementById("watson__confirm__btn").disabled = true;
+													$('#faltaCampo').html(faltaCampoTexto);
+												}
+												if (nombreVia == '') {
+													$('#listacalles').addClass('watsonInputNovalid');
+													$(".confirmarWatson").addClass("enlaceInhabilitado");
+													document.getElementById("watson__confirm__btn").disabled = true;
+													$('#faltaCampo').html(faltaCampoTexto);
+												}
+												if (numeroW == '') {
+													$('#numero').addClass('watsonInputNovalid');
+													$(".confirmarWatson").addClass("enlaceInhabilitado");
+													document.getElementById("watson__confirm__btn").disabled = true;
+													$('#faltaCampo').html(faltaCampoTexto);
+												}
+												if (localidad == '') {
+													$('#listalocalidades').addClass('watsonInputNovalid');
+													$(".confirmarWatson").addClass("enlaceInhabilitado");
+													document.getElementById("watson__confirm__btn").disabled = true;
+													$('#faltaCampo').html(faltaCampoTexto);
+												}
+												if (cpW == '') {
+													$('#cpWatson').addClass('watsonInputNovalid');
+													$(".confirmarWatson").addClass("enlaceInhabilitado");
+													document.getElementById("watson__confirm__btn").disabled = true;
+													$('#faltaCampo').html(faltaCampoTexto);
+												}
+												if (provincia == '') {
+													$('#listaprovincias').addClass('watsonInputNovalid');
+													$(".confirmarWatson").addClass("enlaceInhabilitado");
+													document.getElementById("watson__confirm__btn").disabled = true;
+													$('#faltaCampo').html(faltaCampoTexto);
+												}
+											}
+											// -Fin-
+
+											mostrarformRelleno(
+												provincia,
+												localidad,
+												cpW,
+												tipoVia,
+												nombreVia,
+												numeroW);
+										} else {
+
+											content.innerHTML = "<p style=\"color:red\"><strong>No results found</p>";
+											content.style.display = 'block';
 										}
-										if (results[0].address_components[i].types[0] == 'locality') {
-											localidad = results[0].address_components[i].long_name;
-										}
-										if (results[0].address_components[i].types == 'postal_code') {
-											cpW = results[0].address_components[i].long_name;
-										}
-										if (results[0].address_components[i].types == 'route') {
-											tipoVia = results[0].address_components[i].long_name.split(' ')[0];
-										}
-										if (results[0].address_components[i].types == 'route') {
-											nombreVia = results[0].address_components[i].long_name.split(' ').splice(1).join(' ');
-										}
-										if (results[0].address_components[i].types == 'street_number') {
-											numeroW = results[0].address_components[i].long_name;
-										}
+									} else {
+										watson_ConversationPanel
+											.captureErrorWatson();
 									}
-									// -Inicio- IntroducciÃ³n de mensajes de
-									// aviso que falta algunos de los campos
-										if (!provincia || provincia == '' || provincia === "undefined"){
-											listaprovincias = provincia;
-										}
-										if (!localidad || localidad == '' || localidad === "undefined"){
-											listalocalidades = localidad;
-										}
-										if (!cpW || cpW == '' || cpW === "undefined"){
-											cpWatson = cpW;
-										}
-										if (!tipoVia || tipoVia == '' || tipoVia === "undefined"){
-											tipoV = tipoVia;
-										}
-										if (!nombreVia || nombreVia == '' || nombreVia === "undefined"){
-											listacalles = nombreVia;
-										}
-										if (!numeroW || numeroW == '' || numeroW === "undefined"){
-											numero = numeroW;
-										}
-										var validation = watson_Common.checkFormLocation(listaprovincias, listalocalidades, cpWatson, tipoV, listacalles, numero)	
-										if(!validation) {
-										    if (tipoVia==''){
-										    	$('#tipoV').addClass('watsonInputNovalid');
-										    	$(".confirmarWatson").addClass("enlaceInhabilitado");
-												document.getElementById("watson__confirm__btn").disabled = true;
-												$('#faltaCampo').html(faltaCampoTexto);
-										    }
-										    if (nombreVia==''){
-										    	$('#listacalles').addClass('watsonInputNovalid');
-										    	$(".confirmarWatson").addClass("enlaceInhabilitado");
-												document.getElementById("watson__confirm__btn").disabled = true;
-												$('#faltaCampo').html(faltaCampoTexto);
-										    }
-										    if (numeroW==''){
-										    	$('#numero').addClass('watsonInputNovalid');
-										    	$(".confirmarWatson").addClass("enlaceInhabilitado");
-												document.getElementById("watson__confirm__btn").disabled = true;
-												$('#faltaCampo').html(faltaCampoTexto);
-										    }
-										    if (localidad==''){
-										    	$('#listalocalidades').addClass('watsonInputNovalid');
-										    	$(".confirmarWatson").addClass("enlaceInhabilitado");
-												document.getElementById("watson__confirm__btn").disabled = true;
-												$('#faltaCampo').html(faltaCampoTexto);
-										    }
-										    if (cpW==''){
-										    	$('#cpWatson').addClass('watsonInputNovalid');
-										    	$(".confirmarWatson").addClass("enlaceInhabilitado");
-												document.getElementById("watson__confirm__btn").disabled = true;
-												$('#faltaCampo').html(faltaCampoTexto);
-										    }
-										    if (provincia==''){
-										    	$('#listaprovincias').addClass('watsonInputNovalid');
-										    	$(".confirmarWatson").addClass("enlaceInhabilitado");
-												document.getElementById("watson__confirm__btn").disabled = true;
-												$('#faltaCampo').html(faltaCampoTexto);
-										    }
-										}										
-									// -Fin-
-									
-									mostrarformRelleno(
-										provincia,
-										localidad,
-										cpW,
-										tipoVia,
-										nombreVia,
-										numeroW);
-								} else {
-									
-									content.innerHTML = "<p style=\"color:red\"><strong>No results found</p>";
-									content.style.display = 'block';
-								}
-							} else {
-								watson_ConversationPanel
-									.captureErrorWatson();
-							}
-						});
-					document.body.style.cursor = 'default';
+								});
+						document.body.style.cursor = 'default';
 
-				},
-				function (objPositionError) {
-					switch (objPositionError.code) {
-						case objPositionError.PERMISSION_DENIED:
-							// content.innerHTML = "<p
-							// style=\"color:red\"><strong>Latitud:</strong>No
-							// se ha permitido el acceso a la posiciï¿½n del
-							// usuario.</p>";
-							// Bloqueo en el navegador del permiso de buscar la
-							// ubicaciÃ³n
-							var data = {};
-							data.output = {};
-							data.output.text = ["Lo siento, no ha sido posible capturar tu ubicaciÃ³n de forma automÃ¡tica pues no tienes habilitada esta funcionalidad en tu navegador. Puedes habilitarla e intentarlo de nuevo o escribir la direcciÃ³n pulsando en 'Escribir DirecciÃ³n'"];
-							var type = 'watson';
-							watson_ConversationPanel.displayMessage(data, type);
-							document.body.style.cursor = 'default';
-							permissionDenied = true;
-							// console.log("No se ha permitido la ubicaciÃ³n");
-							break;
-						case objPositionError.POSITION_UNAVAILABLE:
-							// content.innerHTML = "<p
-							// style=\"color:red\"><strong>Latitud:</strong>No
-							// se ha podido acceder a la informaciï¿½n de su
-							// posiciï¿½n.</p>";
-							// No se ha podido encontrar la ubicaciÃ³n
-							var data = {};
-							data.output = {};
-							data.output.text = ["Lo siento, no ha sido posible capturar tu ubicaciÃ³n de forma automÃ¡tica pues no tienes habilitada esta funcionalidad en tu navegador. Puedes habilitarla e intentarlo de nuevo o escribir la direcciÃ³n pulsando en 'Escribir DirecciÃ³n'"];
-							var type = 'watson';
-							watson_ConversationPanel.displayMessage(data, type);
-							document.body.style.cursor = 'default';
-							permissionDenied = true;
-							break;
-						case objPositionError.TIMEOUT:
-							// content.innerHTML = "<p
-							// style=\"color:red\"><strong>Latitud:</strong>El
-							// servicio ha tardado demasiado tiempo en
-							// responder.</p>";
-							// Se excede el tiempo en permitir o no (navegador)
-							// el acceso a la busqueda automÃ¡tica
-							var data = {};
-							data.output = {};
-							data.output.text = ["Lo siento, no ha sido posible capturar tu ubicaciÃ³n de forma automÃ¡tica pues no tienes habilitada esta funcionalidad en tu navegador. Puedes habilitarla e intentarlo de nuevo o escribir la direcciÃ³n pulsando en 'Escribir DirecciÃ³n'"];
-							var type = 'watson';
-							watson_ConversationPanel.displayMessage(data, type);
-							document.body.style.cursor = 'default';
-							permissionDenied = true;
-							break;
-						default:
-							if (!permissionDenied) {
-								watson_ConversationPanel
-									.captureErrorWatson();
+					},
+					function (objPositionError) {
+						switch (objPositionError.code) {
+							case objPositionError.PERMISSION_DENIED:
+								// content.innerHTML = "<p
+								// style=\"color:red\"><strong>Latitud:</strong>No
+								// se ha permitido el acceso a la posiciï¿½n del
+								// usuario.</p>";
+								// Bloqueo en el navegador del permiso de buscar la
+								// ubicaciÃ³n
+								var data = {};
+								data.output = {};
+								data.output.text = ["Lo siento, no ha sido posible capturar tu ubicaciÃ³n de forma automÃ¡tica pues no tienes habilitada esta funcionalidad en tu navegador. Puedes habilitarla e intentarlo de nuevo o escribir la direcciÃ³n pulsando en 'Escribir DirecciÃ³n'"];
+								var type = 'watson';
+								watson_ConversationPanel.displayMessage(data, type);
+								document.body.style.cursor = 'default';
 								permissionDenied = true;
-							}
-					}
-					content.style.display = 'block';
-					document.body.style.cursor = 'default';
-				}, {
-					maximumAge: 75000,
-					timeout: 15000
-				});
+								// console.log("No se ha permitido la ubicaciÃ³n");
+								break;
+							case objPositionError.POSITION_UNAVAILABLE:
+								// content.innerHTML = "<p
+								// style=\"color:red\"><strong>Latitud:</strong>No
+								// se ha podido acceder a la informaciï¿½n de su
+								// posiciï¿½n.</p>";
+								// No se ha podido encontrar la ubicaciÃ³n
+								var data = {};
+								data.output = {};
+								data.output.text = ["Lo siento, no ha sido posible capturar tu ubicaciÃ³n de forma automÃ¡tica pues no tienes habilitada esta funcionalidad en tu navegador. Puedes habilitarla e intentarlo de nuevo o escribir la direcciÃ³n pulsando en 'Escribir DirecciÃ³n'"];
+								var type = 'watson';
+								watson_ConversationPanel.displayMessage(data, type);
+								document.body.style.cursor = 'default';
+								permissionDenied = true;
+								break;
+							case objPositionError.TIMEOUT:
+								// content.innerHTML = "<p
+								// style=\"color:red\"><strong>Latitud:</strong>El
+								// servicio ha tardado demasiado tiempo en
+								// responder.</p>";
+								// Se excede el tiempo en permitir o no (navegador)
+								// el acceso a la busqueda automÃ¡tica
+								var data = {};
+								data.output = {};
+								data.output.text = ["Lo siento, no ha sido posible capturar tu ubicaciÃ³n de forma automÃ¡tica pues no tienes habilitada esta funcionalidad en tu navegador. Puedes habilitarla e intentarlo de nuevo o escribir la direcciÃ³n pulsando en 'Escribir DirecciÃ³n'"];
+								var type = 'watson';
+								watson_ConversationPanel.displayMessage(data, type);
+								document.body.style.cursor = 'default';
+								permissionDenied = true;
+								break;
+							default:
+								if (!permissionDenied) {
+									watson_ConversationPanel
+										.captureErrorWatson();
+									permissionDenied = true;
+								}
+						}
+						content.style.display = 'block';
+						document.body.style.cursor = 'default';
+					}, {
+						maximumAge: 75000,
+						timeout: 15000
+					});
 			firstTextInput++;
 
 		} else {
@@ -3746,260 +3730,259 @@ watson_Location = (function () {
 		if (captureNumber) {
 			consultaFibra.numero = addressInput;
 			$('#textInputchat').removeAttr('onkeypress');
-			addressInput = consultaFibra.tipoVia + " "
-				+ consultaFibra.nombreVia + " " + consultaFibra.numero
-				+ ", " + consultaFibra.localidad + "("
-				+ consultaFibra.provincia + ") " + consultaFibra.cp;
+			addressInput = consultaFibra.tipoVia + " " +
+				consultaFibra.nombreVia + " " + consultaFibra.numero +
+				", " + consultaFibra.localidad + "(" +
+				consultaFibra.provincia + ") " + consultaFibra.cp;
 		}
 
 		geocoder
-			.geocode(
-			{
-				address: addressInput,
-				componentRestrictions: {
-					country: "ES"
-				}
-			},
-			function (results, status) {
+			.geocode({
+					address: addressInput,
+					componentRestrictions: {
+						country: "ES"
+					}
+				},
+				function (results, status) {
 
-				if (status === google.maps.GeocoderStatus.OK) {
-					// limitamos la busqueda
-					if (results
-						&& (results[0].types == 'street_address'
-							|| results[0].types == 'route'
-							|| results[0].types == 'premise' || results[0].types == 'subpremise')) {
+					if (status === google.maps.GeocoderStatus.OK) {
+						// limitamos la busqueda
+						if (results &&
+							(results[0].types == 'street_address' ||
+								results[0].types == 'route' ||
+								results[0].types == 'premise' || results[0].types == 'subpremise')) {
 
-						var provincia = '';
-						var localidad = '';
-						var cpW = '';
-						var tipoVia = '';
-						var nombreVia = '';
-						var numeroW = '';
+							var provincia = '';
+							var localidad = '';
+							var cpW = '';
+							var tipoVia = '';
+							var nombreVia = '';
+							var numeroW = '';
 
-						for (var i = 0; i < results[0].address_components.length; i++) {
-							if (results[0].address_components[i].types[0] == 'administrative_area_level_2') {
-								provincia = results[0].address_components[i].long_name;
-							}
-							if (results[0].address_components[i].types[0] == 'locality') {
-								localidad = results[0].address_components[i].long_name;
-							}
-							if (results[0].address_components[i].types == 'postal_code') {
-								cpW = results[0].address_components[i].long_name;
-							}
-							if (results[0].address_components[i].types == 'route') {
-								tipoVia = results[0].address_components[i].long_name
-									.split(' ')[0];
-							}
-							if (results[0].address_components[i].types == 'route') {
-								nombreVia = results[0].address_components[i].long_name
-									.split(' ').splice(1).join(
-									' ');
-							}
-							if (results[0].address_components[i].types == 'street_number') {
-								numeroW = results[0].address_components[i].long_name;
-							//-Inicio- NÃºmero no informado o no encontrado
-							}else if (vuelta && numeroW == ''){
-										if (consultaFibra.numero > 0 && consultaFibra.numero < 999999){
-											numeroW = consultaFibra.numero;	
-										}
+							for (var i = 0; i < results[0].address_components.length; i++) {
+								if (results[0].address_components[i].types[0] == 'administrative_area_level_2') {
+									provincia = results[0].address_components[i].long_name;
 								}
-							//-Fin- NÃºmero no informado o no encontrado
-						}
-						// si falta solo el numero de la calle
-						if (provincia != '' && localidad != ''
-							&& tipoVia != '' && nombreVia != ''
-							&& numeroW == '') {
-								
-							vuelta = true;
+								if (results[0].address_components[i].types[0] == 'locality') {
+									localidad = results[0].address_components[i].long_name;
+								}
+								if (results[0].address_components[i].types == 'postal_code') {
+									cpW = results[0].address_components[i].long_name;
+								}
+								if (results[0].address_components[i].types == 'route') {
+									tipoVia = results[0].address_components[i].long_name
+										.split(' ')[0];
+								}
+								if (results[0].address_components[i].types == 'route') {
+									nombreVia = results[0].address_components[i].long_name
+										.split(' ').splice(1).join(
+											' ');
+								}
+								if (results[0].address_components[i].types == 'street_number') {
+									numeroW = results[0].address_components[i].long_name;
+									//-Inicio- NÃºmero no informado o no encontrado
+								} else if (vuelta && numeroW == '') {
+									if (consultaFibra.numero > 0 && consultaFibra.numero < 999999) {
+										numeroW = consultaFibra.numero;
+									}
+								}
+								//-Fin- NÃºmero no informado o no encontrado
+							}
+							// si falta solo el numero de la calle
+							if (provincia != '' && localidad != '' &&
+								tipoVia != '' && nombreVia != '' &&
+								numeroW == '') {
+
+								vuelta = true;
+								var data = {};
+								var dataU = {};
+								data.output = {};
+								dataU.input = {};
+								data.output.text = ["Ind\u00edcame ahora el n\u00famero de la calle"];
+								dataU.input.text = [addressInput];
+								var type = 'watson';
+								var typeU = 'user';
+								watson_ConversationPanel
+									.displayMessage(dataU, typeU);
+								watson_ConversationPanel
+									.displayMessage(data, type);
+
+								// Enviamos datos a initial_Conversation
+								var latestResponse = initial_Conversation
+									.getResponsePayload();
+								var input = addressInput;
+								contextInitial.output = "Ind\u00edcame ahora el n\u00famero de la calle";
+								initial_Conversation
+									.sendRequestInitial(input,
+										contextInitial);
+
+								document
+									.getElementById("textInputchat").disabled = false;
+								consultaFibra = {
+									"tipoVia": tipoVia,
+									"nombreVia": nombreVia,
+									"localidad": localidad,
+									"cp": cpW,
+									"provincia": provincia
+								};
+								setTimeout(function () {
+									document.getElementById(
+										'textInputchat').focus();
+								}, 5);
+								// $( "#textInputchat" ).focus();
+								otherLocation = true;
+								captureNumber = true;
+								$("#textInputchat").attr('onkeypress',
+									'return isNumber(event)');
+								watson_ConversationPanel
+									.scrollToChatBottom();
+
+							} else {
+								consultaFibra = {
+									"tipoVia": tipoVia,
+									"nombreVia": nombreVia,
+									"localidad": localidad,
+									"cp": cpW,
+									"numero": numeroW,
+									"provincia": provincia
+								};
+								consultaFibraScope = consultaFibra;
+
+								var context;
+								var latestResponse = watson_Watson
+									.getResponsePayload();
+								var espacio_blanco = /[a-z,0-9]/i;
+
+								if (latestResponse) {
+									context = latestResponse.context;
+								}
+
+								if (addressInput.length > 0 &&
+									(espacio_blanco
+										.test(addressInput))) {
+									// Send the user message
+									if (watson_RightNow.getContext().rightnow) {
+										watson_RightNow
+											.envioMensaje(addressInput);
+									} else {
+
+										var s = watson_Watson
+											.getStatus();
+
+										if (s && s == 'default') {
+											var canal = $(
+													'#watsonContainer')
+												.attr('data-canal');
+											var urlHTML = $(
+													'#watsonContainer')
+												.attr('data-url');
+											var context = {
+												"canal": canal,
+												// "logado": "false",
+												// "IdFAQ_Original": urlHTML
+											};
+
+											watson_Watson
+												.setStatus('to-watson');
+										}
+										watson_Watson.sendRequest(
+											addressInput, context);
+										document
+											.getElementById('escribeaqui').style.display = 'block';
+										$(".respuestaboton").addClass(
+											"enlaceInhabilitado");
+
+										// Clear input box for further
+										// messages
+										document
+											.getElementById('textInputchat').value = "";
+
+										// Reset Textarea
+										watson_ConversationPanel
+											.resetTextArea();
+									}
+								}
+							}
+						} else {
+							// si no da por valida la direccion
 							var data = {};
 							var dataU = {};
 							data.output = {};
 							dataU.input = {};
-							data.output.text = ["Ind\u00edcame ahora el n\u00famero de la calle"];
+							data.output.text = ["No he entendido la direcci\u00f3n que indicas. Por favor, vuelve a indicarme el NOMBRE DE LA V&Iacute;A, N&Uacute;MERO Y LOCALIDAD donde quieres que comprobemos la cobertura"];
 							dataU.input.text = [addressInput];
 							var type = 'watson';
 							var typeU = 'user';
-							watson_ConversationPanel
-								.displayMessage(dataU, typeU);
-							watson_ConversationPanel
-								.displayMessage(data, type);
+							watson_ConversationPanel.displayMessage(
+								dataU, typeU);
+							watson_ConversationPanel.displayMessage(
+								data, type);
+							autocomplete2 = google.maps.event
+								.addListener(
+									document
+									.getElementById("textInputchat"),
+									init());
 
 							// Enviamos datos a initial_Conversation
 							var latestResponse = initial_Conversation
 								.getResponsePayload();
 							var input = addressInput;
-							contextInitial.output = "Ind\u00edcame ahora el n\u00famero de la calle";
-							initial_Conversation
-								.sendRequestInitial(input,
-								contextInitial);
+							contextInitial.output = "No he entendido la direcci\u00f3n que indicas. Por favor, vuelve a indicarme el NOMBRE DE LA V\u00cdA, N\u00daMERO Y LOCALIDAD donde quieres que comprobemos la cobertura";
+							initial_Conversation.sendRequestInitial(
+								input, contextInitial);
 
-							document
-								.getElementById("textInputchat").disabled = false;
-							consultaFibra = {
-								"tipoVia": tipoVia,
-								"nombreVia": nombreVia,
-								"localidad": localidad,
-								"cp": cpW,
-								"provincia": provincia
-							};
-							setTimeout(function () {
-								document.getElementById(
-									'textInputchat').focus();
-							}, 5);
+							document.getElementById("textInputchat").disabled = false;
+							setTimeout(
+								function () {
+									document.getElementById(
+											'textInputchat')
+										.focus();
+								}, 5);
 							// $( "#textInputchat" ).focus();
 							otherLocation = true;
-							captureNumber = true;
-							$("#textInputchat").attr('onkeypress',
-								'return isNumber(event)');
 							watson_ConversationPanel
 								.scrollToChatBottom();
-
-						} else {
-							consultaFibra = {
-								"tipoVia": tipoVia,
-								"nombreVia": nombreVia,
-								"localidad": localidad,
-								"cp": cpW,
-								"numero": numeroW,
-								"provincia": provincia
-							};
-							consultaFibraScope = consultaFibra;
-
-							var context;
-							var latestResponse = watson_Watson
-								.getResponsePayload();
-							var espacio_blanco = /[a-z,0-9]/i;
-
-							if (latestResponse) {
-								context = latestResponse.context;
-							}
-
-							if (addressInput.length > 0
-								&& (espacio_blanco
-									.test(addressInput))) {
-								// Send the user message
-								if (watson_RightNow.getContext().rightnow) {
-									watson_RightNow
-										.envioMensaje(addressInput);
-								} else {
-
-									var s = watson_Watson
-										.getStatus();
-
-									if (s && s == 'default') {
-										var canal = $(
-											'#watsonContainer')
-											.attr('data-canal');
-										var urlHTML = $(
-											'#watsonContainer')
-											.attr('data-url');
-										var context = {
-											"canal": canal,
-											// "logado": "false",
-											// "IdFAQ_Original": urlHTML
-										};
-
-										watson_Watson
-											.setStatus('to-watson');
-									}
-									watson_Watson.sendRequest(
-										addressInput, context);
-									document
-										.getElementById('escribeaqui').style.display = 'block';
-									$(".respuestaboton").addClass(
-										"enlaceInhabilitado");
-
-									// Clear input box for further
-									// messages
-									document
-										.getElementById('textInputchat').value = "";
-
-									// Reset Textarea
-									watson_ConversationPanel
-										.resetTextArea();
-								}
-							}
+							return false;
 						}
 					} else {
-						// si no da por valida la direccion
+						// si falla google
 						var data = {};
 						var dataU = {};
 						data.output = {};
 						dataU.input = {};
-						data.output.text = ["No he entendido la direcci\u00f3n que indicas. Por favor, vuelve a indicarme el NOMBRE DE LA V&Iacute;A, N&Uacute;MERO Y LOCALIDAD donde quieres que comprobemos la cobertura"];
+						data.output.text = ["No he entendido la direcci\u00f3n que indicas. Por favor, vuelve a indicarme el NOMBRE DE LA V\u00cdA, N\u00daMERO Y LOCALIDAD donde quieres que comprobemos la cobertura"];
 						dataU.input.text = [addressInput];
 						var type = 'watson';
 						var typeU = 'user';
-						watson_ConversationPanel.displayMessage(
-							dataU, typeU);
-						watson_ConversationPanel.displayMessage(
-							data, type);
+						watson_ConversationPanel.displayMessage(dataU,
+							typeU);
+						watson_ConversationPanel.displayMessage(data,
+							type);
 						autocomplete2 = google.maps.event
 							.addListener(
-							document
+								document
 								.getElementById("textInputchat"),
-							init());
-
+								init());
 						// Enviamos datos a initial_Conversation
 						var latestResponse = initial_Conversation
 							.getResponsePayload();
 						var input = addressInput;
 						contextInitial.output = "No he entendido la direcci\u00f3n que indicas. Por favor, vuelve a indicarme el NOMBRE DE LA V\u00cdA, N\u00daMERO Y LOCALIDAD donde quieres que comprobemos la cobertura";
-						initial_Conversation.sendRequestInitial(
-							input, contextInitial);
+						initial_Conversation.sendRequestInitial(input,
+							contextInitial);
 
 						document.getElementById("textInputchat").disabled = false;
-						setTimeout(
-							function () {
-								document.getElementById(
-									'textInputchat')
-									.focus();
-							}, 5);
+						setTimeout(function () {
+							document.getElementById('textInputchat')
+								.focus();
+						}, 5);
 						// $( "#textInputchat" ).focus();
 						otherLocation = true;
-						watson_ConversationPanel
-							.scrollToChatBottom();
+						watson_ConversationPanel.scrollToChatBottom();
 						return false;
 					}
-				} else {
-					// si falla google
-					var data = {};
-					var dataU = {};
-					data.output = {};
-					dataU.input = {};
-					data.output.text = ["No he entendido la direcci\u00f3n que indicas. Por favor, vuelve a indicarme el NOMBRE DE LA V\u00cdA, N\u00daMERO Y LOCALIDAD donde quieres que comprobemos la cobertura"];
-					dataU.input.text = [addressInput];
-					var type = 'watson';
-					var typeU = 'user';
-					watson_ConversationPanel.displayMessage(dataU,
-						typeU);
-					watson_ConversationPanel.displayMessage(data,
-						type);
-					autocomplete2 = google.maps.event
-						.addListener(
-						document
-							.getElementById("textInputchat"),
-						init());
-					// Enviamos datos a initial_Conversation
-					var latestResponse = initial_Conversation
-						.getResponsePayload();
-					var input = addressInput;
-					contextInitial.output = "No he entendido la direcci\u00f3n que indicas. Por favor, vuelve a indicarme el NOMBRE DE LA V\u00cdA, N\u00daMERO Y LOCALIDAD donde quieres que comprobemos la cobertura";
-					initial_Conversation.sendRequestInitial(input,
-						contextInitial);
 
-					document.getElementById("textInputchat").disabled = false;
-					setTimeout(function () {
-						document.getElementById('textInputchat')
-							.focus();
-					}, 5);
-					// $( "#textInputchat" ).focus();
-					otherLocation = true;
-					watson_ConversationPanel.scrollToChatBottom();
-					return false;
-				}
-
-			});
+				});
 		// Reset Textarea
 		watson_ConversationPanel.resetTextArea();
 	}
@@ -4083,48 +4066,116 @@ $(function () {
 
 		$('#watson__input__btn')
 			.on(
-			'click',
-			function (event) {
-				var espacio_blanco = /[a-z,0-9]/i;
-				var textUser = document
-					.getElementById('textInputchat').value;
+				'click',
+				function (event) {
+					var espacio_blanco = /[a-z,0-9]/i;
+					var textUser = document
+						.getElementById('textInputchat').value;
 
-				if (textUser.length > 0) {
-					$('#watson__input__btn').addClass('sendButton');
-				} else {
-					$('#watson__input__btn').removeClass(
-						'sendButton');
-				}
-
-				if (textUser.length > 0
-					&& (espacio_blanco.test(textUser))) {
-					document.getElementById("textInputchat").disabled = true;
-
-					if (otherLocation) {
-						watson_Location.searchAddress();
-						otherLocation = false;
+					if (textUser.length > 0) {
+						$('#watson__input__btn').addClass('sendButton');
 					} else {
+						$('#watson__input__btn').removeClass(
+							'sendButton');
+					}
 
-						// Retrieve the context from the previous
-						// server response
-						var context;
-						var latestResponse = watson_Watson
-							.getResponsePayload();
+					if (textUser.length > 0 &&
+						(espacio_blanco.test(textUser))) {
+						document.getElementById("textInputchat").disabled = true;
+
+						if (otherLocation) {
+							watson_Location.searchAddress();
+							otherLocation = false;
+						} else {
+
+							// Retrieve the context from the previous
+							// server response
+							var context;
+							var latestResponse = watson_Watson
+								.getResponsePayload();
+
+							if (latestResponse) {
+								context = latestResponse.context;
+							}
+
+							// Send the user message
+							if (watson_RightNow.getContext().rightnow) {
+								watson_RightNow.envioMensaje(textUser);
+							} else {
+
+								var s = watson_Watson.getStatus();
+
+								if (s && s == 'default') {
+									var canal = $('#watsonContainer')
+										.attr('data-canal');
+									var urlHTML = $('#watsonContainer')
+										.attr('data-url');
+									var context = {
+										"canal": canal,
+										// "logado": "false",
+										// "IdFAQ_Original": urlHTML
+									};
+
+									watson_Watson
+										.setStatus('to-watson');
+								}
+								watson_Watson.sendRequestReset(
+									textUser, context);
+								document
+									.getElementById('textInputchat').value = "";
+
+							}
+
+							// Clear input box for further messages
+							inputBox.val('');
+
+							// Reset Textarea
+							$(".respuestaboton").addClass(
+								"enlaceInhabilitado");
+							watson_ConversationPanel.resetTextArea();
+						}
+					}
+				});
+
+		$('#watson__confirm__btn')
+			.on(
+				'click',
+				function (event) {
+
+					var form = document.getElementById('oculto');
+					var listaprovincias = form.elements['listaprovincias'].value;
+					var listalocalidades = form.elements['listalocalidades'].value;
+					var cpWatson = form.elements['cpWatson'].value;
+					var tipoV = form.elements['tipoV'].value;
+					var listacalles = form.elements['listacalles'].value;
+					var numero = form.elements['numero'].value;
+					var textodir = document
+						.getElementById('textodireccion').textContent;
+					var context;
+					var latestResponse = watson_Watson
+						.getResponsePayload();
+					var espacio_blanco = /[a-z,0-9]/i;
+
+					var validation = watson_Common.checkFormLocation(
+						listaprovincias, listalocalidades,
+						cpWatson, tipoV, listacalles, numero);
+
+					if (validation) {
+						document.getElementById('escribeaqui').style.display = 'block';
+						$('#validateFormResultLocation').html('');
 
 						if (latestResponse) {
 							context = latestResponse.context;
 						}
 
-						// Send the user message
-						if (watson_RightNow.getContext().rightnow) {
-							watson_RightNow.envioMensaje(textUser);
-						} else {
-
+						if (textodir.length > 0 &&
+							(espacio_blanco.test(textodir))) {
+							// Send the user message
 							var s = watson_Watson.getStatus();
 
 							if (s && s == 'default') {
-								var canal = $('#watsonContainer')
-									.attr('data-canal');
+								var canal = $('#watsonContainer').attr(
+									'data-canal');
 								var urlHTML = $('#watsonContainer')
 									.attr('data-url');
 								var context = {
@@ -4132,121 +4183,53 @@ $(function () {
 									// "logado": "false",
 									// "IdFAQ_Original": urlHTML
 								};
-
-								watson_Watson
-									.setStatus('to-watson');
+								consultaFibra = {
+									"tipoVia": tipoV,
+									"nombreVia": listacalles,
+									"localidad": listalocalidades,
+									"cp": cpWatson,
+									"numero": numero,
+									"provincia": listaprovincias
+								};
+								consultaFibraScope = consultaFibra;
+								watson_Watson.setStatus('to-watson');
 							}
-							watson_Watson.sendRequestReset(
-								textUser, context);
+
+							watson_Watson.sendLocation(textodir,
+								context, consultaFibra);
+							document.getElementById("oculto").disabled = true;
+							$(".respuestaboton").addClass(
+								"enlaceInhabilitado");
+
+							// Reset Textarea
+							watson_ConversationPanel.resetTextArea();
+
+							// Disabled buttons
+							$(".miubicacionWatson").addClass(
+								"enlaceInhabilitado");
 							document
-								.getElementById('textInputchat').value = "";
+								.getElementById("miubicacionWatson").disabled = true;
 
+							$(".otraubicacionWatson").addClass(
+								"enlaceInhabilitado");
+							document
+								.getElementById("otraubicacionWatson").disabled = true;
+
+							$(".confirmarWatson").addClass(
+								"enlaceInhabilitado");
+							document
+								.getElementById("watson__confirm__btn").disabled = true;
 						}
-
-						// Clear input box for further messages
-						inputBox.val('');
-
-						// Reset Textarea
-						$(".respuestaboton").addClass(
-							"enlaceInhabilitado");
-						watson_ConversationPanel.resetTextArea();
+					} else {
+						$('#validateFormResultLocation')
+							.html(
+								'<p class="errorValidity">Por favor, completa los datos que faltan.</p>');
+						watson_ConversationPanel.scrollToChatBottom();
 					}
-				}
-			});
-
-		$('#watson__confirm__btn')
-			.on(
-			'click',
-			function (event) {
-
-				var form = document.getElementById('oculto');
-				var listaprovincias = form.elements['listaprovincias'].value;
-				var listalocalidades = form.elements['listalocalidades'].value;
-				var cpWatson = form.elements['cpWatson'].value;
-				var tipoV = form.elements['tipoV'].value;
-				var listacalles = form.elements['listacalles'].value;
-				var numero = form.elements['numero'].value;
-				var textodir = document
-					.getElementById('textodireccion').textContent;
-				var context;
-				var latestResponse = watson_Watson
-					.getResponsePayload();
-				var espacio_blanco = /[a-z,0-9]/i;
-
-				var validation = watson_Common.checkFormLocation(
-					listaprovincias, listalocalidades,
-					cpWatson, tipoV, listacalles, numero);
-
-				if (validation) {
-					document.getElementById('escribeaqui').style.display = 'block';
-					$('#validateFormResultLocation').html('');
-
-					if (latestResponse) {
-						context = latestResponse.context;
-					}
-
-					if (textodir.length > 0
-						&& (espacio_blanco.test(textodir))) {
-						// Send the user message
-						var s = watson_Watson.getStatus();
-
-						if (s && s == 'default') {
-							var canal = $('#watsonContainer').attr(
-								'data-canal');
-							var urlHTML = $('#watsonContainer')
-								.attr('data-url');
-							var context = {
-								"canal": canal,
-								// "logado": "false",
-								// "IdFAQ_Original": urlHTML
-							};
-							consultaFibra = {
-								"tipoVia": tipoV,
-								"nombreVia": listacalles,
-								"localidad": listalocalidades,
-								"cp": cpWatson,
-								"numero": numero,
-								"provincia": listaprovincias
-							};
-							consultaFibraScope = consultaFibra;
-							watson_Watson.setStatus('to-watson');
-						}
-
-						watson_Watson.sendLocation(textodir,
-							context, consultaFibra);
-						document.getElementById("oculto").disabled = true;
-						$(".respuestaboton").addClass(
-							"enlaceInhabilitado");
-
-						// Reset Textarea
-						watson_ConversationPanel.resetTextArea();
-
-						// Disabled buttons
-						$(".miubicacionWatson").addClass(
-							"enlaceInhabilitado");
-						document
-							.getElementById("miubicacionWatson").disabled = true;
-
-						$(".otraubicacionWatson").addClass(
-							"enlaceInhabilitado");
-						document
-							.getElementById("otraubicacionWatson").disabled = true;
-
-						$(".confirmarWatson").addClass(
-							"enlaceInhabilitado");
-						document
-							.getElementById("watson__confirm__btn").disabled = true;
-					}
-				} else {
-					$('#validateFormResultLocation')
-						.html(
-						'<p class="errorValidity">Por favor, completa los datos que faltan.</p>');
-					watson_ConversationPanel.scrollToChatBottom();
-				}
-				watson_ConversationPanel.showLoading();
-				document.getElementById("escribeaqui").disabled = true;
-				document.getElementById("resetWatson").disabled = true;
-			});
+					watson_ConversationPanel.showLoading();
+					document.getElementById("escribeaqui").disabled = true;
+					document.getElementById("resetWatson").disabled = true;
+				});
 
 		// Collapsible text
 		$("#watson__body__chat").on("click", ".collapseButton",
@@ -4301,7 +4284,7 @@ $(function () {
 
 		// Feedback form
 		$("#watson__body__chat").on("click", '#feedbackSmartFormSi',
-				envioFormulario);
+			envioFormulario);
 		$("#watson__body__chat").on("click", '#feedbackSmartFormNo',
 			watson_Common.noSubmitForm);
 		$("#watson__body__chat").on("click", '#clickHere',
@@ -4314,83 +4297,79 @@ $(function () {
 	}
 });
 
-function setHeightWatson(){
+function setHeightWatson() {
 	ancho = 0;
 	ancho = $(window).width() - $('#cabeceraWatson').width();
-	var screenHeight =  $(window).height();
-	var screenWidth =  $(window).width();
+	var screenHeight = $(window).height();
+	var screenWidth = $(window).width();
 	var heightHeader = $('.oH-container').height();
 	var heightFooter = $('#oF').height();
-	if ( screenWidth > 768) {
-		$('#watsonPopUp').css({'height': screenHeight - (heightHeader + heightFooter) - 2 + 'px', top: heightHeader + 'px'});
-	}	
+	if (screenWidth > 768) {
+		$('#watsonPopUp').css({
+			'height': screenHeight - (heightHeader + heightFooter) - 2 + 'px',
+			top: heightHeader + 'px'
+		});
+	}
 	//console.log("Alto: " + screenHeight + " Header: " + heightHeader + " Footer:" + heightFooter);
-	$('#pantalla').css({'height':screenHeight - (heightHeader + heightFooter)+'px'});
+	$('#pantalla').css({
+		'height': screenHeight - (heightHeader + heightFooter) + 'px'
+	});
 }
 
 $(document).ready(function () {
 	setHeightWatson();
-	$('#pantalla').css({'min-height':'auto'});
+	$('#pantalla').css({
+		'min-height': 'auto'
+	});
 });
 
-$(window).resize(function() {
-  	setHeightWatson();
-}); 
+$(window).resize(function () {
+	setHeightWatson();
+});
 // }(sya.$);
 
-function envioFormulario(){
-	var clientConfig = { 
-		    timeoutTooltip: 3, 
-		    lang: 'es', 
-		    pos: 'topLeft', 
-		    recovery: true, 
-		    sendHidden: false, 
-		    map: { 
-		        param1 : document.getElementById('nameFeedback').value, 
-		        param2 : document.getElementById('phoneFeedback').value 
-		    } 
-		};
-	var urlDelio = "https://ws.walmeric.com/provision/wsclient/client_addlead.html?idTag=29842f94d414949bf95fb2e6109142cfef1fb2a78114c2c536a36bf5a65b953a2224d083b82556f420edd64168d5fd904d9e4fa7221a95c03a6f0110864d9e6a9f1bcc982f49e8e7b5377e50143aa1bbe341aaec655f7666e755114f87c6e9f3b42792780ae793bf157e928ce3e0fcd5&name="+clientConfig.map.param1+"&phone="+clientConfig.map.param2;
+function envioFormulario() {
+	var clientConfig = {
+		timeoutTooltip: 3,
+		lang: 'es',
+		pos: 'topLeft',
+		recovery: true,
+		sendHidden: false,
+		map: {
+			param1: document.getElementById('nameFeedback').value,
+			param2: document.getElementById('phoneFeedback').value
+		}
+	};
+	var urlDelio = "https://ws.walmeric.com/provision/wsclient/client_addlead.html?idTag=29842f94d414949bf95fb2e6109142cfef1fb2a78114c2c536a36bf5a65b953a2224d083b82556f420edd64168d5fd904d9e4fa7221a95c03a6f0110864d9e6a9f1bcc982f49e8e7b5377e50143aa1bbe341aaec655f7666e755114f87c6e9f3b42792780ae793bf157e928ce3e0fcd5&name=" + clientConfig.map.param1 + "&phone=" + clientConfig.map.param2;
 	console.log(urlDelio);
 	var toDelio;
 	$.ajax({
-        url: urlDelio,//esto o con un archivo php
-        type: 'GET',//tipo de petición
-        dataType: 'jsonp',//tipo de datos
-        jsonp: toDelio,//nombre de la variable get para reconocer la petición
-        error: function(xhr, status, error) {
-        	lead = false;
+		url: urlDelio, //esto o con un archivo php
+		type: 'GET', //tipo de petición
+		dataType: 'jsonp', //tipo de datos
+		jsonp: toDelio, //nombre de la variable get para reconocer la petición
+		error: function (xhr, status, error) {
+			lead = false;
 			mensajeFinal();
 			console.log("Error en la petición a DELIO");
-        },
-        success: function(jsonp) { 
-        	lead = true;
+		},
+		success: function (jsonp) {
+			lead = true;
 			mensajeFinal();
 			console.log("La petición ha sido satisfactoria");
-        }
-   });
-}
-	function mensajeFinal(){
-		if (lead){
-			$('#watson__body__chat').html('<div class="llamadmeTextoFinal">Su solicitud ha sido recibida.</br>'
-					+'En breve uno de nuestros agente se pondr&aacute; en contacto con usted.</br>'
-					+'Gracias.</div>');
-		}else{
-			$('#watson__body__chat').html('<div class="llamadmeTextoFinal">Su solicitud no se ha podido tramitar correctamente.</br>'
-					+'Vuelva a intentarlo en unos instantes.</br>'
-					+'Gracias.</div>');
 		}
+	});
+}
+
+function mensajeFinal() {
+	if (lead) {
+		$('#watson__body__chat').html('<div class="llamadmeTextoFinal">Su solicitud ha sido recibida.</br>' +
+			'En breve uno de nuestros agente se pondr&aacute; en contacto con usted.</br>' +
+			'Gracias.</div>');
+	} else {
+		$('#watson__body__chat').html('<div class="llamadmeTextoFinal">Su solicitud no se ha podido tramitar correctamente.</br>' +
+			'Vuelva a intentarlo en unos instantes.</br>' +
+			'Gracias.</div>');
 	}
+}
 // -FIN- C2C
-
-
-
-
-
-
-
-
-
-
-
-
