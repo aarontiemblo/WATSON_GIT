@@ -1786,8 +1786,8 @@ watson_ConversationPanel = (function () {
 						data.output = {};
 						data.output.text = ["Para poder confirmar con exactitud tu cobertura, necesito que me confirmes tu vivienda. " +
 						"¿Quieres confirmar tu vivienda o prefieres que haga una consulta aproximada? " +
-						"</br><center><button style='margin-top:8px;width:35%;color:black;background-color:transparent;border-color:black;' type='button' id='botonSi' onclick='funcionSi()' >Si</button> " +
-						"<button style='color:black;background-color:transparent;border-color:black;' type='button' id='botonNo'>Consulta Aproximada</button></center></p>"+ 
+						"</br><center><button style='margin-top:8px;width:35%;color:black;background-color:transparent;border:2px solid;border-color:black;' type='button' id='botonSi' onclick='funcionSi()' >Si</button> " +
+						"<button style='color:black;background-color:transparent;border:2px solid;border-color:black;' type='button' id='botonNo'>Consulta Aproximada</button></center></p>"+ 
 						"</div>"];
 						var type = 'watson';
 						watson_ConversationPanel.displayMessage(data, type);
