@@ -47,38 +47,38 @@ var textContentBodyChat = '<div class="segments load">'
 	+ '</div>'
 	+ '<p class="mensajeInfo">Tienes dos opciones:'
 	+ '<ol class="mensajeInfo">'
-	+ '<li>Pulsando el bot&oacute;n "Capturar Mi Ubicación", tu navegador activar&aacute; el servicio de ubicación para conocer tu dirección actual. Para que funcione correctamente debes permitir su activación.'
+	+ '<li>Pulsando el bot&oacute;n "Capturar Mi Ubicación", tu navegador activará; el servicio de ubicación para conocer tu dirección actual. Para que funcione correctamente debes permitir su activación.'
 	+ '<li>Puedes escribir manualmente la dirección que deseas consultar pulsando en "Escribir Dirección".</li>'
 	+ '</ol>'
 	+ '<div class="botonesubicacionWatson">'
-	+ '<button type="button" id="miubicacionWatson" class="miubicacionWatson" onclick="watson_Location.currentLocation()">Capturar Mi Ubicaci\u00f3n</button>'
-	+ '<button type="button" id="otraubicacionWatson" class="otraubicacionWatson" onclick="watson_Location.locationForm()">Escribir Direcci\u00f3n</button>'
+	+ '<button type="button" id="miubicacionWatson" class="miubicacionWatson" onclick="watson_Location.currentLocation()">Capturar Mi Ubicación</button>'
+	+ '<button type="button" id="otraubicacionWatson" class="otraubicacionWatson" onclick="watson_Location.locationForm()">Escribir Dirección</button>'
 	+ '</div>'
 	+ '<form name="f1" id="oculto" class="formulario1Watson" style="display:none;">'
 	+ '<div class="formulario2Watson">'
-	+ '<h2>Mi ubicaci\u00f3n</h2>'
-	+ '<div class="labelBox"><p>Tipo de v&iacute;a</p><p>Nombre de v&iacute;a</p></div>'
+	+ '<h2>Mi ubicación</h2>'
+	+ '<div class="labelBox"><p>Tipo de vía</p><p>Nombre de vía</p></div>'
 	+ '<div class="formu1Watson">'
-	+ '<input type="text" id="tipoV" placeholder="Tipo de v\u00eda">'
-	+ '<input type="text" id="listacalles" list="calle" placeholder="Nombre de la v\u00eda">'
+	+ '<input type="text" id="tipoV" placeholder="Tipo de vía">'
+	+ '<input type="text" id="listacalles" list="calle" placeholder="Nombre de la vía">'
 	+ '</div>'
-	+ '<div class="labelBox"><p>N\u00famero</p><p>Localidad</p></div>'
+	+ '<div class="labelBox"><p>Número</p><p>Localidad</p></div>'
 	+ '<div class="formu2Watson">'
-	+ '<input type="text" id="numero" name="numero" placeholder="N\u00famero">'
+	+ '<input type="text" id="numero" name="numero" placeholder="Número">'
 	+ '<input type="text" id="listalocalidades" list="localidad" placeholder="Localidad">'
 	+ '</div>'
-	+ '<div class="labelBox"><p>C\u00f3digo Postal</p><p>Provincia</p></div>'
+	+ '<div class="labelBox"><p>Código Postal</p><p>Provincia</p></div>'
 	+ '<div class="formu3Watson">'
 	+ '<input type="text" id="cpWatson" placeholder="CP">'
 	+ '<input type="text" id="listaprovincias" list="provincias" placeholder="Provincia">'
 	+ '</div>'
-	+ '<p class="mensajeInfo">Puedes modificar la informaci\u00f3n mostrada pulsando sobre la caja que quieras modificar.<br>Pulsa el bot\u00f3n "Confirmar" para iniciar la consulta de cobertura.</p>'
+	+ '<p class="mensajeInfo">Puedes modificar la información mostrada pulsando sobre la caja que quieras modificar.<br>Pulsa el botón "Confirmar" para iniciar la consulta de cobertura.</p>'
 	+ '<div id="faltaCampo" class="mensajeInfo"></div>';
 	
 var textContentBodyChat2 = '</div>'
 	+ '</form>'
 	+ '<div id="oculto2" class="segments load" style="display:none;">'
-	+ '<div class="from-watson top"><div class="message-inner"><p>Por favor, escribe abajo el NOMBRE DE LA V&Iacute;A, N&Uacute;MERO Y LOCALIDAD d&oacute;nde quieres que comprobemos la cobertura.</p></div></div>'
+	+ '<div class="from-watson top"><div class="message-inner"><p>Por favor, escribe abajo el NOMBRE DE LA VíA, NÚMERO Y LOCALIDAD dónde quieres que comprobemos la cobertura.</p></div></div>'
 	+ '</div>'
 	+ '<div id="oculto3" class="segments load" style="display:none;"> </div>'
 	+ '<div id="watsoncliente" style="display:none;"><div class="segments load"><div class="from-user top"><div class="message-inner" id="textodireccion"></div></div></div></div>';
@@ -124,7 +124,7 @@ $(document)
 			+ '</div>'
 			+ '</div>'
 			+ '<label for="textInputchat" id="escribeaqui" style="display:none;" class="inputOutline">'
-			+ '<textarea rows="1" data-min-rows="1" id="textInputchat" class="watson__input__field autoExpand" maxlength="140" value="" placeholder="Escribe aqu\u00ed..."></textarea>'
+			+ '<textarea rows="1" data-min-rows="1" id="textInputchat" class="watson__input__field autoExpand" maxlength="140" value="" placeholder="Escribe aquí..."></textarea>'
 			+ '<button id="watson__input__btn">Enviar<label id="countChar"></label></button>'
 			+ '</label>'
 			+ '</div>'
@@ -214,7 +214,7 @@ function init() {
 			$('#textInputchat').attr('rows', '1');
 			$('#watson__body__chat').css('bottom', '125');
 			$('#watsonPopUp  .inputOutline').css('height', '48px');
-			$('.pac-container ').css('bottom', '50px');
+			//$('.pac-container ').css('bottom', '50px');
 		}
 	});
 }
@@ -1802,7 +1802,7 @@ watson_ConversationPanel = (function () {
 						dobleGrid++;
 						var direcccionesAlternativas = latestResponse.context.direcccionesAlternativas;
 						var cadenaDireccionRecuperar = "Planta:Planta|Mano1:Tipo de puerta|Mano2:Puerta|IdFinca:Portal|BisDuplicado:Bis|Escalera:Escalera|Bloque:Bloque";
-
+						$('#textInputchat').attr('disabled', 'disabled');
 						$(".segments:last")
 							.after(
 							"<div class='segments load confirmFlat'><h3>Por favor, selecciona exactamente tu vivienda para poder comprobar la cobertura:</h3>"
@@ -1841,11 +1841,11 @@ watson_ConversationPanel = (function () {
 				if (contextForm == '6') {
 					dobleGrid++;
 					var direcccionesAlternativas = latestResponse.context.direcccionesAlternativas;
-					var cadenaDireccionRecuperar = "TipoVia:Tipo de v\u00eda|NombreVia:Nombre de la v\u00eda|Numero:N\u00famero|CP:CP|CodigoArvato:CodigoArvato";
+					var cadenaDireccionRecuperar = "TipoVia:Tipo de v\u00eda|NombreVia:Nombre de la v\u00eda|Numero:Número|CP:CP|CodigoArvato:CodigoArvato";
 					var cadenaElementosEscondidos = "CodigoArvato";
 					$(".segments:last")
 						.after(
-						"<div class='segments load confirmDirection'><h3>Por favor, selecciona exactamente tu direcci\u00f3n:</h3>"
+						"<div class='segments load confirmDirection'><h3>Por favor, selecciona exactamente tu dirección:</h3>"
 						+ "<span class='myDirectionWatson'><p>"
 						+ consultaFibra.tipoVia + " "
 						+ consultaFibra.nombreVia + " "
@@ -1863,7 +1863,7 @@ watson_ConversationPanel = (function () {
 				if (contextForm == '5') {
 					$(".segments:last")
 						.after(
-						"<div class='from-watson top'><div class='message-inner'><p>No se han encontrado viviendas en la direcci\u00f3n indicada.<br> Por favor pulsa aqu\u00ed <button type=\"button\" id=\"resetWatsonIcon\"><span>\u21bb</span></button> para comprobar la cobertura en otra direcci\u00f3n o llama al 900 263 176 para que te ayudemos.<br> Muchas gracias.</p></div></div>"
+						"<div class='segments load'><div class='from-watson top'><div class='message-inner'><p>No se han encontrado viviendas en la dirección indicada.<br> Por favor pulsa aquí <button type=\"button\" id=\"resetWatsonIcon\"><span>\u21bb</span></button> para comprobar la cobertura en otra dirección o llama al 900 263 176 para que te ayudemos.<br> Muchas gracias.</p></div></div></div>"
 						);
 					watson_ConversationPanel.scrollToChatBottom();
 					document.getElementById('escribeaqui').style.display = 'none';
@@ -2507,7 +2507,7 @@ watson_ConversationPanel = (function () {
 	function captureErrorWatson() {
 		$(".segments:last")
 			.append(
-			"<div class='from-watson top'><div class='message-inner'><p>Lo siento, no podemos consultar tu cobertura en estos momentos.<br>Por favor int\u00e9ntalo m\u00e1s tarde o llama al 900 263 176</p></div></div>");
+			"<div class='from-watson top'><div class='message-inner'><p>Lo siento, no podemos consultar tu cobertura en estos momentos.<br>Por favor inténtalo más tarde o llama al 900 263 176</p></div></div>");
 		watson_ConversationPanel.scrollToChatBottom();
 		document.getElementById('escribeaqui').style.display = 'none';
 		if (null != document.getElementById('watsonWaiting')) {
@@ -2523,7 +2523,7 @@ watson_ConversationPanel = (function () {
 		$('#textInputchat').attr('rows', '1');
 		$('#watson__body__chat').css('bottom', '125');
 		$('#watsonPopUp  .inputOutline').css('height', '48px');
-		$('.pac-container ').css('bottom', '50px');
+		//$('.pac-container ').css('bottom', '50px');
 		document.body.style.cursor = 'default';
 		$('#watson__input__btn').removeClass('sendButton');
 	}
@@ -2871,8 +2871,9 @@ watson_ConversationPanel = (function () {
 		var textUser = inputBox.val();
 
 		if (textUser.length > 0) {
-			var positionPacContainer = (($("#escribeaqui").css("height")) + ($(
-				"div").find(".pac-container").css("height")));
+			var positionPacContainer = $("#escribeaqui").height() + $("#oF").height();
+			$('head').append('<style id="stylePacContainer" type="text/css">.pac-container { bottom:' + positionPacContainer + 'px!important}</style>');
+			
 			$('#watson__input__btn').addClass('sendButton');
 		} else {
 			$('#watson__input__btn').removeClass('sendButton');
@@ -3137,7 +3138,7 @@ watson_Location = (function () {
 								$(
 									'#validateFormResultLocationOther')
 									.html(
-									'<p class="errorValidity">C\u00f3digo Postal incorrecto</p>');
+									'<p class="errorValidity">Código Postal incorrecto</p>');
 								$('#cpW').addClass(
 									'watsonInputNovalid');
 								watson_ConversationPanel
@@ -3150,7 +3151,7 @@ watson_Location = (function () {
 								$(
 									'#validateFormResultLocationOther')
 									.html(
-									'<p class="errorValidity">Tipo de v\u00eda incorrecta</p>');
+									'<p class="errorValidity">Tipo de vía incorrecta</p>');
 								$('#tipoVia').addClass(
 									'watsonInputNovalid');
 								watson_ConversationPanel
@@ -3641,7 +3642,7 @@ watson_Location = (function () {
 							// ubicaciÃ³n
 							var data = {};
 							data.output = {};
-							data.output.text = ["Lo siento, no ha sido posible capturar tu ubicaciÃ³n de forma automÃ¡tica pues no tienes habilitada esta funcionalidad en tu navegador. Puedes habilitarla e intentarlo de nuevo o escribir la direcciÃ³n pulsando en 'Escribir DirecciÃ³n'"];
+							data.output.text = ["Lo siento, no ha sido posible capturar tu ubicación de forma automática pues no tienes habilitada esta funcionalidad en tu navegador. Puedes habilitarla e intentarlo de nuevo o escribir la dirección pulsando en 'Escribir Dirección'"];
 							var type = 'watson';
 							watson_ConversationPanel.displayMessage(data, type);
 							document.body.style.cursor = 'default';
@@ -3656,7 +3657,7 @@ watson_Location = (function () {
 							// No se ha podido encontrar la ubicaciÃ³n
 							var data = {};
 							data.output = {};
-							data.output.text = ["Lo siento, no ha sido posible capturar tu ubicaciÃ³n de forma automÃ¡tica pues no tienes habilitada esta funcionalidad en tu navegador. Puedes habilitarla e intentarlo de nuevo o escribir la direcciÃ³n pulsando en 'Escribir DirecciÃ³n'"];
+							data.output.text = ["Lo siento, no ha sido posible capturar tu ubicacón de forma automática pues no tienes habilitada esta funcionalidad en tu navegador. Puedes habilitarla e intentarlo de nuevo o escribir la dirección pulsando en 'Escribir Dirección'"];
 							var type = 'watson';
 							watson_ConversationPanel.displayMessage(data, type);
 							document.body.style.cursor = 'default';
@@ -3671,7 +3672,7 @@ watson_Location = (function () {
 							// el acceso a la busqueda automÃ¡tica
 							var data = {};
 							data.output = {};
-							data.output.text = ["Lo siento, no ha sido posible capturar tu ubicaciÃ³n de forma automÃ¡tica pues no tienes habilitada esta funcionalidad en tu navegador. Puedes habilitarla e intentarlo de nuevo o escribir la direcciÃ³n pulsando en 'Escribir DirecciÃ³n'"];
+							data.output.text = ["Lo siento, no ha sido posible capturar tu ubicación de forma automática pues no tienes habilitada esta funcionalidad en tu navegador. Puedes habilitarla e intentarlo de nuevo o escribir la dirección pulsando en 'Escribir Dirección'"];
 							var type = 'watson';
 							watson_ConversationPanel.displayMessage(data, type);
 							document.body.style.cursor = 'default';
@@ -3693,8 +3694,8 @@ watson_Location = (function () {
 			firstTextInput++;
 
 		} else {
-			content.innerHTML = "Su navegador no soporta la API de geolocalizaciï¿½n.";
-			context.output = "Su navegador no soporta la API de geolocalizacion";
+			content.innerHTML = "Su navegador no soporta la API de geolocalización.";
+			context.output = "Su navegador no soporta la API de geolocalización";
 			initial_Conversation.sendRequestInitial(opcion, context);
 			document.body.style.cursor = 'default';
 		}
@@ -4091,8 +4092,10 @@ $(document).one('focus.autoExpand', 'textarea.autoExpand', function () {
 		this.rows = rows;
 		$('#watson__body__chat').scrollTop(scrollChatValue + rows * 18);
 		$('#escribeaqui ').css('height', 'auto');
-		var alturaT = $('#escribeaqui').height();
-		$('.pac-container ').css('bottom', alturaT);
+
+		var positionPacContainer = $("#escribeaqui").height() + $("#oF").height();
+		$('#stylePacContainer').remove();
+		$('head').append('<style id="stylePacContainer" type="text/css">.pac-container { bottom:' + positionPacContainer + 'px!important}</style>');
 	}
 
 	watson_Chat.resizeChat(this.scrollHeight - 20);

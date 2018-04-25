@@ -1021,7 +1021,7 @@ button#resetWatsonIcon {
     top: auto !important;
     width: 80% !important;
     z-index: 8000000000000000000000000000;
-    bottom: 50px;
+    bottom: 140px;
 }
 
 .pac-item:hover {
