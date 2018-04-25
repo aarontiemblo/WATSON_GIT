@@ -1787,7 +1787,7 @@ watson_ConversationPanel = (function () {
 						data.output.text = ["Para poder confirmar con exactitud tu cobertura, necesito que me confirmes tu vivienda. " +
 						"¿Quieres confirmar tu vivienda o prefieres que haga una consulta aproximada? " +
 						"</br><center><button style='margin-top:8px;width:35%;color:black;background-color:transparent;border-color:black;' type='button' id='botonSi' onclick='funcionSi()' >Si</button> " +
-						"<button style='color:black;background-color:transparent;border-color:black;' type='button' id='botonNo' onclick='funcionNo()'>Consulta Aproximada</button></center></p>"+ 
+						"<button style='color:black;background-color:transparent;border-color:black;' type='button' id='botonNo'>Consulta Aproximada</button></center></p>"+ 
 						"</div>"];
 						var type = 'watson';
 						watson_ConversationPanel.displayMessage(data, type);
@@ -1828,7 +1828,12 @@ watson_ConversationPanel = (function () {
 						$('#botonNo').attr('disabled', 'disabled');
 						$("#botonSi").addClass("respuestaboton enlaceInhabilitado");
 						$("#botonNo").addClass("respuestaboton enlaceInhabilitado");
-						locationRefuse4();
+//						locationRefuse4();
+						var input = "Consulta Aproximada";
+//						contextInitial.output = "EVENT_CONSULTA_APROXIMADA";
+						context = latestResponse.context;
+						watson_Watson.sendRequest(input, context);
+//						initial_Conversation.sendRequestInitial(input, contextInitial);
 					});
 					//-FIN- Incluimos pregunta errorCode 4
 				}
