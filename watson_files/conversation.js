@@ -1784,12 +1784,13 @@ watson_ConversationPanel = (function () {
 						//-INICIO- Incluimos pregunta errorCode 4
 						var data = {};
 						data.output = {};
-						data.output.text = ["Para poder confirmar con exactitud tu cobertura, necesito que me confirmes tu vivienda. " +
-						"¿Quieres confirmar tu vivienda o prefieres que haga una consulta aproximada? " +
-						"</br><center><button style='margin-top:8px;width:35%;color:black;background-color:transparent;border:2px solid;border-color:black;' type='button' id='botonSi' onclick='funcionSi()' >Si</button> " +
+						data.output.text = ["Para poder confirmar con exactitud tu cobertura, necesito identificar tu vivienda. " +
+						"¿Quieres identificar tu vivienda o hacer una consulta aproximada? " +
+						"</br><center><button style='margin-top:8px;width:35%;color:black;background-color:transparent;border:2px solid;border-color:black;' type='button' id='botonSi' onclick=''>Identificar</button> " +
 						"<button style='color:black;background-color:transparent;border:2px solid;border-color:black;' type='button' id='botonNo'>Consulta Aproximada</button></center></p>"+ 
 						"</div>"];
 						var type = 'watson';
+						document.getElementById('escribeaqui').style.display = 'none';
 						watson_ConversationPanel.displayMessage(data, type);
 						document.body.style.cursor = 'default';
 					$('#botonSi').on('click',function(){
@@ -1802,7 +1803,6 @@ watson_ConversationPanel = (function () {
 						dobleGrid++;
 						var direcccionesAlternativas = latestResponse.context.direcccionesAlternativas;
 						var cadenaDireccionRecuperar = "Planta:Planta|Mano1:Tipo de puerta|Mano2:Puerta|IdFinca:Portal|BisDuplicado:Bis|Escalera:Escalera|Bloque:Bloque";
-						$('#textInputchat').attr('disabled', 'disabled');
 						$(".segments:last")
 							.after(
 							"<div class='segments load confirmFlat'><h3>Por favor, selecciona exactamente tu vivienda para poder comprobar la cobertura:</h3>"
