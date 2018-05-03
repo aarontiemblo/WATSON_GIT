@@ -1639,7 +1639,7 @@ button#resetWatsonIcon {
 #watson__body__chat .segments {
     display: inline-block;
     width: 100%;
-    margin-bottom: -15px;
+    margin-bottom: 15px;
 }
 
 /* ----------------------------------*/
