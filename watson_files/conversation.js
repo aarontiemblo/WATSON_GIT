@@ -3661,6 +3661,14 @@ watson_Location = (function () {
 							var type = 'watson';
 							watson_ConversationPanel.displayMessage(data, type);
 							document.body.style.cursor = 'default';
+							
+							$("#miubicacionWatson").removeClass("miubicacionWatson enlaceInhabilitado");
+							$("#otraubicacionWatson").removeClass("otraubicacionWatson enlaceInhabilitado");
+							$("#miubicacionWatson").addClass("miubicacionWatson");
+							document.getElementById("miubicacionWatson").disabled = false;
+							$("#otraubicacionWatson").addClass("otraubicacionWatson");
+							document.getElementById("otraubicacionWatson").disabled = false;
+							
 							permissionDenied = true;
 							// console.log("No se ha permitido la ubicaciÃ³n");
 							break;
