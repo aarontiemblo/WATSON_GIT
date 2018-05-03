@@ -28,6 +28,7 @@ var ancho;
 var consultarViviendaSI = false;
 var si = false;
 var respuesta;
+var ofReset=false;
 
 //var ContentBodyChatSiNo ='<div class="segments load">' 
 //	+ '<div class="from-watson top"><div class="message-inner"><p>Hola, soy tu <strong>asistente virtual</strong>.</br>¿Te ayudo a consultar la cobertura de Fibra?</p></div></div>' 
@@ -107,7 +108,7 @@ $(document)
 			+ '<div id="mostrarReset" style="display: none;">'
 			+ '<button type="button" id="resetWatson" style="display: block;" onclick="watson_Common.resetWatson()">'
 			+ '<span class="resetWatson__icon">&#8635;</span>'
-			+ 'Reiniciar chat'
+			+ 'Probar otra dirección'
 			+ '</button>'
 			+ '</div>'
 			+ '</div>'
@@ -957,6 +958,12 @@ var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicaci
 //			if(initialID){
 //				context.initialID = initialID;
 //			}
+			if (ofReset){
+				var context = {
+						"canal": canal,
+						"initialID": initialID
+					};
+			}
 			payloadToWatson.context = context;
 			conversationId = '';
 			resetOther = false;
@@ -1299,6 +1306,7 @@ watson_Common = (function () {
 		$('#watson__body__chat').css('top','35px');
 		vuelta = false;
 		//-Fin- NÃºmero no informado o no encontrado (Reseteo de variable)
+		ofReset = true;
 		var input = "EVENT_SALUDO_INICIAL_RESET";
 		contextInitial = {
 			"output": "EVENT_SALUDO_INICIAL",
