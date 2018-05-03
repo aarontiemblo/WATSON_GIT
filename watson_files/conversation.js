@@ -1295,6 +1295,8 @@ watson_Common = (function () {
 	// Reset Watson
 	function resetWatson() {
 		//-Inicio- NÃºmero no informado o no encontrado (Reseteo de variable)
+		document.getElementById('mostrarReset').style.display = 'none';
+		$('#watson__body__chat').css('top','35px');
 		vuelta = false;
 		//-Fin- NÃºmero no informado o no encontrado (Reseteo de variable)
 		var input = "EVENT_SALUDO_INICIAL_RESET";
