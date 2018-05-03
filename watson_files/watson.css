@@ -345,7 +345,7 @@ label#escribeaqui {
     margin-top: 8px;
     /* margin-bottom: 1.1rem; */
     padding: 2rem 2% 1rem 2%;
-    top: 32px;
+    top: 35px;
     bottom: 48px;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -1639,7 +1639,7 @@ button#resetWatsonIcon {
 #watson__body__chat .segments {
     display: inline-block;
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: -15px;
 }
 
 /* ----------------------------------*/

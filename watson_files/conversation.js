@@ -104,10 +104,12 @@ $(document)
 			// oH_itemDropdownicon" id="flecha_abajoWatson"></i></a>'
 			+ 'Te ayudamos a comprobar tu cobertura'
 			+ '</div>'
-			+ '<button type="button" id="resetWatson" style="display: none;">'
+			+ '<div id="mostrarReset" style="display: none;">'
+			+ '<button type="button" id="resetWatson" style="display: block;" onclick="watson_Common.resetWatson()">'
 			+ '<span class="resetWatson__icon">&#8635;</span>'
 			+ 'Reiniciar chat'
 			+ '</button>'
+			+ '</div>'
 			+ '</div>'
 			+ '<div id="watson__body__chat">'
 //			+ '<div id="mostrarContentBodyChatSiNo"  style="display:block;">'
@@ -1122,6 +1124,9 @@ var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicaci
 				//-INICIO- Quitamos el textInput y el boton enviar cuando se nos cargue el formulario C2C
 				if (latestResponse.context.text[1] && latestResponse.context.text[1].includes("feedbackSmartFormSi")){
 						document.getElementById('escribeaqui').style.display = 'none';
+						document.getElementById('mostrarReset').style.display = 'block';
+						document.getElementById('watson__body__chat').style.top = '65px';					
+//						$('#mostrarReset').style.display = 'block';
 				}
 				//-FIN- Quitamos el textInput y el boton enviar cuando se nos cargue el formulario C2C
 				if (latestResponse) {
