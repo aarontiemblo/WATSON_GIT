@@ -988,6 +988,13 @@ var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicaci
 				$('#resetWatson').removeClass('enlaceInhabilitado');
 				if ((http.status === 200 && http.responseText
 					&& null != http.responseText && http.responseText != '')) {
+					//INICIO finConversacion está mandandose la variable de finConversación después de pintar el html
+					if (context.finConversacion){
+						document.getElementById('escribeaqui').style.display = 'none';
+						document.getElementById('mostrarReset').style.display = 'block';
+						document.getElementById('watson__body__chat').style.top = '65px';
+					}
+					//FIN finConversacio
 					watson_RightNow.check(JSON.parse(http.responseText));
 					if (!watson_RightNow.getContext().user) {
 						watson_Watson.setResponsePayload(http.responseText);
@@ -2463,6 +2470,7 @@ watson_ConversationPanel = (function () {
 		if (latestResponse) {
 			context = latestResponse.context;
 			context.noesmidireccion = true;
+			context.finConversacion = true;
 		}
 		watson_Watson.sendRequest(texto, context);
 		document.getElementById('escribeaqui').style.display = 'block';
