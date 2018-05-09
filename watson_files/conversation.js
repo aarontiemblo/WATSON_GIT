@@ -1317,11 +1317,12 @@ watson_Common = (function () {
 		var input = "EVENT_SALUDO_INICIAL_RESET";
 		contextInitial = {
 			"output": "EVENT_SALUDO_INICIAL",
+			"initialID": initialID
 		};
 
 		initial_Conversation.sendRequestInitial(input, contextInitial);
 
-//		conversationStart = false;
+		conversationStart = false;
 		scrollRepeat = false;
 		dobleGrid = 0;
 		otherLocation = false;
