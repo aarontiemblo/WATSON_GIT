@@ -1321,7 +1321,7 @@ watson_Common = (function () {
 
 		initial_Conversation.sendRequestInitial(input, contextInitial);
 
-		conversationStart = false;
+//		conversationStart = false;
 		scrollRepeat = false;
 		dobleGrid = 0;
 		otherLocation = false;
