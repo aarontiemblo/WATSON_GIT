@@ -29,6 +29,11 @@ var consultarViviendaSI = false;
 var si = false;
 var respuesta;
 var ofReset=false;
+var arrayCodGescal = new Array();
+var arrayCodMiga = new Array();
+var fila;
+var jj=0;
+var jp=0;
 
 //var ContentBodyChatSiNo ='<div class="segments load">' 
 //	+ '<div class="from-watson top"><div class="message-inner"><p>Hola, soy tu <strong>asistente virtual</strong>.</br>¿Te ayudo a consultar la cobertura de Fibra?</p></div></div>' 
@@ -1322,7 +1327,7 @@ watson_Common = (function () {
 
 		initial_Conversation.sendRequestInitial(input, contextInitial);
 
-		conversationStart = false;
+//		conversationStart = false;
 		scrollRepeat = false;
 		dobleGrid = 0;
 		otherLocation = false;
@@ -1987,6 +1992,16 @@ watson_ConversationPanel = (function () {
 						var encontrado = false;
 						for (var j = 0; j < splitCommas.length; j++) {
 							var splitDots = splitCommas[j].split(":");
+								//INICIO Incluir array para guardar los códigos MIGA y GESCAL asociados a la linea del grid de vivienda
+								if (splitDots[0] == "CodigoGESCAL"){
+									arrayCodGescal[jj] = splitDots[1];
+									jj++;
+								}
+								if (splitDots[0] == "CodigoMiga"){
+									arrayCodMiga[jp] = splitDots[1];
+									jp++;
+								}
+								//FIN Incluir array para guardar los códigos MIGA y GESCAL asociados a la linea del grid de vivienda
 							if (null != splitDots && splitDots.length > 1) {
 								if (splitDots[0] == listaItemsCabecera[l]) {
 									encontrado = true;
@@ -2228,6 +2243,10 @@ watson_ConversationPanel = (function () {
 			var clase = cell.className;
 			currentRow1 = currentRow.id;
 			parts = currentRow1.split("_");
+			//INICIO Sacar valor del array en el número de la fila seleccionada
+			//Me quedo con el último digito de currentRow.id
+			fila = currentRow.id.charAt(currentRow.id.length-1);
+			//FIN Sacar valor del array en el número de la fila seleccionada
 			if (null != document.getElementById('hiddenCodigoArvato_'
 				+ parts[1])) {
 				consultaFibraScope.CodigoArvato = document
@@ -2494,6 +2513,10 @@ watson_ConversationPanel = (function () {
 
 		if (latestResponse) {
 			context = latestResponse.context;
+			//INICIO Incluimos en el context el codigoGESCAL y el codigoMIGA
+			context.codigoGESCAL = arrayCodGescal[fila];
+			context.codigoMIGA = arrayCodMiga[fila];
+			//FIN Incluimos en el context el codigoGESCAL y el codigoMIGA 
 		}
 		watson_Watson.sendRequest(texto, context);
 		document.getElementById('escribeaqui').style.display = 'block';
