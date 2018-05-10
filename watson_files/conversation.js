@@ -1313,10 +1313,6 @@ watson_Common = (function () {
 
 	// Reset Watson
 	function resetWatson() {
-		//INICIO Reiniciamos los valores de los códigos GESCAL y MIGA para la próxima petición
-		arrayCodGescal = new Array();
-		arrayCodMiga = new Array();
-		//FIN Reiniciamos los valores de los códigos GESCAL y MIGA para la próxima petición
 		//-Inicio- NÃºmero no informado o no encontrado (Reseteo de variable)
 		document.getElementById('mostrarReset').style.display = 'none';
 		$('#watson__body__chat').css('top','35px');
