@@ -1328,6 +1328,7 @@ watson_Common = (function () {
 
 		initial_Conversation.sendRequestInitial(input, contextInitial);
 
+		clicked = true;
 //		conversationStart = false;
 		scrollRepeat = false;
 		dobleGrid = 0;
@@ -1862,18 +1863,18 @@ watson_ConversationPanel = (function () {
 						watson_Watson.sendRequest(input, context);
 					});
 					//INICIO Incluimos timeout de 20s para cuando el usuario no contesta
-//					setTimeout(delay, 20000);
-//					function delay() {
-//							if (clicked){
-//								$('#botonSi').attr('disabled', 'disabled');
-//								$('#botonNo').attr('disabled', 'disabled');
-//								$("#botonSi").addClass("respuestaboton enlaceInhabilitado");
-//								$("#botonNo").addClass("respuestaboton enlaceInhabilitado");
-//								var input = "Consulta Aproximada";
-//								context = latestResponse.context;
-//								watson_Watson.sendRequest(input, context);
-//							}
-//					}		
+					setTimeout(delay, 20000);
+					function delay() {
+						if (clicked){
+							$('#botonSi').attr('disabled', 'disabled');
+							$('#botonNo').attr('disabled', 'disabled');
+							$("#botonSi").addClass("respuestaboton enlaceInhabilitado");
+							$("#botonNo").addClass("respuestaboton enlaceInhabilitado");
+							var input = "Consulta Aproximada";
+							context = latestResponse.context;
+							watson_Watson.sendRequest(input, context);
+						}
+					}		
 					//Fin Incluimos timeout de 20s para cuando el usuario no contesta
 					//-FIN- Incluimos pregunta errorCode 4
 				}
