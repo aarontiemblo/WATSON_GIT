@@ -34,6 +34,7 @@ var arrayCodMiga = new Array();
 var fila;
 var jj=0;
 var jp=0;
+var clicked=true;
 
 //var ContentBodyChatSiNo ='<div class="segments load">' 
 //	+ '<div class="from-watson top"><div class="message-inner"><p>Hola, soy tu <strong>asistente virtual</strong>.</br>¿Te ayudo a consultar la cobertura de Fibra?</p></div></div>' 
@@ -1813,17 +1814,18 @@ watson_ConversationPanel = (function () {
 						var data = {};
 						data.output = {};
 						data.output.text = ["Para poder confirmar con exactitud tu cobertura, necesito identificar tu vivienda. " +
-						"¿Quieres identificar tu vivienda o hacer una consulta aproximada? " +
-						"</br><center><button style='margin-top:8px;width:35%;color:black;background-color:transparent;border:2px solid;border-color:black;' type='button' id='botonSi' onclick=''>Identificar</button> " +
-						"<button style='color:black;background-color:transparent;border:2px solid;border-color:black;' type='button' id='botonNo'>Consulta Aproximada</button></center></p>"+ 
+						"Tienes dos opciones: " +
+						"</br>&nbsp;&nbsp;1. Pulsa <strong>'Identificar'</strong> si quieres identificar tu vivienda" +
+						"</br>&nbsp;&nbsp;2. Pulsa <strong>'Consulta Aproximada'</strong> si no quieres identificar tu vivienda" +
+						"</br><center><button style='margin-top:8px;width:45%;height: 45%;color:white;background-color:transparent;border:2px solid;border-color:white;font-size:15px' type='button' id='botonSi' onclick=''>Identificar</button> " +
+						"<button style='color:white;background-color:transparent;border:2px solid;border-color:white;height: 45%;font-size:15px;' type='button' id='botonNo'>Consulta Aproximada</button></center></p>"+ 
 						"</div>"];
 						var type = 'watson';
 						document.getElementById('escribeaqui').style.display = 'none';
 						watson_ConversationPanel.displayMessage(data, type);
 						document.body.style.cursor = 'default';
 					$('#botonSi').on('click',function(){
-//						document.getElementById("botonSi").disabled = true;
-//						document.getElementById("botonNo").disabled = true;
+						clicked=false;
 						$('#botonSi').attr('disabled', 'disabled');
 						$('#botonNo').attr('disabled', 'disabled');
 						$("#botonSi").addClass("respuestaboton enlaceInhabilitado");
@@ -1847,22 +1849,32 @@ watson_ConversationPanel = (function () {
 
 						$("#confirmLocation4").addClass("botonInhabilitado");
 						watson_ConversationPanel.scrollToChatBottom('.confirmFlat');
-					});
 
+					});
 					$('#botonNo').on('click',function(){
-//						document.getElementById("botonSi").disabled = true;
-//						document.getElementById("botonNo").disabled = true;
+						clicked=false;
 						$('#botonSi').attr('disabled', 'disabled');
 						$('#botonNo').attr('disabled', 'disabled');
 						$("#botonSi").addClass("respuestaboton enlaceInhabilitado");
 						$("#botonNo").addClass("respuestaboton enlaceInhabilitado");
-//						locationRefuse4();
 						var input = "Consulta Aproximada";
-//						contextInitial.output = "EVENT_CONSULTA_APROXIMADA";
 						context = latestResponse.context;
 						watson_Watson.sendRequest(input, context);
-//						initial_Conversation.sendRequestInitial(input, contextInitial);
 					});
+					//INICIO Incluimos timeout de 20s para cuando el usuario no contesta
+//					setTimeout(delay, 20000);
+//					function delay() {
+//							if (clicked){
+//								$('#botonSi').attr('disabled', 'disabled');
+//								$('#botonNo').attr('disabled', 'disabled');
+//								$("#botonSi").addClass("respuestaboton enlaceInhabilitado");
+//								$("#botonNo").addClass("respuestaboton enlaceInhabilitado");
+//								var input = "Consulta Aproximada";
+//								context = latestResponse.context;
+//								watson_Watson.sendRequest(input, context);
+//							}
+//					}		
+					//Fin Incluimos timeout de 20s para cuando el usuario no contesta
 					//-FIN- Incluimos pregunta errorCode 4
 				}
 				// en caso de que watson nos devuelva un ErrorCode 6
@@ -2561,6 +2573,7 @@ watson_ConversationPanel = (function () {
 			"<div class='from-watson top'><div class='message-inner'><p>Lo siento, no podemos consultar tu cobertura en estos momentos.<br>Por favor inténtalo más tarde o llama al 900 263 176</p></div></div>");
 		watson_ConversationPanel.scrollToChatBottom();
 		document.getElementById('escribeaqui').style.display = 'none';
+		document.getElementById("resetWatson").disabled = false;
 		if (null != document.getElementById('watsonWaiting')) {
 			// document.getElementById('watsonWaiting').remove();
 			$("div").find('#watsonWaiting').remove();
