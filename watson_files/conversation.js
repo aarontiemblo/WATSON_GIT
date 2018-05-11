@@ -1994,12 +1994,16 @@ watson_ConversationPanel = (function () {
 							var splitDots = splitCommas[j].split(":");
 								//INICIO Incluir array para guardar los códigos MIGA y GESCAL asociados a la linea del grid de vivienda
 								if (splitDots[0] == "CodigoGESCAL"){
-									arrayCodGescal[jj] = splitDots[1];
-									jj++;
+									if(arrayCodGescal[jj-1] != splitDots[1]){
+										arrayCodGescal[jj] = splitDots[1];
+										jj++;
+									}
 								}
 								if (splitDots[0] == "CodigoMiga"){
-									arrayCodMiga[jp] = splitDots[1];
-									jp++;
+									if(arrayCodGescal[jp-1] != splitDots[1]){
+										arrayCodMiga[jp] = splitDots[1];
+										jp++;
+									}
 								}
 								//FIN Incluir array para guardar los códigos MIGA y GESCAL asociados a la linea del grid de vivienda
 							if (null != splitDots && splitDots.length > 1) {
