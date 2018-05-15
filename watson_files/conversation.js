@@ -35,6 +35,7 @@ var fila;
 var jj=0;
 var jp=0;
 var clicked=true;
+var clickedNoVivienda=true;
 
 //var ContentBodyChatSiNo ='<div class="segments load">' 
 //	+ '<div class="from-watson top"><div class="message-inner"><p>Hola, soy tu <strong>asistente virtual</strong>.</br>¿Te ayudo a consultar la cobertura de Fibra?</p></div></div>' 
@@ -110,6 +111,7 @@ $(document)
 			// comprobar tu cobertura<i class="oH-icon oH-icon-arrow-down
 			// oH_itemDropdownicon" id="flecha_abajoWatson"></i></a>'
 			+ 'Te ayudamos a comprobar tu cobertura'
+//			+ '<button type="button" id="cerrarWatson" class="watsonButtonCerrar" onclick="cerrarWatson()">X</button>'
 			+ '</div>'
 			+ '<div id="mostrarReset" style="display: none;">'
 			+ '<button type="button" id="resetWatson" style="display: block;" onclick="watson_Common.resetWatson()">'
@@ -156,6 +158,25 @@ $(document)
 		initial_Conversation.sendRequestInitial(input,
 			contextInitial);
 	});
+
+//INICIO Botón flotante para activar el chat
+//$(document)
+//	.ready(
+//			function () {
+//				document.getElementById("watsonPopUp").style.display = "none";
+//			});
+//function lanzaWatson(){
+//	document.getElementById("watsonPopUp").style.display = "block";
+//	document.getElementById("lanzarWatson").style.display = "none";
+//}
+//FIN Botón flotante para activar el chat
+//INICIO Botón flotante para desactivar el chat
+//function cerrarWatson(){
+//	document.getElementById("watsonPopUp").style.display = "none";
+//	document.getElementById("lanzarWatson").style.display = "block";
+//}
+//FIN Botón flotante para desactivar el chat
+
 // Inicializaciï¿½n de googlemaps para el autocomplete
 ////INICIO- Funciones para la primera pregunta SI - NO
 //function activarBodyChat(){
@@ -997,10 +1018,34 @@ var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicaci
 					//INICIO finConversacion está mandandose la variable de finConversación después de pintar el html
 					if (context.finConversacion){
 						document.getElementById('escribeaqui').style.display = 'none';
-						document.getElementById('mostrarReset').style.display = 'block';
+//						document.getElementById('mostrarReset').style.display = 'block';
 						document.getElementById('watson__body__chat').style.top = '65px';
 					}
-					//FIN finConversacio
+					//INICIO Incluimos timeout de 20s para cuando el usuario no contesta
+					//Todavía hay que comprobarlo con el id que nos llegue desde el context			
+//					if (contextForm == 'id del output.text'){
+//						setTimeout(delay, 20000);
+//						$('#noViviendaNo').on('click',function(){
+//							clickedNoVivienda = false;
+//							document.getElementById('mostrarReset').style.display = 'block';
+//						});
+//						$('#noViviendaSi').on('click',function(){
+//							clickedNoVivienda = false;
+//						});
+//						function delay() {
+//							if (clickedNoVivienda){
+//								$('#botonSi').attr('disabled', 'disabled');
+//								$('#botonNo').attr('disabled', 'disabled');
+//								$("#botonSi").addClass("respuestaboton enlaceInhabilitado");
+//								$("#botonNo").addClass("respuestaboton enlaceInhabilitado");
+//								var input = "Consulta Aproximada";
+//								context = latestResponse.context;
+//								watson_Watson.sendRequest(input, context);
+//							}
+//						}	
+//					}
+					//Fin Incluimos timeout de 20s para cuando el usuario no contesta
+					//FIN finConversacion
 					watson_RightNow.check(JSON.parse(http.responseText));
 					if (!watson_RightNow.getContext().user) {
 						watson_Watson.setResponsePayload(http.responseText);
@@ -1144,7 +1189,7 @@ var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicaci
 				//-INICIO- Quitamos el textInput y el boton enviar cuando se nos cargue el formulario C2C
 				if (latestResponse.context.text[1] && latestResponse.context.text[1].includes("feedbackSmartFormSi")){
 						document.getElementById('escribeaqui').style.display = 'none';
-						document.getElementById('mostrarReset').style.display = 'block';
+//						document.getElementById('mostrarReset').style.display = 'block';
 						document.getElementById('watson__body__chat').style.top = '65px';					
 //						$('#mostrarReset').style.display = 'block';
 				}
@@ -1322,13 +1367,14 @@ watson_Common = (function () {
 		ofReset = true;
 		var input = "EVENT_SALUDO_INICIAL_RESET";
 		contextInitial = {
-			"output": "EVENT_SALUDO_INICIAL",
+			"output": "EVENT_SALUDO_INICIAL_RESET",
 			"initialID": initialID
 		};
 
 		initial_Conversation.sendRequestInitial(input, contextInitial);
 
 		clicked = true;
+		clickedNoVivienda = true;
 //		conversationStart = false;
 		scrollRepeat = false;
 		dobleGrid = 0;
@@ -1809,6 +1855,31 @@ watson_ConversationPanel = (function () {
 				contextFin = latestResponse.context.finConversacion;
 				contextBlockInput = latestResponse.context.BloqueaInput;
 				contextForm = latestResponse.context.ErrorCode;
+				//INICIO Incluimos timeout de 20s para cuando el usuario no contesta
+				//Todavía hay que meter el errorCode 51 en el context			
+//				if (contextForm == '51'){
+//					setTimeout(delay, 20000);
+//					$('#noViviendaNo').on('click',function(){
+//						clickedNoVivienda = false;
+//						document.getElementById('mostrarReset').style.display = 'block';
+//					});
+//					$('#noViviendaSi').on('click',function(){
+//						clickedNoVivienda = false;
+//					});
+//					function delay() {
+//						if (clickedNoVivienda){
+//							$('#botonSi').attr('disabled', 'disabled');
+//							$('#botonNo').attr('disabled', 'disabled');
+//							$("#botonSi").addClass("respuestaboton enlaceInhabilitado");
+//							$("#botonNo").addClass("respuestaboton enlaceInhabilitado");
+//							var input = "Consulta Aproximada";
+//							context = latestResponse.context;
+//							watson_Watson.sendRequest(input, context);
+//						}
+//					}	
+//				}
+				//Fin Incluimos timeout de 20s para cuando el usuario no contesta
+				//FIN finConversacion
 				// en caso de que watson nos devuelva un ErrorCode 4
 				if (contextForm == '4') {	
 						//-INICIO- Incluimos pregunta errorCode 4
@@ -1818,8 +1889,8 @@ watson_ConversationPanel = (function () {
 						"Tienes dos opciones: " +
 						"</br>&nbsp;&nbsp;1. Pulsa <strong>'Identificar'</strong> si quieres identificar tu vivienda" +
 						"</br>&nbsp;&nbsp;2. Pulsa <strong>'Consulta Aproximada'</strong> si no quieres identificar tu vivienda" +
-						"</br><center><button style='margin-top:8px;width:45%;height: 45%;color:white;background-color:transparent;border:2px solid;border-color:white;font-size:15px' type='button' id='botonSi' onclick=''>Identificar</button> " +
-						"<button style='color:white;background-color:transparent;border:2px solid;border-color:white;height: 45%;font-size:15px;' type='button' id='botonNo'>Consulta Aproximada</button></center></p>"+ 
+						"</br><center><button style='margin-top:8px;width:40%;height: 40%;color:white;background-color:transparent;border:2px solid;border-color:white;font-size:15px' type='button' id='botonSi' onclick=''>Identificar</button> " +
+						"<button style='color:white;background-color:transparent;border:2px solid;border-color:white;height: 40%;font-size:15px;' type='button' id='botonNo'>Consulta Aproximada</button></center></p>"+ 
 						"</div>"];
 						var type = 'watson';
 						document.getElementById('escribeaqui').style.display = 'none';
