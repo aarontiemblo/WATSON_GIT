@@ -1018,7 +1018,7 @@ var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicaci
 					//INICIO finConversacion está mandandose la variable de finConversación después de pintar el html
 					if (context.finConversacion){
 						document.getElementById('escribeaqui').style.display = 'none';
-//						document.getElementById('mostrarReset').style.display = 'block';
+						document.getElementById('mostrarReset').style.display = 'block';
 						document.getElementById('watson__body__chat').style.top = '65px';
 					}
 					//INICIO Incluimos timeout de 20s para cuando el usuario no contesta
@@ -1189,7 +1189,7 @@ var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicaci
 				//-INICIO- Quitamos el textInput y el boton enviar cuando se nos cargue el formulario C2C
 				if (latestResponse.context.text[1] && latestResponse.context.text[1].includes("feedbackSmartFormSi")){
 						document.getElementById('escribeaqui').style.display = 'none';
-//						document.getElementById('mostrarReset').style.display = 'block';
+						document.getElementById('mostrarReset').style.display = 'block';
 						document.getElementById('watson__body__chat').style.top = '65px';					
 //						$('#mostrarReset').style.display = 'block';
 				}
