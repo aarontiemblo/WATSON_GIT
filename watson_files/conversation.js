@@ -36,6 +36,7 @@ var jj=0;
 var jp=0;
 var clicked=true;
 var clickedNoVivienda=true;
+var poblacion;
 
 //var ContentBodyChatSiNo ='<div class="segments load">' 
 //	+ '<div class="from-watson top"><div class="message-inner"><p>Hola, soy tu <strong>asistente virtual</strong>.</br>¿Te ayudo a consultar la cobertura de Fibra?</p></div></div>' 
@@ -2076,6 +2077,12 @@ watson_ConversationPanel = (function () {
 						var encontrado = false;
 						for (var j = 0; j < splitCommas.length; j++) {
 							var splitDots = splitCommas[j].split(":");
+								//Recogemos la población para mandarla en el context
+								if (splitDots[0] == "Poblacion"){
+									if (splitDots[1]!="" && splitDots[1]!= "undefined" &&  splitDots[1]!=null){
+										poblacion = splitDots[1];	
+									}	
+								}
 								//INICIO Incluir array para guardar los códigos MIGA y GESCAL asociados a la linea del grid de vivienda
 								if (splitDots[0] == "CodigoGESCAL"){
 									if(arrayCodGescal[jj-1] != splitDots[1]){
@@ -2601,6 +2608,10 @@ watson_ConversationPanel = (function () {
 
 		if (latestResponse) {
 			context = latestResponse.context;
+			//Incluimos la poblacion en el context
+			if (poblacion!="" && poblacion!= "undefined" &&  poblacion!=null){
+				context.poblacion = poblacion;	
+			}
 			//INICIO Incluimos en el context el codigoGESCAL y el codigoMIGA
 			context.codigoGESCAL = arrayCodGescal[fila];
 			context.codigoMIGA = arrayCodMiga[fila];
