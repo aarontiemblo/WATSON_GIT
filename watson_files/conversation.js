@@ -693,8 +693,11 @@ watson_RightNow = (function () {
 // -----------------------------------------------------------------------------
 
 initial_Conversation = (function () {
+	// {$ env-local $}
+	var comunicacionInicialEndpoint = 'http://localhost:9090/conversacion-inicial';
+	// {$ end-env-local $}
 	// {$ env-pre $}
-var comunicacionInicialEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/conversacion-inicial';
+// var comunicacionInicialEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/conversacion-inicial';
 	// {$ end-env-pre $}
 	// {$ env-prod $}
 // var comunicacionInicialEndpoint = 'https://chatconwatson.eu-de.mybluemix.net/conversacion-inicial';
@@ -780,9 +783,13 @@ var comunicacionInicialEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/con
 // -----------------------------------------------------------------------------
 watson_Watson = (function () {
 
+	// {$ env-local $}
+var messageEndpoint = 'http://localhost:9090/comunicacionConWatson';
+var comunicacionEndpoint = 'http://localhost:9090/comunicacionConWatson';
+	// {$ end-env-local $}
 	// {$ env-pre $}
-var messageEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicacionConWatson';
-var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicacionConWatson';
+// var messageEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicacionConWatson';
+// var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicacionConWatson';
 	// {$ end-env-pre $}
 	// {$ env-prod $}
 // var messageEndpoint = 'https://chatconwatson.eu-de.mybluemix.net/comunicacionConWatson';
