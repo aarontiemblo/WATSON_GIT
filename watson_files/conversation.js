@@ -785,12 +785,12 @@ initial_Conversation = (function () {
 watson_Watson = (function () {
 
 	// {$ env-local $}
-var messageEndpoint = 'http://localhost:9090/comunicacionConWatson';
-var comunicacionEndpoint = 'http://localhost:9090/comunicacionConWatson';
+//var messageEndpoint = 'http://localhost:9090/comunicacionConWatson';
+//var comunicacionEndpoint = 'http://localhost:9090/comunicacionConWatson';
 	// {$ end-env-local $}
 	// {$ env-pre $}
-// var messageEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicacionConWatson';
-// var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicacionConWatson';
+ var messageEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicacionConWatson';
+ var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicacionConWatson';
 	// {$ end-env-pre $}
 	// {$ env-prod $}
 // var messageEndpoint = 'https://chatconwatson.eu-de.mybluemix.net/comunicacionConWatson';
@@ -2120,7 +2120,7 @@ watson_ConversationPanel = (function () {
 										"watson_ConversationPanel.captureRow4(this)");
 									tr.appendChild(td);
 									contadorColumnas++;
-									break;
+//									break;
 								}
 							}
 						}
