@@ -36,6 +36,7 @@ var jj=0;
 var jp=0;
 var clicked=true;
 var clickedNoVivienda=true;
+var clickedConfirmVivienda = true;
 var poblacion;
 
 //var ContentBodyChatSiNo ='<div class="segments load">' 
@@ -1926,7 +1927,20 @@ watson_ConversationPanel = (function () {
 							+ generarTablaDireccionesError4(direcccionesAlternativas, cadenaDireccionRecuperar).innerHTML
 							+ "</div>"
 							);
-
+						//INICIO Incluimos timeout de 20s para cuando el usuario no contesta
+						setTimeout(delay, 20000);
+						function delay() {
+							if (clickedConfirmVivienda){
+								$('#botonSi').attr('disabled', 'disabled');
+								$('#botonNo').attr('disabled', 'disabled');
+								$("#botonSi").addClass("respuestaboton enlaceInhabilitado");
+								$("#botonNo").addClass("respuestaboton enlaceInhabilitado");
+								var input = "Consulta Aproximada";
+								context = latestResponse.context;
+								watson_Watson.sendRequest(input, context);
+							}
+						}		
+						//Fin Incluimos timeout de 20s para cuando el usuario no contesta
 						$("#confirmLocation4").addClass("botonInhabilitado");
 						watson_ConversationPanel.scrollToChatBottom('.confirmFlat');
 
@@ -2605,6 +2619,7 @@ watson_ConversationPanel = (function () {
 
 	// Boton Confirmar con el error 4
 	function confirmLocation4() {
+		clickedConfirmVivienda = false;
 		$("#tableOther").find('tr').prop("onclick", null);
 		$("#tableBodyOther").find('tr').addClass("trOther");
 		$("#tableBodyOther").find('.trOther').addClass("tablaInhabilitada");
