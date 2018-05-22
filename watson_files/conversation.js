@@ -1384,6 +1384,7 @@ watson_Common = (function () {
 
 		clicked = true;
 		clickedNoVivienda = true;
+		clickedConfirmVivienda = true;
 //		conversationStart = false;
 		scrollRepeat = false;
 		dobleGrid = 0;
