@@ -39,6 +39,7 @@ var clickedNoVivienda=true;
 var clickedConfirmVivienda = true;
 var poblacion;
 var conversID;
+var contextConsAprox;
 
 //var ContentBodyChatSiNo ='<div class="segments load">' 
 //	+ '<div class="from-watson top"><div class="message-inner"><p>Hola, soy tu <strong>asistente virtual</strong>.</br>¿Te ayudo a consultar la cobertura de Fibra?</p></div></div>' 
@@ -972,36 +973,36 @@ watson_Watson = (function () {
 
 		// Si se ha reseteado el chat inicializamos valores
 		if (conversationId == '1' || resetOther) {
-			var canal = $('#watsonContainer').attr('data-canal');
-			var urlHTML = $('#watsonContainer').attr('data-url');
-			if (conversationId != ''){
-				var context = {
-					"canal": canal,
-					"conversation_id": contextold.conversation_id
-				};	
-			}else if (initialID){
+//			var canal = $('#watsonContainer').attr('data-canal');
+//			var urlHTML = $('#watsonContainer').attr('data-url');
+//			if (conversationId != ''){
 //				var context = {
-//						"initialID": initialID
-//					};
-				context.initialID = initialID;
-			}
-//				else{
-//				var context = {
-//					"canal": canal
-//				};
-//			}
-
-//			if(initialID){
+//					"canal": canal,
+//					"conversation_id": contextold.conversation_id
+//				};	
+//			}else if (initialID){
+////				var context = {
+////						"initialID": initialID
+////					};
 //				context.initialID = initialID;
 //			}
-			if (ofReset){
-				var context = {
-						"canal": canal,
-						"initialID": initialID
-					};
-			}
+////				else{
+////				var context = {
+////					"canal": canal
+////				};
+////			}
+//
+////			if(initialID){
+////				context.initialID = initialID;
+////			}
+//			if (ofReset){
+//				var context = {
+//						"canal": canal,
+//						"initialID": initialID
+//					};
+//			}
 			payloadToWatson.context = context;
-			conversationId = '';
+//			conversationId = '';
 			resetOther = false;
 		}
 
@@ -1860,6 +1861,7 @@ watson_ConversationPanel = (function () {
 					settings.authorTypes.watson);
 				var context;
 				var latestResponse = watson_Watson.getResponsePayload();
+				contextConsAprox = latestResponse.context; 
 			} else {
 				watson_ConversationPanel.captureErrorWatson();
 			}
@@ -1940,8 +1942,6 @@ watson_ConversationPanel = (function () {
 								$("#confirmLocation4").addClass("respuestaboton enlaceInhabilitado");
 								var input = "Consulta Aproximada";
 								context = latestResponse.context;
-								//Incluimos el conversation_id
-								context.conversation_id = conversID;
 								watson_Watson.sendRequest(input, context);
 							}
 						}		
@@ -1958,8 +1958,6 @@ watson_ConversationPanel = (function () {
 						$("#botonNo").addClass("respuestaboton enlaceInhabilitado");
 						var input = "Consulta Aproximada";
 						context = latestResponse.context;
-						//Incluimos el conversation_id
-						context.conversation_id = conversID;
 						watson_Watson.sendRequest(input, context);
 					});
 					//INICIO Incluimos timeout de 20s para cuando el usuario no contesta
@@ -1972,8 +1970,6 @@ watson_ConversationPanel = (function () {
 							$("#botonNo").addClass("respuestaboton enlaceInhabilitado");
 							var input = "Consulta Aproximada";
 							context = latestResponse.context;
-							//Incluimos el conversation_id
-							context.conversation_id = conversID;
 							watson_Watson.sendRequest(input, context);
 						}
 					}		
@@ -3581,7 +3577,7 @@ watson_Location = (function () {
 						// "IdFAQ_Original": urlHTML
 					};
 					watson_Watson.setStatus('to-watson');
-				}
+				} 
 				var canal = $('#watsonContainer').attr('data-canal');
 				var urlHTML = $('#watsonContainer').attr('data-url');
 				var context = {
