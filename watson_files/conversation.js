@@ -1931,10 +1931,10 @@ watson_ConversationPanel = (function () {
 						setTimeout(delay, 20000);
 						function delay() {
 							if (clickedConfirmVivienda){
-								$('#botonSi').attr('disabled', 'disabled');
-								$('#botonNo').attr('disabled', 'disabled');
-								$("#botonSi").addClass("respuestaboton enlaceInhabilitado");
-								$("#botonNo").addClass("respuestaboton enlaceInhabilitado");
+								$('#refuseLocation4').attr('disabled', 'disabled');
+								$('#confirmLocation4').attr('disabled', 'disabled');
+								$("#refuseLocation4").addClass("respuestaboton enlaceInhabilitado");
+								$("#confirmLocation4").addClass("respuestaboton enlaceInhabilitado");
 								var input = "Consulta Aproximada";
 								context = latestResponse.context;
 								watson_Watson.sendRequest(input, context);
