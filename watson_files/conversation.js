@@ -1963,6 +1963,7 @@ watson_ConversationPanel = (function () {
 						$("#botonNo").addClass("respuestaboton enlaceInhabilitado");
 						var input = "Consulta Aproximada";
 						context = latestResponse.context;
+						document.getElementById("escribeaqui").style.display = 'block';
 						watson_Watson.sendRequest(input, context);
 					});
 					//INICIO Incluimos timeout de 20s para cuando el usuario no contesta
@@ -1975,6 +1976,7 @@ watson_ConversationPanel = (function () {
 							$("#botonNo").addClass("respuestaboton enlaceInhabilitado");
 							var input = "Consulta Aproximada";
 							context = latestResponse.context;
+							document.getElementById("escribeaqui").style.display = 'block';
 							watson_Watson.sendRequest(input, context);
 						}
 					}		
