@@ -1001,6 +1001,11 @@ watson_Watson = (function () {
 //						"initialID": initialID
 //					};
 //			}
+		var context = {
+				"canal": canal,
+				"initialID": initialID,
+				"conversation_id": contextold.conversation_id
+				}
 			payloadToWatson.context = context;
 //			conversationId = '';
 			resetOther = false;
