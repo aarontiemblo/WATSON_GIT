@@ -40,6 +40,8 @@ var clickedConfirmVivienda = true;
 var poblacion;
 var conversID;
 var contextConsAprox;
+var contextAction;
+var contextErrorCode;
 
 //var ContentBodyChatSiNo ='<div class="segments load">' 
 //	+ '<div class="from-watson top"><div class="message-inner"><p>Hola, soy tu <strong>asistente virtual</strong>.</br>¿Te ayudo a consultar la cobertura de Fibra?</p></div></div>' 
@@ -1001,11 +1003,16 @@ watson_Watson = (function () {
 //						"initialID": initialID
 //					};
 //			}
-		var context = {
-				"canal": canal,
-				"initialID": initialID,
-				"conversation_id": contextold.conversation_id
-				}
+//		var context = {
+//				"canal": canal,
+//				"initialID": initialID,
+//				"conversation_id": contextold.conversation_id
+//				}
+			//Rectificamos el contexto para los valores canal, initialID y conversation_id
+			context.canal = canal;
+			context.initialID = initialID;
+			context.conversation_id = contextold.conversation_id;
+			
 			payloadToWatson.context = context;
 //			conversationId = '';
 			resetOther = false;
@@ -1915,6 +1922,8 @@ watson_ConversationPanel = (function () {
 						document.getElementById('escribeaqui').style.display = 'none';
 						watson_ConversationPanel.displayMessage(data, type);
 						document.body.style.cursor = 'default';
+						contextAction = latestResponse.context.action;
+						contextErrorCode = contextForm;
 					$('#botonSi').on('click',function(){
 						clicked=false;
 						$('#botonSi').attr('disabled', 'disabled');
