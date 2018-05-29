@@ -4630,6 +4630,9 @@ function envioFormulario(){
 					+'Gracias.</div>');
 		}
 	}
+	function showMasInfo(){
+	    $('.textRGPD').show();
+	}
 //	function mensajeNoCheckLOPD(){
 ////		var data = {};
 ////		data.output = {};
@@ -4639,7 +4642,7 @@ function envioFormulario(){
 //		window.alert("Debes aceptar la LOPD");
 //	}
 // -FIN- C2C
-
+	
 
 
 

@@ -3408,4 +3408,82 @@ label.checkNumFijo {
 #oF{
 	position: initial!important;
 }
-	
+
+#lanzarWatson{
+	background: url(./watson_files/boton-djingo.gif);
+    background-size: 140px auto;
+    height: 65px;
+    width: 145px;
+    display: block;
+    position: relative;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    cursor: pointer;
+}
+
+#checkRGPD {
+    background-color: #fffbfb;
+    border: 1px solid #000;
+}
+
+.labelRGPD .masinfo {
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.textRGPD {
+    display: none;
+}
+
+.textRGPD a {
+    border: 0 solid #000 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* /*Boton flotante para el chat*/	 */
+/* #popupabrirWatson { */
+/*     display: block; */
+/*     width: 100px; */
+/*     height: 44px; */
+/*     position: relative; */
+/*     padding: 10px; */
+/*     font-size: 20px; */
+/*     font-weight: bold; */
+/*     color: black; */
+/*     cursor: pointer; */
+/*     background: #f60 url(./watson_files/boton-djingo.gif) no-repeat 0px 5px; */
+/*     background-size: 95px auto; */
+/*     image-rendering: crisp-edges; */
+/*     image-rendering: -webkit-optimize-contrast; */
+/* } */
+/* #watsonButtonLanzar { */
+/*     bottom: 50%; */
+/* } */
+/* #watsonButtonLanzar { */
+/*     position: fixed; */
+/*     width: auto; */
+/*     height: auto; */
+/*     padding: 0; */
+/*     text-align: center; */
+/*     bottom: 1rem; */
+/*     left: 0; */
+/* } */
+/* #watsonButtonLanzar:hover #popupabrirWatson { */
+/*     background-position-y: 16px; */
+/*     background-size: 150px auto; */
+/* } */
+/* #watsonButtonLanzar:hover #popupabrirWatson { */
+/*     background: #000 url(./watson_files/boton-djingo__hover.gif) no-repeat 0 .25rem; */
+/*     background-size: contain; */
+/* } */
+
+/* /*X para cerrar el asistente*/ */
+/* #watsonButtonCerrar { */
+/* 	background: transparent; */
+/*     border-color: transparent; */
+/*     color: white; */
+/* } */
