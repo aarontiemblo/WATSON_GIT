@@ -42,6 +42,7 @@ var conversID;
 var contextConsAprox;
 var contextAction;
 var contextErrorCode;
+var vueltaM = true;
 
 //var ContentBodyChatSiNo ='<div class="segments load">' 
 //	+ '<div class="from-watson top"><div class="message-inner"><p>Hola, soy tu <strong>asistente virtual</strong>.</br>¿Te ayudo a consultar la cobertura de Fibra?</p></div></div>' 
@@ -1003,15 +1004,15 @@ watson_Watson = (function () {
 //						"initialID": initialID
 //					};
 //			}
-//		var context = {
-//				"canal": canal,
-//				"initialID": initialID,
-//				"conversation_id": contextold.conversation_id
-//				}
 			//Rectificamos el contexto para los valores canal, initialID y conversation_id
-			context.canal = canal;
-			context.initialID = initialID;
-			context.conversation_id = contextold.conversation_id;
+			var context = {
+				"canal": canal,
+				"initialID": initialID,
+				"conversation_id": contextold.conversation_id
+				}			
+//			context.canal = canal;
+//			context.initialID = initialID;
+//			context.conversation_id = contextold.conversation_id;
 			
 			payloadToWatson.context = context;
 //			conversationId = '';
@@ -1749,32 +1750,31 @@ watson_ConversationPanel = (function () {
 		
 		var check = $('.checkNumFijo:last input')[0];
 		if(check.checked){
-			
-		var context;
-		var latestResponse = watson_Watson.getResponsePayload();
+			var context;
+			var latestResponse = watson_Watson.getResponsePayload();
 
-		if (latestResponse) {
-			context = latestResponse.context;
-			context.noesmidireccion = true;
-		}
-		if (includes(codPromo,"PROMO_CODE")){
-			context.enlaceaTienda = context.enlaceaTienda+"&"+codPromo;
-		}
-		function includes(codPromo, value) {
-			var returnValue = false;
-			var pos = codPromo.indexOf(value);
-			if (pos >= 0) {
-				returnValue = true;
+			if (latestResponse) {
+				context = latestResponse.context;
+				context.noesmidireccion = true;
 			}
-			return returnValue;
-		}		
-		var text = $(".meInteresaBtn:last").data('msg');
-		text = '<!datosFormFeedback>' + text;
-		watson_Watson.sendRequest(text, context);
-		document.getElementById('escribeaqui').style.display = 'block';
-		document.getElementById('textInputchat').disabled = true;
-		$('.meInteresaBtn:last')[0].disabled = true;
-		$('.verMasOpcionesBtn:last')[0].disabled = true;	
+			if (includes(codPromo,"PROMO_CODE")){
+				context.enlaceaTienda = context.enlaceaTienda+"&"+codPromo;
+			}
+			function includes(codPromo, value) {
+				var returnValue = false;
+				var pos = codPromo.indexOf(value);
+				if (pos >= 0) {
+					returnValue = true;
+				}
+				return returnValue;
+			}		
+			var text = $(".meInteresaBtn:last").data('msg');
+			text = '<!datosFormFeedback>' + text;
+			watson_Watson.sendRequest(text, context);
+			document.getElementById('escribeaqui').style.display = 'block';
+			document.getElementById('textInputchat').disabled = true;
+			$('.meInteresaBtn:last')[0].disabled = true;
+			$('.verMasOpcionesBtn:last')[0].disabled = true;	
 		}
 	}
 
@@ -4579,36 +4579,40 @@ $(window).resize(function() {
 // }(sya.$);
 
 function envioFormulario(){
-	var clientConfig = { 
-		    timeoutTooltip: 3, 
-		    lang: 'es', 
-		    pos: 'topLeft', 
-		    recovery: true, 
-		    sendHidden: false, 
-		    map: { 
-		        param1 : document.getElementById('nameFeedback').value, 
-		        param2 : document.getElementById('phoneFeedback').value 
-		    } 
-		};
-	var urlDelio = "https://ws.walmeric.com/provision/wsclient/client_addlead.html?idTag=29842f94d414949bf95fb2e6109142cfef1fb2a78114c2c536a36bf5a65b953a2224d083b82556f420edd64168d5fd904d9e4fa7221a95c03a6f0110864d9e6a9f1bcc982f49e8e7b5377e50143aa1bbe341aaec655f7666e755114f87c6e9f3b42792780ae793bf157e928ce3e0fcd5&name="+clientConfig.map.param1+"&phone="+clientConfig.map.param2;
-	console.log(urlDelio);
-	var toDelio;
-	$.ajax({
-        url: urlDelio,//esto o con un archivo php
-        type: 'GET',//tipo de petición
-        dataType: 'jsonp',//tipo de datos
-        jsonp: toDelio,//nombre de la variable get para reconocer la petición
-        error: function(xhr, status, error) {
-        	lead = false;
-			mensajeFinal();
-			console.log("Error en la petición a DELIO");
-        },
-        success: function(jsonp) { 
-        	lead = true;
-			mensajeFinal();
-			console.log("La petición ha sido satisfactoria");
-        }
-   });
+//	if (document.getElementById("checkLOPD").checked){	
+			var clientConfig = { 
+				    timeoutTooltip: 3, 
+				    lang: 'es', 
+				    pos: 'topLeft', 
+				    recovery: true, 
+				    sendHidden: false, 
+				    map: { 
+				        param1 : document.getElementById('nameFeedback').value, 
+				        param2 : document.getElementById('phoneFeedback').value 
+				    } 
+				};
+			var urlDelio = "https://ws.walmeric.com/provision/wsclient/client_addlead.html?idTag=29842f94d414949bf95fb2e6109142cfef1fb2a78114c2c536a36bf5a65b953a2224d083b82556f420edd64168d5fd904d9e4fa7221a95c03a6f0110864d9e6a9f1bcc982f49e8e7b5377e50143aa1bbe341aaec655f7666e755114f87c6e9f3b42792780ae793bf157e928ce3e0fcd5&name="+clientConfig.map.param1+"&phone="+clientConfig.map.param2;
+			console.log(urlDelio);
+			var toDelio;
+			$.ajax({
+		        url: urlDelio,//esto o con un archivo php
+		        type: 'GET',//tipo de petición
+		        dataType: 'jsonp',//tipo de datos
+		        jsonp: toDelio,//nombre de la variable get para reconocer la petición
+		        error: function(xhr, status, error) {
+		        	lead = false;
+					mensajeFinal();
+					console.log("Error en la petición a DELIO");
+		        },
+		        success: function(jsonp) { 
+		        	lead = true;
+					mensajeFinal();
+					console.log("La petición ha sido satisfactoria");
+		        }
+		   });
+//	}else{
+//		mensajeNoCheckLOPD();
+//	}
 }
 	function mensajeFinal(){
 		if (lead){
@@ -4621,6 +4625,14 @@ function envioFormulario(){
 					+'Gracias.</div>');
 		}
 	}
+//	function mensajeNoCheckLOPD(){
+////		var data = {};
+////		data.output = {};
+////		data.output.text = ["Debes aceptar la LOPD"];
+////		var type = 'watson';
+////		watson_ConversationPanel.displayMessage(data, type);
+//		window.alert("Debes aceptar la LOPD");
+//	}
 // -FIN- C2C
 
 
