@@ -149,7 +149,7 @@ $(document)
 			+ '<div id="modal-overlay-Watson-img"><strong class="closeModalWatson">\u00d7</strong></div>'
 			+ '<div class="modal-overlay-Watson" style="display: block;"></div>'
 			+ '</div>');
-
+		
 		//Recogemos el Cod_promo
 		var Url = window.location.href;
 		var Url2 = Url.split("?", 1);
@@ -1081,7 +1081,6 @@ watson_Watson = (function () {
 				var redireccionATienda; // Boolean
 				var enlaceaTienda; // Enlace al que redirigir
 				if (latestResponse) {
-					console.log('latestResponse', latestResponse);
 					context = latestResponse.context;
 
 					if (context && context != "undefined" && context != ''){
@@ -1150,7 +1149,6 @@ watson_Watson = (function () {
 				text: text
 			};
 		}
-		console.log(context);
 		if (context) {
 			payloadToWatson.context = context;
 			context.initialID = initialID;
@@ -1174,11 +1172,9 @@ watson_Watson = (function () {
 		if (conversationId == '1') {
 			var canal = $('#watsonContainer').attr('data-canal');
 			var urlHTML = $('#watsonContainer').attr('data-url');
-			console.log(context);
 			var context = {
 				"canal": canal,
 			};
-			console.log(initialID);
 			if(initialID){
 				context.initialID = initialID;
 			}
@@ -1218,7 +1214,6 @@ watson_Watson = (function () {
 				}
 				//-FIN- Quitamos el textInput y el boton enviar cuando se nos cargue el formulario C2C
 				if (latestResponse) {
-					console.log('latestResponse', latestResponse);
 					context = latestResponse.context;
 					if (context && context != "undefined" && context != ''){
 						conversID = context.conversation_id;
@@ -1226,7 +1221,6 @@ watson_Watson = (function () {
 						enlaceaTienda = context.enlaceaTienda;		
 					}
 				}
-//				console.log('vamos a la tienda');
 				if (redireccionATienda){
 					var data = {};
 					data.output = {};
@@ -2035,7 +2029,6 @@ watson_ConversationPanel = (function () {
 					}
 				}
 				if (contextForm == '21') {
-					console.log(context)
 					$("div").find('#watsonWaiting').remove();
 					document.getElementById('escribeaqui').style.display = 'none';
 					document.getElementById("escribeaqui").disabled = true;
@@ -3081,49 +3074,102 @@ watson_ConversationPanel = (function () {
 			document.getElementById("textInputchat").disabled = true;
 			document.getElementById('countChar').style.fontSize = "small";
 			$('#countChar').html('</br>0/140');
-
-			if (otherLocation) {
-				// document.getElementById('escribeaqui').style.display =
-				// 'none';
-				watson_Location.searchAddress();
-				otherLocation = false;
-			} else {
-				// Retrieve the context from the previous server response
-				var context;
-				var latestResponse = watson_Watson.getResponsePayload();
-
-				if (latestResponse) {
-					context = latestResponse.context;
-				}
-
-				// Send the user message
-				if (watson_RightNow.getContext().rightnow) {
-					watson_RightNow.envioMensaje(textUser);
+			
+			//INICIO Incluimos la RGPD para la introducción del teléfono fijo
+			if (textUser.length == 9 && (textUser.startsWith('7') || textUser.startsWith('9'))){
+			   if (document.getElementById("checkRGPD").checked){
+				   if (otherLocation) {
+						// document.getElementById('escribeaqui').style.display = 'none';
+						watson_Location.searchAddress();
+						otherLocation = false;
+					} else {
+						// Retrieve the context from the previous server response
+						var context;
+						var latestResponse = watson_Watson.getResponsePayload();
+		
+						if (latestResponse) {
+							context = latestResponse.context;
+						}
+		
+						// Send the user message
+						if (watson_RightNow.getContext().rightnow) {
+							watson_RightNow.envioMensaje(textUser);
+						} else {
+		
+							var s = watson_Watson.getStatus();
+		
+							if (s && s == 'default') {
+								var canal = $('#watsonContainer').attr('data-canal');
+								var urlHTML = $('#watsonContainer').attr('data-url');
+								var context = {
+									"canal": canal,
+									// "logado": "false",
+									// "IdFAQ_Original": urlHTML
+								};
+		
+								watson_Watson.setStatus('to-watson');
+							}
+							//INICIO Incluimos el valor checkFijoRGPD en el context
+							context.checkFijoRGPD = true;
+							//FIN Incluimos el valor checkFijoRGPD en el context
+							watson_Watson.sendRequestReset(textUser, context);
+						}
+		
+						// Clear input box for further messages
+						inputBox.val('');
+		
+						// Reset Textarea
+						watson_ConversationPanel.resetTextArea();
+						$(".respuestaboton").addClass("enlaceInhabilitado");
+					}  
+			   }else{
+				  window.alert("Acepta la Política de Privacidad e introduce de nuevo tu número para consultar la cobertura.");
+			   }
+			}else{
+				if (otherLocation) {
+					// document.getElementById('escribeaqui').style.display =
+					// 'none';
+					watson_Location.searchAddress();
+					otherLocation = false;
 				} else {
-
-					var s = watson_Watson.getStatus();
-
-					if (s && s == 'default') {
-						var canal = $('#watsonContainer').attr('data-canal');
-						var urlHTML = $('#watsonContainer').attr('data-url');
-						var context = {
-							"canal": canal,
-							// "logado": "false",
-							// "IdFAQ_Original": urlHTML
-						};
-
-						watson_Watson.setStatus('to-watson');
+					// Retrieve the context from the previous server response
+					var context;
+					var latestResponse = watson_Watson.getResponsePayload();
+	
+					if (latestResponse) {
+						context = latestResponse.context;
 					}
-					watson_Watson.sendRequestReset(textUser, context);
+	
+					// Send the user message
+					if (watson_RightNow.getContext().rightnow) {
+						watson_RightNow.envioMensaje(textUser);
+					} else {
+	
+						var s = watson_Watson.getStatus();
+	
+						if (s && s == 'default') {
+							var canal = $('#watsonContainer').attr('data-canal');
+							var urlHTML = $('#watsonContainer').attr('data-url');
+							var context = {
+								"canal": canal,
+								// "logado": "false",
+								// "IdFAQ_Original": urlHTML
+							};
+	
+							watson_Watson.setStatus('to-watson');
+						}
+						watson_Watson.sendRequestReset(textUser, context);
+					}
+	
+					// Clear input box for further messages
+					inputBox.val('');
+	
+					// Reset Textarea
+					watson_ConversationPanel.resetTextArea();
+					$(".respuestaboton").addClass("enlaceInhabilitado");
 				}
-
-				// Clear input box for further messages
-				inputBox.val('');
-
-				// Reset Textarea
-				watson_ConversationPanel.resetTextArea();
-				$(".respuestaboton").addClass("enlaceInhabilitado");
 			}
+		//FIN Incluimos la RGPD para la introducción del teléfono fijo
 		}
 	}
 
@@ -3851,7 +3897,6 @@ watson_Location = (function () {
 							document.getElementById("otraubicacionWatson").disabled = false;
 							
 							permissionDenied = true;
-							// console.log("No se ha permitido la ubicaciÃ³n");
 							break;
 						case objPositionError.POSITION_UNAVAILABLE:
 							// content.innerHTML = "<p
@@ -4326,76 +4371,104 @@ $(function () {
 			$('#escribeaqui').removeClass('animationPulse');
 		});
 
-		$('#watson__input__btn')
-			.on(
-			'click',
-			function (event) {
+		$('#watson__input__btn').on('click',function (event) {
 				var espacio_blanco = /[a-z,0-9]/i;
-				var textUser = document
-					.getElementById('textInputchat').value;
-
+				var textUser = document.getElementById('textInputchat').value;
 				if (textUser.length > 0) {
 					$('#watson__input__btn').addClass('sendButton');
 				} else {
 					$('#watson__input__btn').removeClass(
 						'sendButton');
 				}
-
 				if (textUser.length > 0
 					&& (espacio_blanco.test(textUser))) {
 					document.getElementById("textInputchat").disabled = true;
-
-					if (otherLocation) {
-						watson_Location.searchAddress();
-						otherLocation = false;
-					} else {
-
-						// Retrieve the context from the previous
-						// server response
-						var context;
-						var latestResponse = watson_Watson
-							.getResponsePayload();
-
-						if (latestResponse) {
-							context = latestResponse.context;
-						}
-
-						// Send the user message
-						if (watson_RightNow.getContext().rightnow) {
-							watson_RightNow.envioMensaje(textUser);
-						} else {
-
-							var s = watson_Watson.getStatus();
-
-							if (s && s == 'default') {
-								var canal = $('#watsonContainer')
-									.attr('data-canal');
-								var urlHTML = $('#watsonContainer')
-									.attr('data-url');
-								var context = {
-									"canal": canal,
-									// "logado": "false",
-									// "IdFAQ_Original": urlHTML
-								};
-
-								watson_Watson
-									.setStatus('to-watson');
+					//INICIO Incluimos la RGPD para la introducción del teléfono fijo
+					if (textUser.length == 9 && (textUser.startsWith('7') || textUser.startsWith('9'))){
+						if (document.getElementById("checkRGPD").checked){
+							if (otherLocation) {
+								watson_Location.searchAddress();
+								otherLocation = false;
+							} else {
+								// Retrieve the context from the previous
+								// server response
+								var context;
+								var latestResponse = watson_Watson.getResponsePayload();
+								if (latestResponse) {
+									context = latestResponse.context;
+								}
+								// Send the user message
+								if (watson_RightNow.getContext().rightnow) {
+									watson_RightNow.envioMensaje(textUser);
+								} else {
+									var s = watson_Watson.getStatus();
+									if (s && s == 'default') {
+										var canal = $('#watsonContainer')
+											.attr('data-canal');
+										var urlHTML = $('#watsonContainer')
+											.attr('data-url');
+										var context = {
+											"canal": canal,
+											// "logado": "false",
+											// "IdFAQ_Original": urlHTML
+										};
+										watson_Watson.setStatus('to-watson');
+									}
+									//INICIO Incluimos el valor checkFijoRGPD en el context
+									context.checkFijoRGPD = true;
+									//FIN Incluimos el valor checkFijoRGPD en el context
+									watson_Watson.sendRequestReset(textUser, context);
+									document.getElementById('textInputchat').value = "";
+								}
+								// Clear input box for further messages
+								inputBox.val('');
+								// Reset Textarea
+								$(".respuestaboton").addClass("enlaceInhabilitado");
+								watson_ConversationPanel.resetTextArea();
 							}
-							watson_Watson.sendRequestReset(
-								textUser, context);
-							document
-								.getElementById('textInputchat').value = "";
-
+						}else{
+							  window.alert("Acepta la Política de Privacidad e introduce de nuevo tu número para consultar la cobertura.");
+						   }
+					}else{
+						if (otherLocation) {
+							watson_Location.searchAddress();
+							otherLocation = false;
+						} else {
+							// Retrieve the context from the previous
+							// server response
+							var context;
+							var latestResponse = watson_Watson.getResponsePayload();
+							if (latestResponse) {
+								context = latestResponse.context;
+							}
+							// Send the user message
+							if (watson_RightNow.getContext().rightnow) {
+								watson_RightNow.envioMensaje(textUser);
+							} else {
+								var s = watson_Watson.getStatus();
+								if (s && s == 'default') {
+									var canal = $('#watsonContainer')
+										.attr('data-canal');
+									var urlHTML = $('#watsonContainer')
+										.attr('data-url');
+									var context = {
+										"canal": canal,
+										// "logado": "false",
+										// "IdFAQ_Original": urlHTML
+									};
+									watson_Watson.setStatus('to-watson');
+								}
+								watson_Watson.sendRequestReset(textUser, context);
+								document.getElementById('textInputchat').value = "";
+							}
+							// Clear input box for further messages
+							inputBox.val('');
+							// Reset Textarea
+							$(".respuestaboton").addClass("enlaceInhabilitado");
+							watson_ConversationPanel.resetTextArea();
 						}
-
-						// Clear input box for further messages
-						inputBox.val('');
-
-						// Reset Textarea
-						$(".respuestaboton").addClass(
-							"enlaceInhabilitado");
-						watson_ConversationPanel.resetTextArea();
 					}
+					//FIN Incluimos la RGPD para la introducción del teléfono fijo
 				}
 			});
 
@@ -4584,7 +4657,7 @@ $(window).resize(function() {
 // }(sya.$);
 
 function envioFormulario(){
-//	if (document.getElementById("checkLOPD").checked){	
+	if (document.getElementById("checkRGPD_C2C").checked){	
 			var clientConfig = { 
 				    timeoutTooltip: 3, 
 				    lang: 'es', 
@@ -4597,7 +4670,6 @@ function envioFormulario(){
 				    } 
 				};
 			var urlDelio = "https://ws.walmeric.com/provision/wsclient/client_addlead.html?idTag=29842f94d414949bf95fb2e6109142cfef1fb2a78114c2c536a36bf5a65b953a2224d083b82556f420edd64168d5fd904d9e4fa7221a95c03a6f0110864d9e6a9f1bcc982f49e8e7b5377e50143aa1bbe341aaec655f7666e755114f87c6e9f3b42792780ae793bf157e928ce3e0fcd5&name="+clientConfig.map.param1+"&phone="+clientConfig.map.param2;
-			console.log(urlDelio);
 			var toDelio;
 			$.ajax({
 		        url: urlDelio,//esto o con un archivo php
@@ -4615,33 +4687,25 @@ function envioFormulario(){
 					console.log("La petición ha sido satisfactoria");
 		        }
 		   });
-//	}else{
-//		mensajeNoCheckLOPD();
-//	}
+	}else{
+		window.alert("Debes aceptar la Política de Privacidad para tratar los datos de contacto");
+	}
 }
-	function mensajeFinal(){
-		if (lead){
-			$('#watson__body__chat').html('<div class="llamadmeTextoFinal">Su solicitud ha sido recibida.</br>'
-					+'En breve uno de nuestros agente se pondr&aacute; en contacto con usted.</br>'
-					+'Gracias.</div>');
-		}else{
-			$('#watson__body__chat').html('<div class="llamadmeTextoFinal">Su solicitud no se ha podido tramitar correctamente.</br>'
-					+'Vuelva a intentarlo en unos instantes.</br>'
-					+'Gracias.</div>');
-		}
+function mensajeFinal(){
+	if (lead){
+		$('#watson__body__chat').html('<div class="llamadmeTextoFinal">Su solicitud ha sido recibida.</br>'
+				+'En breve uno de nuestros agente se pondr&aacute; en contacto con usted.</br>'
+				+'Gracias.</div>');
+	}else{
+		$('#watson__body__chat').html('<div class="llamadmeTextoFinal">Su solicitud no se ha podido tramitar correctamente.</br>'
+				+'Vuelva a intentarlo en unos instantes.</br>'
+				+'Gracias.</div>');
 	}
-	function showMasInfo(){
-	    $('.textRGPD').show();
-	}
-//	function mensajeNoCheckLOPD(){
-////		var data = {};
-////		data.output = {};
-////		data.output.text = ["Debes aceptar la LOPD"];
-////		var type = 'watson';
-////		watson_ConversationPanel.displayMessage(data, type);
-//		window.alert("Debes aceptar la LOPD");
-//	}
+}
 // -FIN- C2C
+function showMasInfo(){
+    $('.textRGPD').show();
+}
 	
 
 
