@@ -1408,7 +1408,11 @@ watson_Common = (function () {
 		scrollGrid = 0;
 		resetOther = true;
 		firstTextInput++;
+		
+		//INICIO Hacemos foco en el "confirmar" para que el scroll baje
 		document.getElementById('watson__confirm__btn').focus();
+		//FIN Hacemos foco en el "confirmar" para que el scroll baje
+		
 		$('#escribeaqui').removeClass('animationPulse');
 
 		$('#textInputchat').removeAttr('onkeypress');
