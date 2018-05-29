@@ -1408,6 +1408,7 @@ watson_Common = (function () {
 		scrollGrid = 0;
 		resetOther = true;
 		firstTextInput++;
+		document.getElementById('watson__confirm__btn').focus();
 		$('#escribeaqui').removeClass('animationPulse');
 
 		$('#textInputchat').removeAttr('onkeypress');
