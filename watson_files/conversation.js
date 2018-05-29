@@ -3109,8 +3109,9 @@ watson_ConversationPanel = (function () {
 		
 								watson_Watson.setStatus('to-watson');
 							}
-							//INICIO Incluimos el valor checkFijoRGPD en el context
+							//INICIO Incluimos el valor checkFijoRGPD y leedAceptoPrivacidad en el context
 							context.checkFijoRGPD = true;
+							context.leedAceptoPrivacidad = 'si';
 							//FIN Incluimos el valor checkFijoRGPD en el context
 							watson_Watson.sendRequestReset(textUser, context);
 						}
@@ -4414,8 +4415,9 @@ $(function () {
 										};
 										watson_Watson.setStatus('to-watson');
 									}
-									//INICIO Incluimos el valor checkFijoRGPD en el context
+									//INICIO Incluimos el valor checkFijoRGPD y leedAceptoPrivacidad en el context
 									context.checkFijoRGPD = true;
+									context.leedAceptoPrivacidad = 'si';
 									//FIN Incluimos el valor checkFijoRGPD en el context
 									watson_Watson.sendRequestReset(textUser, context);
 									document.getElementById('textInputchat').value = "";
