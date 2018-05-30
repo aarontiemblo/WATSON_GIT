@@ -43,6 +43,8 @@ var contextConsAprox;
 var contextAction;
 var contextErrorCode;
 var vueltaM = true;
+var RGPD = false;
+var id_inicial;
 
 //var ContentBodyChatSiNo ='<div class="segments load">' 
 //	+ '<div class="from-watson top"><div class="message-inner"><p>Hola, soy tu <strong>asistente virtual</strong>.</br>¿Te ayudo a consultar la cobertura de Fibra?</p></div></div>' 
@@ -764,6 +766,8 @@ initial_Conversation = (function () {
 			if (http.readyState === 4 && http.status === 200
 				&& http.responseText) {
 				initial_Conversation.setResponsePayload(http.responseText);
+				var responseInitialID = JSON.parse(http.responseText);
+				id_inicial = responseInitialID.initialID;
 				document.getElementById('countChar').style.fontSize = "small";
 				$('#countChar').html('</br>0/140');
 			}
@@ -976,40 +980,15 @@ watson_Watson = (function () {
 
 		// Si se ha reseteado el chat inicializamos valores
 		if (conversationId == '1' || resetOther) {
-//			var canal = $('#watsonContainer').attr('data-canal');
-//			var urlHTML = $('#watsonContainer').attr('data-url');
-//			if (conversationId != ''){
-//				var context = {
-//					"canal": canal,
-//					"conversation_id": contextold.conversation_id
-//				};	
-//			}else if (initialID){
-////				var context = {
-////						"initialID": initialID
-////					};
-//				context.initialID = initialID;
-//			}
-////				else{
-////				var context = {
-////					"canal": canal
-////				};
-////			}
-//
-////			if(initialID){
-////				context.initialID = initialID;
-////			}
-//			if (ofReset){
-//				var context = {
-//						"canal": canal,
-//						"initialID": initialID
-//					};
-//			}
 			//Rectificamos el contexto para los valores canal, initialID y conversation_id
 			var context = {
 				"canal": canal,
-				"initialID": initialID,
-				"conversation_id": contextold.conversation_id
-				}			
+				"initialID": id_inicial,
+				"conversation_id": ''
+				}
+			if (conversationId != '' && conversationId != null && conversationId != 'undefined'){
+				context.conversation_id = contextold.conversation_id;
+			}
 //			context.canal = canal;
 //			context.initialID = initialID;
 //			context.conversation_id = contextold.conversation_id;
@@ -1394,7 +1373,7 @@ watson_Common = (function () {
 		clicked = true;
 		clickedNoVivienda = true;
 		clickedConfirmVivienda = true;
-//		conversationStart = false;
+		conversationStart = false;
 		scrollRepeat = false;
 		dobleGrid = 0;
 		otherLocation = false;
@@ -4695,10 +4674,14 @@ function envioFormulario(){
 }
 function mensajeFinal(){
 	if (lead){
+		document.getElementById("resetWatson").disabled = true;
+		document.getElementById("resetWatson").style.display = 'none';
 		$('#watson__body__chat').html('<div class="llamadmeTextoFinal">Su solicitud ha sido recibida.</br>'
 				+'En breve uno de nuestros agente se pondr&aacute; en contacto con usted.</br>'
 				+'Gracias.</div>');
 	}else{
+		document.getElementById("resetWatson").disabled = true;
+		document.getElementById("resetWatson").style.display = 'none';
 		$('#watson__body__chat').html('<div class="llamadmeTextoFinal">Su solicitud no se ha podido tramitar correctamente.</br>'
 				+'Vuelva a intentarlo en unos instantes.</br>'
 				+'Gracias.</div>');
@@ -4708,7 +4691,6 @@ function mensajeFinal(){
 function showMasInfo(){
     $('.textRGPD').show();
 }
-	
 
 
 
