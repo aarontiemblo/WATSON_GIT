@@ -59,6 +59,13 @@ var id_inicial;
 //Continuar con popUp Flotante
 var popUpFlotante = '<div class="watsonPopUpInicial">Prueba Ventana</div>';
 
+var C2C_OK = '<div class="llamadmeTextoFinal">Su solicitud ha sido recibida.</br>'
+	+'En breve uno de nuestros agente se pondr&aacute; en contacto con usted.</br>'
+	+'Gracias.</div>';
+var C2C_KO = '<div class="llamadmeTextoFinal">Su solicitud no se ha podido tramitar correctamente.</br>'
+	+'Vuelva a intentarlo en unos instantes.</br>'
+	+'Gracias.</div>';
+
 var textContentBodyChat = '<div class="segments load">'
 	+ '<div class="from-watson top"><div class="message-inner"><p>Hola, soy tu <strong>asistente virtual</strong>.</br>¿En qué dirección quieres consultar la cobertura de Fibra?</p></div></div>'
 	+ '</div>'
@@ -705,10 +712,10 @@ initial_Conversation = (function () {
 //	var comunicacionInicialEndpoint = 'http://localhost:9090/conversacion-inicial';
 	// {$ end-env-local $}
 	// {$ env-pre $}
- var comunicacionInicialEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/conversacion-inicial';
+//  var comunicacionInicialEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/conversacion-inicial';
 	// {$ end-env-pre $}
 	// {$ env-prod $}
-// var comunicacionInicialEndpoint = 'https://chatconwatson.eu-de.mybluemix.net/conversacion-inicial';
+var comunicacionInicialEndpoint = 'https://chatconwatson.eu-de.mybluemix.net/conversacion-inicial';
 	// {$ end-env-prod $}
 	var requestPayload = new Object();
 	var responsePayload = new Object();
@@ -798,12 +805,12 @@ watson_Watson = (function () {
 //var comunicacionEndpoint = 'http://localhost:9090/comunicacionConWatson';
 	// {$ end-env-local $}
 	// {$ env-pre $}
- var messageEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicacionConWatson';
- var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicacionConWatson';
+//  var messageEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicacionConWatson';
+//  var comunicacionEndpoint = 'https://chatconwatson.eu-gb.mybluemix.net/comunicacionConWatson';
 	// {$ end-env-pre $}
 	// {$ env-prod $}
-// var messageEndpoint = 'https://chatconwatson.eu-de.mybluemix.net/comunicacionConWatson';
-// var comunicacionEndpoint = 'https://chatconwatson.eu-de.mybluemix.net/comunicacionConWatson';
+var messageEndpoint = 'https://chatconwatson.eu-de.mybluemix.net/comunicacionConWatson';
+var comunicacionEndpoint = 'https://chatconwatson.eu-de.mybluemix.net/comunicacionConWatson';
 	// {$ end-env-prod $}
 	var status = 'default';
 	var conversationId = '';
@@ -1382,17 +1389,13 @@ watson_Common = (function () {
 		resetOther = true;
 		firstTextInput++;
 		
-		//INICIO Hacemos foco en el "confirmar" para que el scroll baje
-		document.getElementById('watson__confirm__btn').focus();
-		//FIN Hacemos foco en el "confirmar" para que el scroll baje
-		
 		$('#escribeaqui').removeClass('animationPulse');
 
 		$('#textInputchat').removeAttr('onkeypress');
 		document.getElementById('escribeaqui').style.display = 'none';
 		$('.inputOutline').css('display', 'none');
 		document.getElementById('textInputchat').value = "";
-
+		
 		// Insertar contentHTML
 		$('#watson__body__chat').html(textContentBodyChat
 			+ '<button type="button" id="watson__confirm__btn" class="confirmarWatson" onclick="watson_Location.submitFormDirReset()">Confirmar</button>'
@@ -1426,6 +1429,9 @@ watson_Common = (function () {
 		// watson_Watson.sendRequestReset('', context);
 
 		$('#textInputchat').removeAttr('disabled');
+		//INICIO Hacemos foco en el "confirmar" para que el scroll baje
+		document.getElementById('watson__confirm__btn').focus();
+		//FIN Hacemos foco en el "confirmar" para que el scroll baje
 	}
 
 	// Validate contact-form
@@ -3088,10 +3094,9 @@ watson_ConversationPanel = (function () {
 		
 								watson_Watson.setStatus('to-watson');
 							}
-							//INICIO Incluimos el valor checkFijoRGPD y leedAceptoPrivacidad en el context
-							context.checkFijoRGPD = true;
+							//INICIO Incluimos el valor leedAceptoPrivacidad en el context
 							context.leedAceptoPrivacidad = 'si';
-							//FIN Incluimos el valor checkFijoRGPD en el context
+							//FIN Incluimos el valor leedAceptoPrivacidad en el context
 							watson_Watson.sendRequestReset(textUser, context);
 						}
 		
@@ -4394,10 +4399,9 @@ $(function () {
 										};
 										watson_Watson.setStatus('to-watson');
 									}
-									//INICIO Incluimos el valor checkFijoRGPD y leedAceptoPrivacidad en el context
-									context.checkFijoRGPD = true;
+									//INICIO Incluimos el valor leedAceptoPrivacidad en el context
 									context.leedAceptoPrivacidad = 'si';
-									//FIN Incluimos el valor checkFijoRGPD en el context
+									//FIN Incluimos el valor leedAceptoPrivacidad en el context
 									watson_Watson.sendRequestReset(textUser, context);
 									document.getElementById('textInputchat').value = "";
 								}
@@ -4674,23 +4678,23 @@ function envioFormulario(){
 }
 function mensajeFinal(){
 	if (lead){
-		document.getElementById("resetWatson").disabled = true;
-		document.getElementById("resetWatson").style.display = 'none';
-		$('#watson__body__chat').html('<div class="llamadmeTextoFinal">Su solicitud ha sido recibida.</br>'
-				+'En breve uno de nuestros agente se pondr&aacute; en contacto con usted.</br>'
-				+'Gracias.</div>');
+		document.getElementById("resetWatson").disabled = false;
+		document.getElementById("resetWatson").style.display = 'block';
+		$('#watson__body__chat').html(C2C_OK);
 	}else{
-		document.getElementById("resetWatson").disabled = true;
-		document.getElementById("resetWatson").style.display = 'none';
-		$('#watson__body__chat').html('<div class="llamadmeTextoFinal">Su solicitud no se ha podido tramitar correctamente.</br>'
-				+'Vuelva a intentarlo en unos instantes.</br>'
-				+'Gracias.</div>');
+		document.getElementById("resetWatson").disabled = false;
+		document.getElementById("resetWatson").style.display = 'block';
+		$('#watson__body__chat').html(C2C_KO);
 	}
 }
 // -FIN- C2C
 function showMasInfo(){
     $('.textRGPD').show();
 }
+
+
+
+
 
 
 
