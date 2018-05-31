@@ -1030,7 +1030,8 @@ watson_Watson = (function () {
 						document.getElementById('mostrarReset').style.display = 'block';
 						document.getElementById('watson__body__chat').style.top = '65px';
 					}
-					//INICIO Incluimos timeout de 20s para cuando el usuario no contesta
+					//INICIO Incluimos timeout de 20s para cuando el usuario no contesta				
+					
 					//Todavía hay que comprobarlo con el id que nos llegue desde el context			
 //					if (contextForm == 'id del output.text'){
 //						setTimeout(delay, 20000);
@@ -1058,6 +1059,11 @@ watson_Watson = (function () {
 					watson_RightNow.check(JSON.parse(http.responseText));
 					if (!watson_RightNow.getContext().user) {
 						watson_Watson.setResponsePayload(http.responseText);
+						//INICIO Quitamos el textInput y el boton enviar cuando se nos cargue la oferta
+						if (document.getElementById('ACDCrespuestaCobertura')){
+							document.getElementById('escribeaqui').style.display = 'none';
+						}
+						//FIN Quitamos el textInput y el boton enviar cuando se nos cargue la oferta
 					}
 				} else {
 					watson_ConversationPanel.captureErrorWatson();
@@ -3058,10 +3064,10 @@ watson_ConversationPanel = (function () {
 			$(".pac-container").remove();
 			document.getElementById("textInputchat").disabled = true;
 			document.getElementById('countChar').style.fontSize = "small";
-			$('#countChar').html('</br>0/140');
+			$('#countChar').html('</br>0/140');	
 			
 			//INICIO Incluimos la RGPD para la introducción del teléfono fijo
-			if (textUser.length == 9 && (textUser.startsWith('7') || textUser.startsWith('9'))){
+			if (textUser.length == 9 && (textUser.startsWith('8') || textUser.startsWith('9'))){
 			   if (document.getElementById("checkRGPD").checked){
 				   if (otherLocation) {
 						// document.getElementById('escribeaqui').style.display = 'none';
@@ -4369,7 +4375,7 @@ $(function () {
 					&& (espacio_blanco.test(textUser))) {
 					document.getElementById("textInputchat").disabled = true;
 					//INICIO Incluimos la RGPD para la introducción del teléfono fijo
-					if (textUser.length == 9 && (textUser.startsWith('7') || textUser.startsWith('9'))){
+					if (textUser.length == 9 && (textUser.startsWith('8') || textUser.startsWith('9'))){
 						if (document.getElementById("checkRGPD").checked){
 							if (otherLocation) {
 								watson_Location.searchAddress();
