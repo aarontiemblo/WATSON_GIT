@@ -45,6 +45,7 @@ var contextErrorCode;
 var vueltaM = true;
 var RGPD = false;
 var id_inicial;
+var ofertaCheckFijo = false;
 
 //var ContentBodyChatSiNo ='<div class="segments load">' 
 //	+ '<div class="from-watson top"><div class="message-inner"><p>Hola, soy tu <strong>asistente virtual</strong>.</br>¿Te ayudo a consultar la cobertura de Fibra?</p></div></div>' 
@@ -1071,6 +1072,9 @@ watson_Watson = (function () {
 								document.getElementById('escribeaqui').style.display = 'block';
 							}
 						}
+						if (ofertaCheckFijo){
+							document.getElementById('escribeaqui').style.display = 'block';
+						}
 						//FIN Quitamos el textInput y el boton enviar cuando se nos cargue la oferta
 					}
 				} else {
@@ -1390,7 +1394,8 @@ watson_Common = (function () {
 		};
 
 		initial_Conversation.sendRequestInitial(input, contextInitial);
-
+		
+		ofertaCheckFijo = false;
 		clicked = true;
 		clickedNoVivienda = true;
 		clickedConfirmVivienda = true;
@@ -1745,7 +1750,7 @@ watson_ConversationPanel = (function () {
 	}
 	
 	function mantenerFijoCheck(){
-		
+		ofertaCheckFijo = true;
 		var check = $('.checkNumFijo:last input')[0];
 		if(check.checked){
 			var context;
