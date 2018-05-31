@@ -1030,7 +1030,7 @@ watson_Watson = (function () {
 						document.getElementById('mostrarReset').style.display = 'block';
 						document.getElementById('watson__body__chat').style.top = '65px';
 					}
-					//INICIO Incluimos timeout de 20s para cuando el usuario no contesta				
+					//INICIO Incluimos timeout de 20s para cuando el usuario no contesta
 					
 					//Todavía hay que comprobarlo con el id que nos llegue desde el context			
 //					if (contextForm == 'id del output.text'){
@@ -1060,8 +1060,16 @@ watson_Watson = (function () {
 					if (!watson_RightNow.getContext().user) {
 						watson_Watson.setResponsePayload(http.responseText);
 						//INICIO Quitamos el textInput y el boton enviar cuando se nos cargue la oferta
-						if (document.getElementById('ACDCrespuestaCobertura')){
-							document.getElementById('escribeaqui').style.display = 'none';
+						var respuestaOferta = JSON.parse(http.responseText);
+						if (respuestaOferta.context.TarifaHtml != '' && respuestaOferta.context.TarifaHtml != 'undefined' && respuestaOferta.context.TarifaHtml != null){
+							if (respuestaOferta.context.TarifaHtml.includes("ACDCrespuestaCobertura")){
+									document.getElementById('escribeaqui').style.display = 'none';					
+							}
+						}
+						if (respuestaOferta.context.text != '' && respuestaOferta.context.text != 'undefined' && respuestaOferta.context.text != null){
+							if(respuestaOferta.context.text[0].includes("adaptar la oferta")){
+								document.getElementById('escribeaqui').style.display = 'block';
+							}
 						}
 						//FIN Quitamos el textInput y el boton enviar cuando se nos cargue la oferta
 					}
