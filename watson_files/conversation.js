@@ -992,7 +992,7 @@ watson_Watson = (function () {
 			var context = {
 				"canal": canal,
 				"initialID": id_inicial,
-				"conversation_id": ''
+				"conversation_id": conversID
 				}
 			if (conversationId != '' && conversationId != null && conversationId != 'undefined'){
 				context.conversation_id = contextold.conversation_id;
@@ -1884,6 +1884,7 @@ watson_ConversationPanel = (function () {
 				contextFin = latestResponse.context.finConversacion;
 				contextBlockInput = latestResponse.context.BloqueaInput;
 				contextForm = latestResponse.context.ErrorCode;
+				conversID = latestResponse.context.conversation_id;
 				//INICIO Incluimos timeout de 20s para cuando el usuario no contesta
 				//Todavía hay que meter el errorCode 51 en el context			
 //				if (contextForm == '51'){
@@ -3743,6 +3744,9 @@ watson_Location = (function () {
 		if (latestResponse) {
 			initialID = latestResponse.initialID;
 			contextInitial.initialID = initialID;
+			if (conversID!='' && conversID!=null && conversID!='undefined'){
+				contextInitial.conversation_id = conversID;
+			}
 		}
 		var input = "EVENT_MI_UBICACION";
 		contextInitial.output = "EVENT_MI_UBICACION";
