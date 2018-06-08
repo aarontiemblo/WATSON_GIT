@@ -46,6 +46,8 @@ var vueltaM = true;
 var RGPD = false;
 var id_inicial;
 var ofertaCheckFijo = false;
+var resetContext;
+var pasaPorEscribirDireccion = false;
 
 //var ContentBodyChatSiNo ='<div class="segments load">' 
 //	+ '<div class="from-watson top"><div class="message-inner"><p>Hola, soy tu <strong>asistente virtual</strong>.</br>¿Te ayudo a consultar la cobertura de Fibra?</p></div></div>' 
@@ -1004,6 +1006,12 @@ watson_Watson = (function () {
 			payloadToWatson.context = context;
 //			conversationId = '';
 			resetOther = false;
+			//Si es escribir direccion y pasa por el reset falla
+			if (!pasaPorEscribirDireccion){
+				if (resetContext != '' && resetContext != null && resetContext != 'undefined'){
+					payloadToWatson.context = resetContext;
+				}
+			}
 		}
 
 		// Built http request
@@ -1395,6 +1403,7 @@ watson_Common = (function () {
 
 		initial_Conversation.sendRequestInitial(input, contextInitial);
 		
+		pasaPorEscribirDireccion = false;
 		ofertaCheckFijo = false;
 		clicked = true;
 		clickedNoVivienda = true;
@@ -1885,6 +1894,7 @@ watson_ConversationPanel = (function () {
 				contextBlockInput = latestResponse.context.BloqueaInput;
 				contextForm = latestResponse.context.ErrorCode;
 				conversID = latestResponse.context.conversation_id;
+				resetContext = latestResponse.context;
 				//INICIO Incluimos timeout de 20s para cuando el usuario no contesta
 				//Todavía hay que meter el errorCode 51 en el context			
 //				if (contextForm == '51'){
@@ -3985,6 +3995,7 @@ watson_Location = (function () {
 
 	// Mostrar formulario ubicacion
 	function locationForm() {
+		pasaPorEscribirDireccion = true;
 		if (permissionDenied) {
 			watson_Common.resetWatson();
 		}
