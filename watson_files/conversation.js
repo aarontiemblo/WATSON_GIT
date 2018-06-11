@@ -1006,12 +1006,13 @@ watson_Watson = (function () {
 			payloadToWatson.context = context;
 //			conversationId = '';
 			resetOther = false;
-			//Si es escribir direccion y pasa por el reset falla
+			//INICIO Para que no falle pasando por escribir direccion
 			if (!pasaPorEscribirDireccion){
 				if (resetContext != '' && resetContext != null && resetContext != 'undefined'){
 					payloadToWatson.context = resetContext;
 				}
 			}
+			//FIN Para que no falle pasando por escribir direccion
 		}
 
 		// Built http request
@@ -1039,7 +1040,7 @@ watson_Watson = (function () {
 						document.getElementById('mostrarReset').style.display = 'block';
 						document.getElementById('watson__body__chat').style.top = '65px';
 					}
-					//INICIO Incluimos timeout de 20s para cuando el usuario no contesta
+					//FIN Incluimos timeout de 20s para cuando el usuario no contesta
 					
 					//Todavía hay que comprobarlo con el id que nos llegue desde el context			
 //					if (contextForm == 'id del output.text'){
@@ -1094,7 +1095,13 @@ watson_Watson = (function () {
 				var enlaceaTienda; // Enlace al que redirigir
 				if (latestResponse) {
 					context = latestResponse.context;
-
+					//INICIO finConversacion está mandandose la variable de finConversación después de pintar el html
+					if (context.finConversacion){
+						document.getElementById('escribeaqui').style.display = 'none';
+						document.getElementById('mostrarReset').style.display = 'block';
+						document.getElementById('watson__body__chat').style.top = '65px';
+					}
+					//FIN Incluimos timeout de 20s para cuando el usuario no contesta
 					if (context && context != "undefined" && context != ''){
 						redireccionATienda=context.redirigirATienda;
 						enlaceaTienda = context.enlaceaTienda;		
