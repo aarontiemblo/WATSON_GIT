@@ -167,7 +167,8 @@ $(document)
 		var Url2 = Url.split("?", 1);
 		var Url3 = Url.split("?", 2);
 		Url3 = Url3.toString();
-		codPromo = Url3.replace(Url2+",","");
+//		codPromo = Url3.replace(Url2+",","");
+		codPromo = "AAC_PROMO_CODE=75024";
 		// Envio de datos a initial_Conversation
 		var input = "EVENT_SALUDO_INICIAL";
 		contextInitial = {
@@ -1776,17 +1777,17 @@ watson_ConversationPanel = (function () {
 				context = latestResponse.context;
 				context.noesmidireccion = true;
 			}
-			if (includes(codPromo,"PROMO_CODE")){
+//			if (includes(codPromo,"PROMO_CODE")){
 				context.enlaceaTienda = context.enlaceaTienda+"&"+codPromo;
-			}
-			function includes(codPromo, value) {
-				var returnValue = false;
-				var pos = codPromo.indexOf(value);
-				if (pos >= 0) {
-					returnValue = true;
-				}
-				return returnValue;
-			}		
+//			}
+//			function includes(codPromo, value) {
+//				var returnValue = false;
+//				var pos = codPromo.indexOf(value);
+//				if (pos >= 0) {
+//					returnValue = true;
+//				}
+//				return returnValue;
+//			}		
 			var text = $(".meInteresaBtn:last").data('msg');
 			text = '<!datosFormFeedback>' + text;
 			watson_Watson.sendRequest(text, context);
@@ -1813,17 +1814,17 @@ watson_ConversationPanel = (function () {
 		if (context && context != "undefined" && context != ''){
 				enlaceaTienda = context.enlaceaTienda;		
 		}
-		if (includes(codPromo,"PROMO_CODE")){
+//		if (includes(codPromo,"PROMO_CODE")){
 			enlaceaTienda = enlaceaTienda+"&"+codPromo;
-		}
-		function includes(codPromo, value) {
-			var returnValue = false;
-			var pos = codPromo.indexOf(value);
-			if (pos >= 0) {
-				returnValue = true;
-			}
-			return returnValue;
-		}
+//		}
+//		function includes(codPromo, value) {
+//			var returnValue = false;
+//			var pos = codPromo.indexOf(value);
+//			if (pos >= 0) {
+//				returnValue = true;
+//			}
+//			return returnValue;
+//		}
 			$('#watson__input__btn').addClass("enlaceInhabilitado");
 			$('#textInputchat').addClass("enlaceInhabilitado");
 			var data = {};
